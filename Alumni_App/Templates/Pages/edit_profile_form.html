@@ -1,0 +1,85 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="row gutters-sm px-0 mx-0 my-2">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h4>Edit Profile</h4>
+      </div>
+      <div class="card-body">
+        <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="first_name" class="form-label">First Name</label>
+              <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ user.first_name }}">
+            </div>
+            <div class="col-md-6">
+              <label for="last_name" class="form-label">Last Name</label>
+              <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ user.last_name }}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="{{ user.email }}">
+            </div>
+            <div class="col-md-6">
+              <label for="phone" class="form-label">Phone</label>
+              <input type="text" id="phone" name="phone" class="form-control" placeholder="{{ user.phone }}">
+            </div>
+            <div class="col-md-6">
+              <label for="website" class="form-label">Website</label>
+              <input type="text" id="website" name="website" class="form-control" placeholder="https://example.com" value="{{ user.website }}">
+            </div>
+            <div class="col-md-6">
+              <label for="github" class="form-label">GitHub</label>
+              <input type="text" id="github" name="github" class="form-control" placeholder="https://example.com" value="{{ user.github }}">
+            </div>
+            <div class="col-md-6">
+              <label for="twitter" class="form-label">Twitter</label>
+              <input type="text" id="linkedin" name="linkedin" class="form-control" placeholder="https://example.com" value="{{ user.linkedin }}">
+            </div>
+            <div class="col-md-6">
+              <label for="instagram" class="form-label">Instagram</label>
+              <input type="text" id="instagram" name="instagram" class="form-control" placeholder="https://example.com" value="{{ user.instagram }}">
+            </div>
+            <div class="col-md-6">
+              <label for="facebook" class="form-label">Facebook</label>
+              <input type="text" id="facebook" name="facebook" class="form-control" placeholder="https://example.com" value="{{ user.facebook }}">
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="address" class="form-label">Address</label>
+              <textarea id="address" name="address" placeholder="{{ user.address }}" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea id="bio" name="bio" placeholder="{{ user.bio }}" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="profile_picture" class="form-label">Profile Picture</label>
+              <input type="file" id="profile_picture" name="profile_picture" class="form-control">
+              {% if user.profile_picture %}
+              <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="img-thumbnail mt-2" style="max-width: 150px;">
+              {% endif %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-primary">Save Changes</button>
+              <a href="/profile" class="btn btn-secondary">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<div class="row justify-content-center my-lg-5 mx-0 px-0" id="signUpForm">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h2 class="card-title">Sign Up</h2>
+                <p>Join our alumni network and stay connected!</p>
+            </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="first_name" class="form-label">First Name</label>
+                            <input name="first_name" id="first_name" type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="last_name" class="form-label">Last Name</label>
+                            <input name="last_name" id="last_name" type="text" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" id="email" type="email" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Mobile Number</label>
+                            <input name="phone" id="phone" type="number" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input name="password" id="password" type="password" class="form-control" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <input name="confirm_password" id="confirm_password" type="password" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user_type" class="form-label">User Type</label>
+                        <select class="form-select" name="user_type" id="user_type" required>
+                            <option value="" disabled selected>Select Your User Type</option>
+                            <option value="Student">Student</option>
+                            <option value="Alumni">Alumni</option>
+                            <option value="Teacher">Teacher</option>
+                        </select>
+                    </div>
+                    <div class="mb-3" id="branchRow">
+                        <label for="branch" class="form-label">Branch</label>
+                        <select name="branch" class="form-select" id="branch">
+                            <option value="" disabled selected>Select Your Branch</option>
+                            <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                            <option value="Electronics Engineering">Electronics Engineering</option>
+                            <option value="Electrical Engineering">Electrical Engineering</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="terms" required>
+                        <label class="form-check-label" for="terms">I accept all Terms and Conditions.</label>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg" type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center text-primary">Create a New Event</h2>
+    <form action="" method="POST" enctype="multipart/form-data" class="mt-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="title" class="form-label">Event Title</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="Enter event title" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" name="description" class="form-control" rows="5" placeholder="Write event description here..." required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Event Date</label>
+            <input type="date" id="date" name="date" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="time" class="form-label">Event Time</label>
+            <input type="time" id="time" name="time" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Upload Image</label>
+            <input type="file" id="image" name="image" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Event</button>
+        <a href="{% url 'events' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+<p class="text-center text-danger">You are not authorized to create an event.</p>
+
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="bloggs-section row px-0 mx-0 my-3">
+    <div class="blog-content">
+        <h1 class="text-center text-primary fw-bold" style="font-size: 3rem; margin-top: 15px; margin-bottom: 10px;">
+            {{ blog.title }}
+        </h1>
+        <div class="col-12">
+            <div class="card bg-info">
+                <div class="card-body d-flex flex-wrap">
+                    <div class="col-12 px-1">
+                        <p style="color: black; font-family: 'Times New Roman', Times, serif;">
+                            {{ blog.content }}
+                        </p>
+                    </div>
+                    <div class="col-12 card-image">
+                        <img src="{{ blog.blog_image.url }}" alt="Alumni Portal"
+                            class="img-fluid rounded image-hover-effect w-100">
+                    </div>
+                    <div class="col-12 px-1 py-2 my-3">
+                        <h3>Details:</h3>
+                        <p>
+                            {{ blog.blog_details }}
+                        </p>
+                    </div>
+
+                    {% if blog.id == 1 %}
+
+                    <div class="col-12 px-1">
+                        <h4 class="text-black py-2 my-2">Key Features</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6 class="mb-2">User Management:</h6>
+                                <p>User Types: Supports three types of users: Alumni, Students, and Teachers.</p>
+                                <p>Authentication: Secure login and signup functionality with custom user models.</p>
+                                <p>Profile Management: Users can create and update their profiles, including personal details, social links, and profile pictures.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Blogs:</h6>
+                                <p>Blog Creation: Alumni and teachers can share their experiences and insights by creating blogs.</p>
+                                <p>Blog Listing: A dedicated page to display all blogs with a preview of the content.</p>
+                                <p>Blog Details: Users can click on a blog to view its full content on a separate page.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Events:</h6>
+                                <p>Event Management: Displays upcoming, ongoing, and past events.</p>
+                                <p>Event Details: Provides information about event dates, times, and descriptions.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Media Support:</h6>
+                                <p>Users can upload profile pictures and blog images.</p>
+                                <p>Images are displayed dynamically across the platform.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Responsive Design:</h6>
+                                <p>The application is fully responsive and works seamlessly across devices, including desktops, tablets, and mobile phones.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 px-1">
+                        <h4 class="text-black py-2 my-2">User Experience Flow</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Home Page:</h6>
+                                <p>The landing page introduces the platform and its purpose. Includes a navigation bar with links to Blogs, Events, and Profile pages.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Signup and Login:</h6>
+                                <p>New users can sign up by providing their details, including user type (Alumni, Student, or Teacher). Existing users can log in securely using their email and password.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Profile Page:</h6>
+                                <p>Users can view their profile details, including name, email, phone, address, and bio. Social media links (LinkedIn, GitHub, Instagram, etc.) are displayed if provided. Users can edit their profile or log out from this page.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Blogs:</h6>
+                                <p>The Blogs page lists all blogs with a preview of the title, content, and author. Users can click "Read More" to view the full blog on the Details page.</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Events:</h6>
+                                <p>The Events page lists all events with their status (Upcoming, Ongoing, or Ended). Provides details about the event's title, description, date, and time.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 px-1">
+                        <h4 class="text-black py-2 my-2">Technical Details</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Tech Stack:</h6>
+                                <p>Backend: Django 5.2</p>
+                                <p>Frontend: HTML5, CSS3, Bootstrap 5</p>
+                                <p>Database: SQLite</p>
+                                <p>Deployment: WSGI/ASGI</p>
+                            </li>
+                            <li class="list-group-item">
+                                <h6 class="mb-2">Project Structure:</h6>
+                                <p>Alumni_App: Contains models, views, templates, and static files.</p>
+                                <p>Alumni_Meet: Contains project-level settings, URLs, and configurations.</p>
+                                <p>Media: Stores uploaded images (e.g., profile pictures, blog images).</p>
+                                <p>Static: Contains CSS, JavaScript, and other static assets.</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 px-1">
+                        <h4 class="text-black py-2 my-2">Future Enhancements</h4>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Messaging System: Enable users to send messages to each other.</li>
+                            <li class="list-group-item">Event Registration: Allow users to register for events directly from the platform.</li>
+                            <li class="list-group-item">Notifications: Notify users about new blogs, events, or updates.</li>
+                            <li class="list-group-item">Admin Dashboard: Provide an admin interface for managing users, blogs, and events.</li>
+                        </ul>
+                    </div>
+                    <div class="col-12 px-1 py-2 my-3 flex-wrap">
+                        <p class="align-baseline text-end">
+                            <strong>Author:</strong> {{ blog.author }}<br>
+                            <strong>Date:</strong> {{ blog.created_at }}<br>
+                        </p>
+                    </div>
+                    {% else %}
+                    <div class="col-12 px-1 flex-wrap">
+                        <p class="align-baseline text-end">
+                            <strong>Author:</strong> {{ blog.author }}<br>
+                            <strong>Date:</strong> {{ blog.created_at }}<br>
+                        </p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

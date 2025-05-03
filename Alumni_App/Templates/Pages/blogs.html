@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+{% block content %}
+<section class="bloggs-section row px-0 mx-0">
+    <div class="blog-content">
+        <h1 class="text-center text-primary fw-bold" style="font-size: 3rem; margin-top: 15px; margin-bottom: 10px;">
+            Blogs Section</h1>
+
+        {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' %}
+
+        <div class="col-12 my-3 py-2">
+            <a href="add_blog"
+                class="d-block w-100 text-start border rounded-pill px-3 py-2 text-muted bg-light text-decoration-none">
+                <i class="bi bi-plus-circle-fill"></i> Add a Blog
+            </a>
+
+
+        </div>
+        {% endif %}
+
+
+
+        {% for blog in blogData %}
+
+        <div class="col-12">
+            <div class="card bg-info text-white mb-3">
+                <div class="card-header">
+                    <h2>{{blog.title}}</h2>
+                </div>
+                <div class="card-body d-flex flex-wrap">
+                    <div class="col-md-4 card-image">
+                        <img src="{{blog.blog_image.url}}" alt="Alumni Portal"
+                            class="img-fluid rounded image-hover-effect">
+                    </div>
+                    <div class="col-md-8 px-1">
+                        <p style="color: black; font-family: 'Times New Roman', Times, serif;">
+                            {{blog.content}}
+                            <a href="{% url 'details' blog.id %}" class=" text-secondary-emphasis py-1 px-1 mx-1"
+                                target="_blank">Read More</a>
+                        </p>
+
+                        <p class="align-baseline text-end"
+                            style="font-family: 'Times New Roman', Times, serif; font-variant-caps: petite-caps; color: darkblue;">
+                            ~ {{blog.author}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+</section>
+
+{% endblock %}

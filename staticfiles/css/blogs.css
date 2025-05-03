@@ -1,0 +1,32 @@
+
+/* .card {
+    height: auto;
+    width: 100%;
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .card-head h2{
+margin: 5px 10px;
+padding: 5px 10px;
+}
+
+.card .card-image{
+    overflow: hidden;
+    border-radius: 25px;
+    filter: drop-shadow(1px 1px 5px #0000);
+}
+
+.card .card-image img {
+    transition: ease-in-out 1s;
+}
+
+.card .card-image img:hover {
+    transform: scale(1.1);
+} */
