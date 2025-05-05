@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
+from autoslug import AutoSlugField
 
 
 class CustomUser(AbstractUser):
@@ -69,6 +70,8 @@ class Event(models.Model):
     description = models.TextField()
     date = models.DateField()
     time = models.TimeField()
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.title
@@ -79,8 +82,10 @@ class Blog(models.Model):
     content = models.TextField()
     blog_image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
     blog_details = models.TextField(default=list, blank=True, null=True)
-    author = models.ForeignKey(Alumni, on_delete=models.CASCADE)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True)
+
 
     def __str__(self):
         return self.title

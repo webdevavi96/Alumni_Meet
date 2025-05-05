@@ -21,14 +21,8 @@
             <label for="time" class="form-label">Event Time</label>
             <input type="time" id="time" name="time" class="form-control" required>
         </div>
-        <div class="mb-3">
-            <label for="image" class="form-label">Upload Image</label>
-            <input type="file" id="image" name="image" class="form-control">
-        </div>
         <button type="submit" class="btn btn-primary">Submit Event</button>
         <a href="{% url 'events' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
-<p class="text-center text-danger">You are not authorized to create an event.</p>
-
 {% endblock %}

@@ -28,6 +28,10 @@
                             <th>Event Details</th>
                             <th>Event Date/Time</th>
                             <th>Event Status</th>
+
+                            {% if user_type != student %}
+                            <th>Event Action</th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +48,15 @@
                             <td><button class="btn btn-success btn-sm">Ongoing</button></td>
                             {% elif event.status == "Ended" %}
                             <td><button class="btn btn-danger btn-sm">Ended</button></td>
+                            {% endif %}
+
+                            {% if user_type != student %}
+
+                            <td>
+                                <a href="{% url 'delete_event' event.slug %}"
+                                    class="btn btn-danger btn-sm text-center mx-2 my-2">Delete</a>
+                            </td>
+
                             {% endif %}
 
                         </tr>

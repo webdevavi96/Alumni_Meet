@@ -5,8 +5,6 @@ from django.contrib.auth.hashers import make_password
 from datetime import datetime
 from .models import Blog, Event, Alumni, Teacher, Student, CustomUser
 
-blogData = Blog.objects.all()
-eventData = Event.objects.all()
 
 
 
@@ -16,13 +14,14 @@ def home(request):
 
 @login_required
 def blogs(request):
+    blogData = Blog.objects.all()
     user = request.user
-    return render(request, 'pages/blogs.html', {"blogData": blogData, 'user': user})
+    return render(request, 'Pages/blogs.html', {"blogData": blogData, 'user': user})
 
 
 @login_required
 def events(request):
-    
+    eventData = Event.objects.all()
     current_datetime = datetime.now()
     for event in eventData:
         event_datetime = datetime.combine(event.date, event.time)
@@ -40,8 +39,7 @@ def events(request):
 def profile(request):
     user = request.user
     students = Student.objects.all()
-
-    return render(request, 'pages/profile.html', {'user':user, 'students': students})
+    return render(request, 'Pages/profile.html', {'user': user, 'students': students})
 
 
 
@@ -59,7 +57,7 @@ def login(request):
         else:
              return HttpResponse("Invalid credentials")
 
-    return render(request, "pages/signIn.html")
+    return render(request, "Pages/signIn.html")
 
 
 def logout(request):
@@ -99,16 +97,16 @@ def signUp(request):
 
         return redirect("login")
 
-    return render(request, "pages/signUp.html")
+    return render(request, "Pages/signUp.html")
 
 
-def details(request, id):
+def details(request, slug):
     try:
-        blog = Blog.objects.get(id=id)
+        blog = Blog.objects.get(slug=slug)
     except Blog.DoesNotExist:
         return HttpResponse("Blog not found")
 
-    return render(request, 'pages/details.html', {'blog': blog})
+    return render(request, 'Pages/details.html', {'blog': blog})
 
 def new_blog(request):
     if request.method == "POST":
@@ -119,12 +117,12 @@ def new_blog(request):
         blog = Blog.objects.create(
             title=title,
             content=content,
-            image=image,
+            blog_image=image,
             author=request.user
         )
         return redirect("blogs")
 
-    return render(request, 'pages/new_blog.html')
+    return render(request, 'Pages/new_blog.html')
 
 def new_event(request):
     if request.method == "POST":
@@ -132,16 +130,38 @@ def new_event(request):
         description = request.POST.get("description")
         date = request.POST.get("date")
         time = request.POST.get("time")
-        image = request.FILES.get("image")
 
         event = Event.objects.create(
             title=title,
             description=description,
             date=date,
             time=time,
-            image=image,
-            author=request.user
+            author=request.user 
         )
         return redirect("events")
 
-    return render(request, 'pages/new_event.html')
+    return render(request, 'Pages/new_event.html')
+
+@login_required
+def delete_blog(request, slug):
+    try:
+        blog = Blog.objects.get(slug=slug)
+
+        if blog.author == request.user:
+            blog.delete()
+            return redirect("blogs")
+        
+    except Blog.DoesNotExist:
+        return HttpResponse("Blog not found.", status=404)
+    
+@login_required
+def delete_event(request, slug):
+    try:
+        event = Event.objects.get(slug=slug)
+
+        if event.author == request.user:
+            event.delete()
+            return redirect("events")
+        
+    except Event.DoesNotExist:
+        return HttpResponse("Event not found.", status=404)

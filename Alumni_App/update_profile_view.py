@@ -22,35 +22,38 @@ def update_profile(request):
         instagram = request.POST.get('instagram')
         facebook = request.POST.get('facebook')
         profile_picture = request.FILES.get('profile_picture')
-
-        # Update only the fields that are not empty
-        if first_name and first_name != user.first_name:
+        bio = request.POST.get('bio')
+        
+        if  first_name:
             user.first_name = first_name
-        if last_name and last_name != user.last_name:
+        if last_name:
             user.last_name = last_name
-        if email and email != user.email:
+        if email:
             user.email = email
-        if phone and phone != user.phone:
+        if phone:
             user.phone = phone
-        if address and address != user.address:
+        if address:
             user.address = address
-        if website and website != getattr(user, 'website'):
+        if website:
             user.website = website
-        if github and github != getattr(user, 'github'):
+        if github:
             user.github = github
-        if linkedin and linkedin != getattr(user, 'linkedin'):
+        if linkedin:
             user.linkedin = linkedin
-        if instagram and instagram != getattr(user, 'instagram'):
+        if instagram:
             user.instagram = instagram
-        if facebook and facebook != getattr(user, 'facebook'):
+        if facebook:
             user.facebook = facebook
+        if bio:
+            user.bio = bio
         if profile_picture:
-            user.profile_picture = profile_picture
+            # Save the uploaded file to the media directory
+            fs = FileSystemStorage()
+            filename = fs.save(profile_picture.name, profile_picture)
+            user.profile_picture = filename
 
-        # Save the updated user data
         user.save()
 
-        # Redirect to the profile page after saving
         return redirect('profile')
 
     # Render the edit profile form if the request is GET

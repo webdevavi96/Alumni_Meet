@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 
 {% block content %}
-{% if user.user_type == "alumni" or user.user_type == "teacher" %}
 <div class="container my-5">
     <h2 class="text-center text-primary">Create a New Blog</h2>
     <form action="" method="POST" enctype="multipart/form-data" class="mt-4">
@@ -22,7 +21,5 @@
         <a href="{% url 'blogs' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
-{% else %}
-<p class="text-center text-danger">You are not authorized to create a blog.</p>
-{% endif %}
+
 {% endblock %}

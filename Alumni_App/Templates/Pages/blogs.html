@@ -9,7 +9,7 @@
         {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' %}
 
         <div class="col-12 my-3 py-2">
-            <a href="add_blog"
+            <a href="new_blog"
                 class="d-block w-100 text-start border rounded-pill px-3 py-2 text-muted bg-light text-decoration-none">
                 <i class="bi bi-plus-circle-fill"></i> Add a Blog
             </a>
@@ -35,14 +35,20 @@
                     <div class="col-md-8 px-1">
                         <p style="color: black; font-family: 'Times New Roman', Times, serif;">
                             {{blog.content}}
-                            <a href="{% url 'details' blog.id %}" class=" text-secondary-emphasis py-1 px-1 mx-1"
-                                target="_blank">Read More</a>
+                            <a href="{% url 'details' blog.slug %}" class=" py-1 px-1 mx-1"
+                                target="_blank"
+                                style="color: darkblue;">
+                                Read More</a>
                         </p>
 
                         <p class="align-baseline text-end"
                             style="font-family: 'Times New Roman', Times, serif; font-variant-caps: petite-caps; color: darkblue;">
                             ~ {{blog.author}}</p>
                     </div>
+                    {% if user_type != sudent %}
+                    <a href="delete_blog/{{blog.slug}}" class="btn btn-danger btn-sm text-center mx-2 my-2">Delete</a>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
