@@ -43,9 +43,19 @@
                             <td>{{event.date}}, {{event.time}}</td>
 
                             {% if event.status == "Upcoming" %}
-                            <td><button class="btn btn-primary btn-sm">Upcoming</button></td>
+                            <td>
+                                <div class="d-inline-block">
+                                    <button class="btn btn-primary btn-sm">Upcoming</button>
+                                    <a href="/" class="btn btn-primary btn-sm">Notify</a>
+                                </div>
+                            </td>
                             {% elif event.status == "Ongoing" %}
-                            <td><button class="btn btn-success btn-sm">Ongoing</button></td>
+                            <td>
+                                <div class="d-inline-block">
+                                    <button class="btn btn-success btn-sm">Ongoing</button>
+                                    <button class="btn btn-primary btn-sm">Join</button>
+                                </div>
+                            </td>
                             {% elif event.status == "Ended" %}
                             <td><button class="btn btn-danger btn-sm">Ended</button></td>
                             {% endif %}

@@ -73,6 +73,10 @@ class Event(models.Model):
     slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
 
+    def save(self, *args, **kwargs):
+        self.time = self.time.replace(second=0, microsecond=0)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.title
 

@@ -9,36 +9,52 @@
                 <p>Join our alumni network and stay connected!</p>
             </div>
             <div class="card-body">
-                <form action="" method="post">
+                <form action="" method="post" class="needs-validation" novalidate>
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="first_name" class="form-label">First Name</label>
                             <input name="first_name" id="first_name" type="text" class="form-control" required>
+                            <div class="invalid-feedback">Please enter your first name.</div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="last_name" class="form-label">Last Name</label>
                             <input name="last_name" id="last_name" type="text" class="form-control" required>
+                            <div class="invalid-feedback">Please enter your last name.</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input name="email" id="email" type="email" class="form-control" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="phone" class="form-label">Mobile Number</label>
                             <input name="phone" id="phone" type="number" class="form-control" required>
+                            <div class="invalid-feedback">Please enter your mobile number.</div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input name="password" id="password" type="password" class="form-control" required>
+                            <div class="input-group">
+                                <input name="password" id="password" type="password" class="form-control" required>
+                                <span class="input-group-text">
+                                    <i class="bi bi-eye-slash" id="togglePassword" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">Please enter a password.</div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="confirm_password" class="form-label">Confirm Password</label>
-                            <input name="confirm_password" id="confirm_password" type="password" class="form-control" required>
+                            <div class="input-group">
+                                <input name="confirm_password" id="confirm_password" type="password" class="form-control" required>
+                                <span class="input-group-text">
+                                    <i class="bi bi-eye-slash" id="toggleConfirmPassword" style="cursor: pointer;"></i>
+                                </span>
+                            </div>
+                            <div class="invalid-feedback">Please confirm your password.</div>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -49,6 +65,7 @@
                             <option value="Alumni">Alumni</option>
                             <option value="Teacher">Teacher</option>
                         </select>
+                        <div class="invalid-feedback">Please select a user type.</div>
                     </div>
                     <div class="mb-3" id="branchRow">
                         <label for="branch" class="form-label">Branch</label>
@@ -58,10 +75,12 @@
                             <option value="Electronics Engineering">Electronics Engineering</option>
                             <option value="Electrical Engineering">Electrical Engineering</option>
                         </select>
+                        <div class="invalid-feedback">Please select your branch.</div>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="terms" required>
                         <label class="form-check-label" for="terms">I accept all Terms and Conditions.</label>
+                        <div class="invalid-feedback">You must accept the terms and conditions.</div>
                     </div>
                     <div class="text-center">
                         <button class="btn btn-primary btn-lg" type="submit">Sign Up</button>
@@ -71,5 +90,7 @@
         </div>
     </div>
 </div>
+
+
 
 {% endblock %}
