@@ -6,7 +6,7 @@
         <h1 class="text-center text-primary fw-bold" style="font-size: 3rem; margin-top: 15px; margin-bottom: 10px;">
             Blogs Section</h1>
 
-        {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' %}
+        {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' or user.email == 'mmitcse3@gmail.com' %}
 
         <div class="col-12 my-3 py-2">
             <a href="new_blog"
@@ -34,9 +34,9 @@
                     </div>
                     <div class="col-md-8 px-1">
                         <p style="color: black; font-family: 'Times New Roman', Times, serif;">
-                            {{blog.content}}
-                            <a href="{% url 'details' blog.slug %}" class=" py-1 px-1 mx-1"
-                                target="_blank"
+                            {{ blog.content|truncatewords_html:40|safe }}
+
+                            <a href="{% url 'details' blog.slug %}" class=" py-1 px-1 mx-1" target="_blank"
                                 style="color: darkblue;">
                                 Read More</a>
                         </p>

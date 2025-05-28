@@ -30,6 +30,8 @@ urlpatterns = [
     path('signUp/', views.signUp, name='signUp'),
     path('accounts/login/', views.login, name='login'),
     path('accounts/signup/', views.signUp, name='signUp'),
+    path('verify-otp/', views.verify_otp_ajax, name='verify_otp_ajax'),
+    path('resend_otp/', views.resend_otp, name='resend_otp'),
     path('logout/', views.logout, name='logout'),
     path('update_profile/', update_profile_view.update_profile, name='update_profile'),
     path('details/<slug:slug>/',views.details , name='details'),
@@ -37,6 +39,8 @@ urlpatterns = [
     path('events/new_event/', views.new_event, name='new_event'),
     path('blogs/delete_blog/<slug:slug>/', views.delete_blog, name='delete_blog'),
     path('events/delete_event/<slug:slug>/', views.delete_event, name='delete_event'),
+    path('get_latest_blog/', views.latest_blog, name='get_latest_blog'),
+    # path('/get_latest_event/', views.get_latest_event, name='get_latest_event'),
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

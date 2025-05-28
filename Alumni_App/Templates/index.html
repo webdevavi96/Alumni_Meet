@@ -11,9 +11,166 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
     <link rel="shortcut icon" href="{% static 'img/mmit_icon.ico' %}" type="image/x-icon">
+
+    <style>
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #ffffff;
+            padding: 20px 40px;
+            box-shadow: 0 4px 12px rgba(5, 217, 233, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        /* Logo Section */
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 1rem;
+            font-weight: 600;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: 50px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+
+        .logo-text span {
+            font-size: 0.85rem;
+            color: #555;
+            font-weight: normal;
+            letter-spacing: 0.5px;
+        }
+
+
+        /* Navigation Links */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-size: 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0237e4;
+            transform: translateY(-2px);
+        }
+
+        .active-nav {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .active-nav span {
+            font-size: 24px;
+            color: rgb(0, 0, 0);
+            line-height: 18px;
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 768px) {
+            .active-nav {
+                display: block;
+            }
+
+            .active-nav.active {
+                transform: rotateX('90deg');
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background: #ffffff;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 20px;
+                border-radius: 0 0 0 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            nav {
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+
+
+        header {
+            background: rgb(220, 57, 45);
+            height: auto;
+            width: 100%;
+        }
+
+        #header-section {
+            background-color: rgb(220, 57, 45);
+            ;
+            padding: 80px 15%;
+            position: relative;
+            overflow: hidden;
+            transform: skewY(-3deg);
+            margin-bottom: 80px;
+        }
+
+        #header-section>* {
+            transform: skewY(3deg);
+        }
+
+        #header-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        #header-section p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+        }
+
+        .blog-paragraph {
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+        }
+    </style>
+
 </head>
 
-<body class="bg-light">
+<body class="bg-dark">
 
     <div class="loader">
         <!-- From Uiverse.io by Nawsome -->
@@ -57,29 +214,44 @@
 
     <div class="body">
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-            <a class="navbar-brand" href="/">
-                <img src="{% static 'img/mmit_logo.png' %}" alt="logo" height="50px" width="50px"
-                    class="d-inline-block align-center">
-                Mahamaya IT Polytechnic
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <ul class="navbar-nav ms-auto collapse navbar-collapse flex justify-content-end align-items-center"
-                id="navbarNav">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/blogs">Blogs</a></li>
-                <li class="nav-item"><a class="nav-link" href="/events">Events</a></li>
-                {% if user.is_authenticated %}
-                <li class="nav-item"><a class="btn btn-sm btn-primary" href="/profile">Profile</a></li>
-                {% else %}
-                <li class="nav-item"><a class="btn btn-sm btn-primary" href="/login">Sign In</a></li>
-                {% endif %}
-            </ul>
-        </nav>
+        <header>
+            <!-- NAVBAR -->
+            <nav>
+                <!-- Logo Section -->
+                <div class="logo">
+                    <a href="/">
+                        <img src="{% static 'img/mmit_logo.png' %}" alt="Mahamaya IT Logo">
+                        <div class="logo-text">Mahamaya<br><span>IT Polytechnic</span></div>
+                    </a>
+                </div>
+
+
+                <!-- Hamburger Button (Mobile) -->
+                <button class="active-nav" onclick="toggleNavBar()">
+                    <span>≡</span>
+                </button>
+
+                <!-- Navigation Links -->
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blogs">Blogs</a></li>
+                    <li><a href="/events">Events</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="/profile">Profile</a></li>
+                    {% else %}
+                    <li><a href="/login">Sign In</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <!-- HERO / HEADER SECTION -->
+            <section id="header-section">
+                <h1>Alumni Meet</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea animi omnis tenetur odio in consequatur
+                    doloremque vitae, provident error culpa.</p>
+            </section>
+        </header>
+
 
         <!-- Hero Section -->
         <main class="container-fluid p-0 m-0">
@@ -102,7 +274,7 @@
         </main>
 
         <!-- Footer -->
-        <footer class="bg-dark text-white pt-5">
+        <footer class=" text-white pt-5 mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -153,6 +325,8 @@
         </footer>
 
     </div>
+
+    {% block scripts %}{% endblock %}
     <script src=" {% static 'scripts/min.js' %} "></script>
     <script src="{% static 'css/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
@@ -172,6 +346,59 @@
                 });
             }
         });
+    </script>
+
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("password").value;
+            const confirm = document.getElementById("confirm_password").value;
+            const message = document.getElementById("matchMessage");
+
+            const matchPass = document.getElementById("matchpass");
+            const lengthCheck = document.getElementById("passwordLength");
+            const strongPassMsg = document.getElementById("strongPass");
+            // Reset messages
+            if (confirm === "") {
+                message.innerHTML = "";
+                return;
+            }
+
+            // Match check
+            if (password === confirm) {
+                message.style.color = "green";
+                message.innerHTML = "✅ Passwords matched!";
+            } else {
+                message.style.color = "red";
+                message.innerHTML = "❌ Passwords do not match.";
+            }
+
+            if (password.length >= 8) {
+                lengthCheck.style.color = "green";
+                lengthCheck.innerHTML = "✅ Password must be 8 charecters.";
+            } else {
+                lengthCheck.style.color = "red";
+                lengthCheck.innerHTML = "❌ Password must be 8 charecters.";
+            }
+
+            const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+            if (strongRegex.test(password)) {
+                strongPassMsg.style.color = "green";
+                strongPassMsg.innerHTML = "✅ Password is strong.";
+            } else {
+                strongPassMsg.style.color = "red";
+                strongPassMsg.innerHTML = "❌ Password must be strong.";
+            }
+        }
+
+
+    </script>
+
+    <script>
+        function toggleNavBar() {
+            const navMenu = document.querySelector('#navLinks');
+            navMenu.classList.toggle('active');
+        }
     </script>
 
 </body>
