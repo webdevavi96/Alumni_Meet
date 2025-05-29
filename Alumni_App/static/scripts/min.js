@@ -137,7 +137,7 @@ async function verifyOtp(e) {
             alert(data.message);
         }
     } catch (error) {
-        alert('Request failed. Please try again.');
+console.error(error)
     }
 }
 
