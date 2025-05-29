@@ -45,7 +45,7 @@
                             style="font-family: 'Times New Roman', Times, serif; font-variant-caps: petite-caps; color: darkblue;">
                             ~ {{blog.author}}</p>
                     </div>
-                    {% if user_type != sudent %}
+                    {% if user.user_type != 'student' %}
                     <a href="delete_blog/{{blog.slug}}" class="btn btn-danger btn-sm text-center mx-2 my-2">Delete</a>
                     {% endif %}
 

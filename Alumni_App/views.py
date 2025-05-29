@@ -228,7 +228,7 @@ def new_blog(request):
                     "image_url": blog.blog_image.url if blog.blog_image else "",
                 }
             })
-        send_blog_notification(blog)
+        send_blog_notification(blog, request)
         return redirect("blogs")
     return render(request, 'Pages/new_blog.html')
 
@@ -322,7 +322,7 @@ def send_event_notification(event):
 
     send_mail(subject, message, from_email, recipient_list)
 
-def send_blog_notification(blog):
+def send_blog_notification(blog, request):
     blog_url = request.build_absolute_uri(f'/blogs/{blog.slug}/')
     subject = f"New Blog: {blog.title}"
     message = f"""Hello,
