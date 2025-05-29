@@ -7,7 +7,7 @@
         <h1 class="text-center text-primary fw-bold" style="font-size: 3rem; margin-top: 15px; margin-bottom: 10px;">
             Events</h1>
 
-        {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' %}
+        {% if user.user_type != 'student' %}
 
         <div class="col-12 my-3 py-2">
             <a href="new_event"
@@ -29,7 +29,7 @@
                             <th>Event Date/Time</th>
                             <th>Event Status</th>
 
-                            {% if user_type != student %}
+                            {% if user_type != 'student' %}
                             <th>Event Action</th>
                             {% endif %}
                         </tr>
@@ -37,7 +37,7 @@
                     <tbody>
                         {% for event in eventData %}
                         <tr>
-                            <td>1.</td>
+                            <td>{{event.id}}.</td>
                             <td>{{event.title}}</td>
                             <td>{{event.description}}</td>
                             <td>{{event.date}}, {{event.time}}</td>
@@ -48,7 +48,7 @@
                                     <button class="btn btn-primary btn-sm">Upcoming</button>
                                     <a href="/" class="btn btn-primary btn-sm">Notify</a>
                                 </div>
-                                
+
                             </td>
                             {% elif event.status == "Ongoing" %}
                             <td>
@@ -58,14 +58,18 @@
                                 </div>
                             </td>
                             {% elif event.status == "Ended" %}
-                            <td><button class="btn btn-danger btn-sm">Ended</button></td>
+                            <td>
+                                <button class="btn btn-danger btn-sm">Ended</button>
+                            </td>
                             {% endif %}
 
-                            {% if user_type != student %}
+                            {% if user_type != 'student' %}
 
                             <td>
-                                <a href="{% url 'delete_event' event.slug %}"
-                                    class="btn btn-danger btn-sm text-center mx-2 my-2">Delete</a>
+                                <div class="d-inline-block">
+                                    <a href="{% url 'delete_event' event.slug %}"
+                                        class="btn btn-danger btn-sm text-center">Delete</a>
+                                </div>
                             </td>
 
                             {% endif %}

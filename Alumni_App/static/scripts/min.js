@@ -122,7 +122,7 @@ async function verifyOtp(e) {
         const response = await fetch('/verify-otp/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json   ',
+                'Content-Type': 'application/json',
                 'X-CSRFToken': getCookie('csrftoken'),
             },
             body: JSON.stringify({ otp }),
@@ -137,7 +137,7 @@ async function verifyOtp(e) {
             alert(data.message);
         }
     } catch (error) {
-console.error(error)
+        console.log('Request failed. Please try again.', error);
     }
 }
 

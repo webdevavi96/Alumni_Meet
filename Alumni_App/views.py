@@ -17,7 +17,11 @@ CustomUser = get_user_model()
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = {
+        'show_header': True,
+    }
+    return render(request, 'index.html', context)
+
 
 
 
@@ -63,9 +67,6 @@ def signUp(request):
         password = request.POST.get("password")
         confirm_password = request.POST.get("confirm_password")
 
-        # Password check
-        if password != confirm_password:
-            return render(request, "Pages/signUp.html", {"error": "Passwords do not match."})
 
         # Check email uniqueness
         if CustomUser.objects.filter(email=email).exists():
@@ -73,7 +74,7 @@ def signUp(request):
 
         # Generate OTP
         otp = str(random.randint(100000, 999999))
-
+        print(otp)
         # Store data in session
         request.session['temp_user'] = {
             "first_name": first_name,
@@ -91,7 +92,7 @@ def signUp(request):
         send_mail(
             "Your OTP for Signup",
             f"Hello {first_name}, your OTP is: {otp}",
-            "mmitcse3@gmail.com",  # Change to your verified email
+            "mmitcse3@gmail.com",
             [email],
             fail_silently=False,
         )
@@ -118,12 +119,11 @@ def verify_otp_ajax(request):
         otp_time = datetime.fromisoformat(otp_time_str)
         now = datetime.now()
 
-        # OTP expiry: 5 minutes
         if now - otp_time > timedelta(minutes=5):
             return JsonResponse({"status": "error", "message": "OTP expired. Please signup again."})
 
         if user_otp == session_otp:
-            # Create user
+            user_type = temp_user['user_type'].lower()
             user = CustomUser.objects.create_user(
                 username=temp_user['email'],
                 first_name=temp_user['first_name'],
@@ -132,23 +132,21 @@ def verify_otp_ajax(request):
                 phone=temp_user['phone'],
                 user_type=temp_user['user_type'],
                 password=temp_user['password'],
-                group_name = temp_user['user_type'],
             )
 
-         
-         
-            if temp_user['user_type'] == "alumni":
+            if user_type == "alumni":
                 Alumni.objects.create(user=user)
-            elif temp_user['user_type'] == "teacher":
+            elif user_type == "teacher":
                 Teacher.objects.create(user=user)
-            elif temp_user['user_type'] == "student":
+            elif user_type == "student":
                 Student.objects.create(user=user, branch=temp_user['branch'])
+
             try:
-                group = Group.objects.get(name=group_name)
+                group = Group.objects.get(name=user_type)
                 user.groups.add(group)
             except Group.DoesNotExist:
-                 pass
-          
+                pass
+
             request.session.flush()
 
             return JsonResponse({"status": "success"})
@@ -232,7 +230,6 @@ def new_blog(request):
         return redirect("blogs")
     return render(request, 'Pages/new_blog.html')
 
-@login_required
 def delete_blog(request, slug):
     try:
         blog = Blog.objects.get(slug=slug)
@@ -293,13 +290,12 @@ def new_event(request):
             time=time,
             author=request.user 
         )
-        send_event_notification(event)
+        send_event_notification(event,request)
         return redirect("events")
        
     return render(request, 'Pages/new_event.html')
 
    
-@login_required
 def delete_event(request, slug):
     try:
         event = Event.objects.get(slug=slug)
@@ -314,9 +310,18 @@ def delete_event(request, slug):
 
 
 
-def send_event_notification(event):
+def send_event_notification(event,request):
+    event_url = request.build_absolute_uri(f'/event/{event.slug}/')
     subject = f"New Event: {event.title}"
-    message = f"Hello,\n\nA new event has been created:\n\nTitle: {event.title}\nDate: {event.date}\nTime: {event.time}\n\nDescription:\n{event.description}\n\nDon't miss it!"
+    message = f"""Hello,
+                A new event has been created: Title:  {event.title}
+                Date: {event.date}
+                Time: {event.time}
+                Description: {event.description}
+                Don't miss it!
+                View Event: {event_url}
+                """
+                
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [user.email for user in CustomUser.objects.all() if user.email]
 
