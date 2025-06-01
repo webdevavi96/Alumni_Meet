@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
@@ -12,6 +12,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import Group
 import random
 import json
+from django.contrib import messages
+
+
 CustomUser = get_user_model()
 
 
@@ -26,11 +29,49 @@ def home(request):
 
 
 @login_required
-def profile(request):
+def admin_profile(request):
     user = request.user       
     students = Student.objects.all()
-    return render(request, 'Pages/profile.html', {'user': user, 'students': students})
+    social_profiles = [
+        ('website', 'bi-globe2', user.website),
+        ('github', 'bi-github', user.github),
+        ('linkedin', 'bi-linkedin', user.linkedin),
+        ('instagram', 'bi-instagram', user.instagram),
+        ('facebook', 'bi-facebook', user.facebook),
+    ]
 
+    context = {
+        'user': user,
+        'students': students,
+        'social_profiles': social_profiles,
+    }
+    return render(request, 'Pages/admin_profile.html', context)
+
+
+
+@login_required
+def student_profile(request, student_id):
+    # Fetch the Student object by ID, or return 404 if not found
+    student = get_object_or_404(Student, id=student_id)
+
+    # You can access the linked user via student.user
+    user = student.user
+
+    # Prepare social profiles list (assuming the user model has these fields)
+    social_profiles = [
+        ('website', 'bi-globe2', user.website),
+        ('github', 'bi-github', user.github),
+        ('linkedin', 'bi-linkedin', user.linkedin),
+        ('instagram', 'bi-instagram', user.instagram),
+        ('facebook', 'bi-facebook', user.facebook),
+    ]
+
+    context = {
+        'student': student,
+        'user': user,
+        'social_profiles': social_profiles,
+    }
+    return render(request, 'Pages/student_profile.html', context)
 
 
 
@@ -39,13 +80,23 @@ def login(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
+        # Authenticate using your custom user model
         user = authenticate(request, email=email, password=password)
+        
         if user is not None:
             auth_login(request, user)
-            return redirect("profile")
-            
+
+            # Redirect based on user_type
+            if user.user_type in ["Teacher", "Alumni"]:
+                return redirect("admin_profile")
+
+            else:
+                 student = user.student
+                 return redirect("student_profile", student_id=student.id)
+        
         else:
-             return HttpResponse("Invalid credentials")
+            messages.error(request, "Invalid email or password.")
+            return render(request, "Pages/signIn.html", status=401)
 
     return render(request, "Pages/signIn.html")
 
@@ -74,7 +125,6 @@ def signUp(request):
 
         # Generate OTP
         otp = str(random.randint(100000, 999999))
-        print(otp)
         # Store data in session
         request.session['temp_user'] = {
             "first_name": first_name,
@@ -280,17 +330,22 @@ def new_event(request):
     if request.method == "POST":
         title = request.POST.get("title")
         description = request.POST.get("description")
+        link = request.POST.get("event_link")
         date = request.POST.get("date")
         time = request.POST.get("time")
 
         event = Event.objects.create(
             title=title,
             description=description,
+            link=link,
             date=date,
             time=time,
             author=request.user 
         )
-        send_event_notification(event,request)
+
+        event.save() 
+
+        send_event_notification(event, request)
         return redirect("events")
        
     return render(request, 'Pages/new_event.html')
@@ -343,4 +398,14 @@ def send_blog_notification(blog, request):
 
     send_mail(subject, message, from_email, recipient_list)
     
-    
+def set_notify(request, slug):
+    event = get_object_or_404(Event, slug=slug)
+
+    if request.method == "POST":
+        event.notify_users.add(request.user)
+        event.isNotify = True
+        event.isNotified = False
+        event.save()
+
+    return redirect('events')
+

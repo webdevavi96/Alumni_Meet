@@ -218,41 +218,12 @@
 <body class="bg-dark">
 
     <div class="loader">
-        <!-- From Uiverse.io by Nawsome -->
 
-        <div class="gearbox">
-            <div class="overlay"></div>
-            <div class="gear one">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
+        <div id="loader-overlay">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
-            <div class="gear two">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-            <div class="gear three">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-            <div class="gear four large">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
+            <div class="loader-text" id="loader-status">Loading...</div>
         </div>
 
     </div>
@@ -282,7 +253,7 @@
                     <li><a href="/blogs">Blogs</a></li>
                     <li><a href="/events">Events</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/admin_profile">Profile</a></li>
                     {% else %}
                     <li><a href="/login">Sign In</a></li>
                     {% endif %}
@@ -382,7 +353,6 @@
 
     </div>
 
-    {% block scripts %}{% endblock %}
     <script src=" {% static 'scripts/min.js' %} "></script>
     <script src="{% static 'css/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
@@ -456,6 +426,24 @@
             navMenu.classList.toggle('active');
         }
     </script>
+
+    <script>
+  document.onreadystatechange = function () {
+    const loaderStatus = document.getElementById("loader-status");
+
+    if (document.readyState === "interactive") {
+      loaderStatus.textContent = "Almost Ready...";
+    }
+
+    if (document.readyState === "complete") {
+      loaderStatus.textContent = "Loaded!";
+      setTimeout(() => {
+        document.getElementById("loader-overlay").style.display = "none";
+      }, 700); // optional fade out delay
+    }
+  };
+</script>
+
 
 </body>
 

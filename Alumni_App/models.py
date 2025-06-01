@@ -60,6 +60,7 @@ class Student(models.Model):
         ('ECE', 'Electronics Engineering'), 
         ('EE', 'Electrical Engineering'), 
     ])
+    enrollment_number = models.CharField(max_length=15, unique=True, null=True)
 
     def __str__(self):
         return self.user.email
@@ -68,11 +69,15 @@ class Student(models.Model):
 class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
+    link = models.URLField(max_length=300, blank=True, null=True)
     date = models.DateField()
     time = models.TimeField()
-    slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True)
+    # isNotify = models.BooleanField(default=False)
+    # isNotified = models.BooleanField(default=False)
+    # notify_users = models.ManyToManyField(CustomUser, related_name='notified_events', blank=True)
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)
-    
+    slug = AutoSlugField(populate_from='title', unique=True, null=True, blank=True)   
+     
     def __str__(self):
         return self.title
 

@@ -9,7 +9,7 @@ from django.core.files.storage import FileSystemStorage
 @login_required
 def update_profile(request):
     if request.method == 'POST':
-        user = request.user  # Get the logged-in user
+        user = request.user
 
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -21,6 +21,7 @@ def update_profile(request):
         linkedin = request.POST.get('linkedin')
         instagram = request.POST.get('instagram')
         facebook = request.POST.get('facebook')
+        enrollment_number = request.POST.get('enrollment_number')
         profile_picture = request.FILES.get('profile_picture')
         bio = request.POST.get('bio')
         
@@ -44,10 +45,11 @@ def update_profile(request):
             user.instagram = instagram
         if facebook:
             user.facebook = facebook
+        if enrollment_number:
+            user.enrollment_number = enrollment_number
         if bio:
             user.bio = bio
         if profile_picture:
-            # Save the uploaded file to the media directory
             fs = FileSystemStorage()
             filename = fs.save(profile_picture.name, profile_picture)
             user.profile_picture = filename
@@ -56,5 +58,4 @@ def update_profile(request):
 
         return redirect('profile')
 
-    # Render the edit profile form if the request is GET
     return render(request, 'pages/edit_profile_form.html')
