@@ -1,63 +1,54 @@
 {% extends "index.html" %}
 
 {% block content %}
-<section class="bloggs-section row px-0 mx-0">
-    <div class="blog-content">
-        <h1 class="text-center text-primary fw-bold" style="font-size: 3rem; margin-top: 15px; margin-bottom: 10px;">
-            Blogs Section</h1>
+<section class="bloggs-section py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center text-primary fw-bold mb-4" style="font-size: 2.5rem;">
+            Blogs Section
+        </h1>
 
         {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' or user.email == 'mmitcse3@gmail.com' %}
-
-        <div class="col-12 my-3 py-2">
-            <a href="new_blog"
-                class="d-block w-100 text-start border rounded-pill px-3 py-2 text-muted bg-light text-decoration-none">
-                <i class="bi bi-plus-circle-fill"></i> Add a Blog
+        <div class="text-end mb-4">
+            <a href="new_blog" class="btn btn-outline-primary rounded-pill">
+                <i class="bi bi-plus-circle-fill me-1"></i> Add a Blog
             </a>
-
-
         </div>
         {% endif %}
 
-
-
-        {% for blog in blogData %}
-
-        <div class="col-12">
-            <div class="card bg-info text-white mb-3">
-                <div class="card-header">
-                    <h2>{{blog.title}}</h2>
-                </div>
-                <div class="card-body d-flex flex-wrap">
-                    <div class="col-md-4 card-image">
-                        <img src="{{blog.blog_image.url}}" alt="Alumni Portal"
-                            class="img-fluid rounded image-hover-effect">
+        <div class="row g-4">
+            {% for blog in blogData %}
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ blog.blog_image.url }}" alt="{{ blog.title }}"
+                                class="img-fluid h-100 w-100 rounded-start object-fit-cover" style="min-height: 220px;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary fw-bold">{{ blog.title }}</h4>
+                                <p class="card-text text-dark" style="font-family: 'Times New Roman', serif;">
+                                    {{ blog.content|truncatewords_html:40|safe }}
+                                    <a href="{% url 'details' blog.slug %}" target="_blank"
+                                        class="text-decoration-none text-primary fw-semibold ms-2">
+                                        Read More →
+                                    </a>
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted fst-italic">~ {{ blog.author }}</small>
+                                    {% if user.user_type != 'student' %}
+                                    <a href="delete_blog/{{ blog.slug }}" class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-8 px-1">
-                        <p style="color: black; font-family: 'Times New Roman', Times, serif;">
-                            {{ blog.content|truncatewords_html:40|safe }}
-
-                            <a href="{% url 'details' blog.slug %}" class=" py-1 px-1 mx-1" target="_blank"
-                                style="color: darkblue;">
-                                Read More</a>
-                        </p>
-
-                        <p class="align-baseline text-end"
-                            style="font-family: 'Times New Roman', Times, serif; font-variant-caps: petite-caps; color: darkblue;">
-                            ~ {{blog.author}}</p>
-                    </div>
-                    {% if user.user_type != 'student' %}
-                    <a href="delete_blog/{{blog.slug}}" class="btn btn-danger btn-sm text-center mx-2 my-2">Delete</a>
-                    {% endif %}
-
                 </div>
             </div>
+            {% endfor %}
         </div>
-
-        {% endfor %}
-
     </div>
-
-
 </section>
-
 {% endblock %}

@@ -9,7 +9,8 @@
                 <p>Join our alumni network and stay connected!</p>
             </div>
             <div class="card-body">
-                <form action="" method="post" class="needs-validation" novalidate>
+                <p class="text-danger text-center">{{error}}</p>
+                <form action="" method="POST" class="needs-validation" novalidate>
                     {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6 mb-3">

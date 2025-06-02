@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Alumni_App',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,11 +142,9 @@ AUTH_USER_MODEL = 'Alumni_App.CustomUser'
 AUTHENTICATION_BACKENDS = ['Alumni_App.backends.EmailBackend']
 
 #To send email notifications to all users
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mmitcse3@gmail.com'
-EMAIL_HOST_PASSWORD = 'qsvj tbfn hnra yihp'  # Use app password or environment variable for security
+EMAIL_HOST_PASSWORD = 'qsvj tbfn hnra yihp'

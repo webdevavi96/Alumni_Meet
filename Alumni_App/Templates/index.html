@@ -132,19 +132,18 @@
 
 
         header {
-            background: rgb(220, 57, 45);
+            background: rgb(45, 197, 220);
             height: auto;
             width: 100%;
         }
 
         #header-section {
-            background-color: rgb(220, 57, 45);
-            ;
+            background-color: rgb(45, 136, 220);
             padding: 80px 15%;
             position: relative;
             overflow: hidden;
             transform: skewY(-3deg);
-            margin-bottom: 80px;
+            margin-bottom: 90px;
         }
 
         #header-section>* {
@@ -166,6 +165,52 @@
             color: black;
             font-family: 'Times New Roman', Times, serif;
         }
+
+        /*For explore button*/
+        /* From Uiverse.io by vinodjangid07 */
+        .button {
+            width: 110px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+            background-color: rgb(161, 255, 20);
+            border-radius: 30px;
+            color: rgb(19, 19, 19);
+            font-weight: 600;
+            border: none;
+            position: relative;
+            cursor: pointer;
+            transition-duration: .2s;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+            padding-left: 8px;
+            transition-duration: .5s;
+        }
+
+        .svgIcon {
+            height: 25px;
+            transition-duration: 1.5s;
+        }
+
+        .bell path {
+            fill: rgb(19, 19, 19);
+        }
+
+        .button:hover {
+            background-color: rgb(192, 255, 20);
+            transition-duration: .5s;
+        }
+
+        .button:active {
+            transform: scale(0.97);
+            transition-duration: .2s;
+        }
+
+        .button:hover .svgIcon {
+            transform: rotate(250deg);
+            transition-duration: 1.5s;
+        }
     </style>
 
 </head>
@@ -173,41 +218,12 @@
 <body class="bg-dark">
 
     <div class="loader">
-        <!-- From Uiverse.io by Nawsome -->
 
-        <div class="gearbox">
-            <div class="overlay"></div>
-            <div class="gear one">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
+        <div id="loader-overlay">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
             </div>
-            <div class="gear two">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-            <div class="gear three">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-            <div class="gear four large">
-                <div class="gear-inner">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
+            <div class="loader-text" id="loader-status">Loading...</div>
         </div>
 
     </div>
@@ -237,13 +253,17 @@
                     <li><a href="/blogs">Blogs</a></li>
                     <li><a href="/events">Events</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/admin_profile">Profile</a></li>
                     {% else %}
                     <li><a href="/login">Sign In</a></li>
                     {% endif %}
                 </ul>
             </nav>
-            
+
+            <!-- header section will renderd here only on home page -->
+
+            {% if show_header %}
+
 
             <!-- HERO / HEADER SECTION -->
             <section id="header-section">
@@ -258,27 +278,25 @@
                     Mahamaya IT Polytechnic and its extended family.
 
                 </p>
+                <a class="button text-decoration-none" href="/blogs">
+                    <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z">
+                        </path>
+                    </svg>
+                    Explore
+                </a>
             </section>
+
+            {% endif %}
+
         </header>
 
 
         <!-- Hero Section -->
         <main class="container-fluid p-0 m-0">
             {% block content %}
-            <section class="hero-section text-center py-5">
-                <div class="container  text-white rounded shadow-lg p-5">
-                    <h1 class="text-primary fw-bold"
-                        style="font-size: 3.5rem; text-shadow: 1px 0px 20px rgba(250, 216, 255, 0.705);">
-                        Mahamaya IT Polytechnic Maharajganj
-                    </h1>
-                    <p class="text-light" style="font-size: 1.2rem; font-weight: 300;">
-                        Empowering students with technical excellence and innovation for a brighter future.
-                    </p>
-                    <a href="/blogs" class="btn btn-lg btn-primary mt-3">
-                        Explore Blogs
-                    </a>
-                </div>
-            </section>
+
             {% endblock %}
         </main>
 
@@ -335,7 +353,6 @@
 
     </div>
 
-    {% block scripts %}{% endblock %}
     <script src=" {% static 'scripts/min.js' %} "></script>
     <script src="{% static 'css/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
@@ -409,6 +426,24 @@
             navMenu.classList.toggle('active');
         }
     </script>
+
+    <script>
+  document.onreadystatechange = function () {
+    const loaderStatus = document.getElementById("loader-status");
+
+    if (document.readyState === "interactive") {
+      loaderStatus.textContent = "Almost Ready...";
+    }
+
+    if (document.readyState === "complete") {
+      loaderStatus.textContent = "Loaded!";
+      setTimeout(() => {
+        document.getElementById("loader-overlay").style.display = "none";
+      }, 700); // optional fade out delay
+    }
+  };
+</script>
+
 
 </body>
 
