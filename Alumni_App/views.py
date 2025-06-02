@@ -80,20 +80,22 @@ def login(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
 
-        # Authenticate using your custom user model
         user = authenticate(request, email=email, password=password)
-        
+
         if user is not None:
             auth_login(request, user)
 
-            # Redirect based on user_type
-            if user.user_type in ["Teacher", "Alumni"]:
+           
+            if user.user_type in ["teacher", "alumni"] or user.is_superuser:
                 return redirect("admin_profile")
 
-            else:
-                 student = user.student
-                 return redirect("student_profile", student_id=student.id)
-        
+            elif user.user_type == "student":
+                try:
+                    student = user.student
+                    return redirect("student_profile", student_id=student.id)
+                except Student.DoesNotExist:
+                    messages.error(request, "Student profile not found.")
+                    return redirect("signIn")
         else:
             messages.error(request, "Invalid email or password.")
             return render(request, "Pages/signIn.html", status=401)
@@ -285,6 +287,7 @@ def new_blog(request):
         send_blog_notification(blog, request)
         return redirect("blogs")
     return render(request, 'Pages/new_blog.html')
+
 
 def delete_blog(request, slug):
     try:

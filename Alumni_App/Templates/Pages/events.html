@@ -1,81 +1,70 @@
 {% extends "index.html" %}
 
 {% block content %}
-
-<section class="events-section bg-light py-5">
+<section class="events-section py-5 bg-light">
     <div class="container">
-        <h1 class="text-center text-primary fw-bold mb-4" style="font-size: 2.8rem;">
-            Events
+        <h1 class="text-center text-primary fw-bold mb-4" style="font-size: 2.5rem;">
+            Events Section
         </h1>
 
         {% if user.user_type != 'student' %}
         <div class="text-end mb-4">
-            <a href="new_event" class="btn btn-outline-primary rounded-pill px-4 py-2">
-                <i class="bi bi-plus-circle-fill me-2"></i>Create New Event
+            <a href="new_event" class="btn btn-outline-primary rounded-pill">
+                <i class="bi bi-plus-circle-fill me-1"></i> Create New Event
             </a>
         </div>
         {% endif %}
 
-        <div class="table-responsive">
-            <table class="table table-hover align-middle shadow-sm">
-                <thead class="table-dark text-center">
-                    <tr>
-                        <th scope="col">#ID</th>
-                        <th scope="col">Event Name</th>
-                        <th scope="col">Details</th>
-                        <th scope="col">Date & Time</th>
-                        <th scope="col">Status</th>
-                        {% if user_type != 'student' %}
-                        <th scope="col">Action</th>
-                        {% endif %}
-                    </tr>
-                </thead>
-                <tbody class="text-center">
-                    {% for event in eventData %}
-                    <tr>
-                        <td>{{ event.id }}</td>
-                        <td class="fw-semibold">{{ event.title }}</td>
-                        <td>{{ event.description }}</td>
-                        <td>{{ event.date }}, {{ event.time }}</td>
-                        <td>
-                            {% if event.status == "Upcoming" %}
-                            <span class="badge bg-primary px-3 py-2">Upcoming</span>
+        <div class="row g-4">
+            {% for event in eventData %}
+            <div class="col-12">
+                <div class="card shadow-sm border-0">
+                    <div class="row g-0">
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title text-primary fw-bold">{{ event.title }}</h4>
+                                <p class="card-text text-dark" style="font-family: 'Times New Roman', serif;">
+                                    {{ event.description|truncatewords_html:40|safe }}
+                                </p>
+                                <p class="mb-2">
+                                    <strong>Date:</strong> {{ event.date }}<br>
+                                    <strong>Time:</strong> {{ event.time }}
+                                </p>
 
-                            {# Uncomment below block if notify functionality is active #}
-                            {#
-                            {% if user not in event.notify_users.all %}
-                            <form action="{% url 'set_notify' event.slug %}" method="POST" class="d-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-outline-primary btn-sm">Notify Me</button>
-                            </form>
-                            {% else %}
-                            <span class="btn btn-outline-secondary btn-sm" disabled>Alert Set</span>
-                            {% endif %}
-                            #}
+                                <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                    <div>
+                                        {% if event.status == "Upcoming" %}
+                                            <span class="badge bg-primary">Upcoming</span>
+                                            <!-- {% if user not in event.notify_users.all %}
+                                            <form action="{% url 'set_notify' event.slug %}" method="POST" class="d-inline">
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-sm btn-outline-primary ms-2">Notify Me</button>
+                                            </form>
+                                            {% else %}
+                                            <span class="btn btn-sm btn-outline-secondary ms-2" disabled>Alert Set</span>
+                                            {% endif %} -->
+                                        {% elif event.status == "Ongoing" %}
+                                            <span class="badge bg-success">Ongoing</span>
+                                            <a href="{{ event.link }}" target="_blank"
+                                               class="btn btn-sm btn-outline-primary ms-2">Join</a>
+                                        {% elif event.status == "Ended" %}
+                                            <span class="badge bg-danger">Ended</span>
+                                        {% endif %}
+                                    </div>
 
-                            {% elif event.status == "Ongoing" %}
-                            <div class="d-flex justify-content-center gap-2">
-                                <span class="badge bg-success px-3 py-2">Ongoing</span>
-                                <a href="{{ event.link }}" target="_blank" class="btn btn-sm btn-outline-primary">Join</a>
+                                    {% if user.user_type != 'student' %}
+                                    <a href="{% url 'delete_event' event.slug %}" class="btn btn-sm btn-outline-danger">
+                                        Delete
+                                    </a>
+                                    {% endif %}
+                                </div>
                             </div>
-                            {% elif event.status == "Ended" %}
-                            <span class="badge bg-danger px-3 py-2">Ended</span>
-                            {% endif %}
-                        </td>
-
-                        {% if user_type != 'student' %}
-                        <td>
-                            <a href="{% url 'delete_event' event.slug %}" class="btn btn-sm btn-outline-danger">
-                                Delete
-                            </a>
-                        </td>
-                        {% endif %}
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
-
 {% endblock %}

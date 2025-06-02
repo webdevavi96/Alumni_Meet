@@ -22,19 +22,5 @@
         <a href="{% url 'blogs' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
-{% endblock %}
 
-{% block scripts %}
-<!-- CKEditor CDN -->
-<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('content', {
-        height: 300,
-        toolbar: [
-            ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
-            ['Format', 'FontSize', '-', 'Link', 'Unlink'],
-            ['Undo', 'Redo']
-        ]
-    });
-</script>
 {% endblock %}
