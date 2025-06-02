@@ -63,7 +63,6 @@
                   <td>{{ student.user.first_name }} {{ student.user.last_name }}</td>
                   <td>{{ student.user.email }}</td>
                   <td>{{ student.user.phone|default:"-" }}</td>
-                  <td>{{ student.user.branch|default:"-" }}</td>
                 </tr>
                 {% endfor %}
               </tbody>

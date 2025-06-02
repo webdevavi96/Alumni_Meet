@@ -444,6 +444,17 @@
   };
 </script>
 
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content', {
+        height: 300,
+        toolbar: [
+            ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
+            ['Format', 'FontSize', '-', 'Link', 'Unlink'],
+            ['Undo', 'Redo']
+        ]
+    });
+</script>
 
 </body>
 
