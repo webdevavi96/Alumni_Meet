@@ -119,7 +119,7 @@ async function verifyOtp(e) {
     const otp = document.getElementById('otpInput').value;
 
     try {
-        const response = await fetch('/verify-otp/', {
+        const response = await fetch('/verify_otp_ajax/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

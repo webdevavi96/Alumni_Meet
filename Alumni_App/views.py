@@ -105,6 +105,7 @@ def logout(request):
     request.session.flush()
     return redirect("login")
 
+from django.shortcuts import redirect
 
 def signUp(request):
     if request.method == "POST":
@@ -117,7 +118,6 @@ def signUp(request):
         branch = request.POST.get("branch")
         password = request.POST.get("password")
         confirm_password = request.POST.get("confirm_password")
-
 
         # Check email uniqueness
         if CustomUser.objects.filter(email=email).exists():
@@ -133,12 +133,12 @@ def signUp(request):
             "phone": phone,
             "user_type": user_type,
             "branch": branch,
-            "password": password,  # store raw password temporarily (be cautious)
+            "password": password,
         }
         request.session['otp'] = otp
         request.session['otp_time'] = datetime.now().isoformat()
 
-        # Send OTP email
+        # Send OTP
         send_mail(
             "Your OTP for Signup",
             f"Hello {first_name}, your OTP is: {otp}",
@@ -147,8 +147,7 @@ def signUp(request):
             fail_silently=False,
         )
 
-        # Render OTP verification page
-        return render(request, "Pages/verify_otp.html", {"email": email})
+        return redirect('verify_otp')
 
     return render(request, "Pages/signUp.html")
 
@@ -233,9 +232,16 @@ def resend_otp(request):
 
     return JsonResponse({"status": "error", "message": "Invalid request method."})
 
-@csrf_exempt
-def varify_otp(request):
-    return render(request, "Pages/varify_otp.html")
+
+
+def verify_otp(request):
+    temp_user = request.session.get('temp_user')
+    if not temp_user:
+        return redirect('signUp')
+    email = temp_user.get('email')
+    return render(request, "Pages/verify_otp.html", {"email": email})
+
+
 
 @login_required
 def blogs(request):
