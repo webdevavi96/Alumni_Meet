@@ -1,4 +1,7 @@
 {% load static %}
+{% load django_browser_reload %}
+{% django_browser_reload_script %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,33 +235,54 @@
 
         <header>
             <!-- NAVBAR -->
-            <nav>
-                <!-- Logo Section -->
-                <div class="logo">
-                    <a href="/">
-                        <img src="{% static 'img/mmit_logo.png' %}" alt="Mahamaya IT Logo">
-                        <div class="logo-text">Mahamaya<br><span>IT Polytechnic</span></div>
+            <nav class="navbar bg-white shadow-sm px-3 py-2">
+                <div class="container-fluid d-flex justify-content-between align-items-center flex-wrap flex-md-nowrap">
+
+                    <!-- Logo -->
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        <img src="{% static 'img/mmit_logo.png' %}" alt="Mahamaya IT Logo" height="36">
+                        <div class="ms-2 fw-bold">
+                            Mahamaya<br><span class="small text-muted">IT Polytechnic</span>
+                        </div>
                     </a>
+
+                    <!-- Nav Links -->
+                    <ul class="nav d-flex align-items-center gap-3 m-0 flex-wrap flex-md-nowrap">
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="/">
+                                <i class="bi bi-house-door-fill"></i> <span class="d-none d-md-inline">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'blogs' %}">
+                                <i class="bi bi-journal-text"></i> <span class="d-none d-md-inline">Blogs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'events' %}">
+                                <i class="bi bi-calendar-event-fill"></i> <span class="d-none d-md-inline">Events</span>
+                            </a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="alumni_chat/">
+                                <i class="bi bi-chat-dots-fill"></i> <span class="d-none d-md-inline">Chats</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'admin_profile' %}">
+                                <i class="bi bi-person-circle"></i> <span class="d-none d-md-inline">Profile</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'login' %}">
+                                <i class="bi bi-box-arrow-in-right"></i> <span class="d-none d-md-inline">Sign In</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
                 </div>
-
-
-                <!-- Hamburger Button (Mobile) -->
-                <button class="active-nav" onclick="toggleNavBar()">
-                    <span>≡</span>
-                </button>
-
-                <!-- Navigation Links -->
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/blogs">Blogs</a></li>
-                    <li><a href="/events">Events</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="/alumni_chat">Chats</a></li>
-                    <li><a href="/admin_profile">Profile</a></li>
-                    {% else %}
-                    <li><a href="/login">Sign In</a></li>
-                    {% endif %}
-                </ul>
             </nav>
 
             <!-- header section will renderd here only on home page -->
@@ -346,6 +370,7 @@
     </div>
 
     <script src=" {% static 'scripts/min.js' %} "></script>
+    <script src="{% static 'script/fetch.js' %}"></script>
     <script src="{% static 'css/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

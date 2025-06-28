@@ -12,12 +12,9 @@ body {
 
  .chat-box {
     background-color: #ece5dd;
-    height: 90dvh;
+    height: calc(100vh - 100px);
   }
 
-  #chat-box div {
-    max-width: 70%;
-  }
 
   .list-group-item-action:hover {
     background-color: #dcf8c6;
@@ -35,10 +32,4 @@ body {
   .col-md-8 {
     display: flex;
     flex-direction: column;
-  }
-
-  @media screen and (max-width:768px){
-    .chat-box{
-        height: 90dvh;
-    }
   }

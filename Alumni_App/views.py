@@ -477,6 +477,7 @@ def send_request(request, user_id):
         FriendRequest.objects.get_or_create(
             from_user=request.user, to_user=to_user, status="pending"
         )
+        notify_friend(request, user_id)
     return redirect("FriendsPage")
 
 
@@ -504,3 +505,33 @@ def cancel_request(request, user_id):
         from_user=request.user, to_user_id=user_id, status="pending"
     ).delete()
     return redirect("FriendsPage")
+
+def notify_friend(request, user_id):
+  to_user =   get_object_or_404(CustomUser, id=user_id)
+  from_user=request.user
+  
+  if to_user.email:
+      subject=f"New friend request from {from_user.get_full_name()}"
+      message=f"""
+      Hi {to_user.first_name} {to_user.last_name},
+      
+      {from_user.first_name} {from_user.last_name} has sent you a friend request on Alumni Meet.
+      
+      Login to your account to view and respond to the request.
+      
+      Regards,
+      Alumni Meet Team
+      """
+      send_mail(
+          subject,
+          message,
+          settings.DEFAULT_FROM_EMAIL,
+         [to_user.email],
+         fail_silently=False,
+      )
+      
+      messages.success(request, "Notification sent successfully.")
+      
+  else:
+        messages.warning(request, "User has no email associated with their account.")
+  return redirect("FriendsPage")
