@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-getNewBlog()
+    getNewBlog()
 
 });
 
@@ -80,7 +80,7 @@ function addNewBlog() {
             .catch(error => console.error('Error:', error));
     });
 }
-function getNewBlog(){
+function getNewBlog() {
     fetch('/get_latest_blog/')
         .then(response => response.json())
         .then(data => {
@@ -114,7 +114,7 @@ function sendNotification(blog) {
 }
 
 async function verifyOtp(e) {
-    e.preventDefault(); 
+    e.preventDefault();
 
     const otp = document.getElementById('otpInput').value;
 
@@ -142,5 +142,3 @@ async function verifyOtp(e) {
 }
 
 document.getElementById('otpForm').addEventListener('submit', verifyOtp);
-
-

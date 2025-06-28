@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
 from autoslug import AutoSlugField
+from django.conf import settings
 
 
 class CustomUser(AbstractUser):
@@ -38,6 +39,11 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def friends(self):
+        accepted_from = FriendRequest.objects.filter(from_user=self, status='accepted').values_list('to_user', flat=True)
+        accepted_to = FriendRequest.objects.filter(to_user=self, status='accepted').values_list('from_user', flat=True)
+        return CustomUser.objects.filter(id__in=list(accepted_from) + list(accepted_to))
 
 
 class Alumni(models.Model):
@@ -94,3 +100,24 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
+class FriendRequest(models.Model):
+    from_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name='sent_requests', on_delete=models.CASCADE)
+    to_user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name='received_requests', on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, choices=[
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('rejected', 'Rejected'),
+    ], default='pending')
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('from_user', 'to_user')  # prevent duplicates
+
+    def __str__(self):
+        return f"{self.from_user} → {self.to_user} ({self.status})"
+
+

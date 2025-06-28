@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from django.urls import path
+from django.urls import path, include
 from Alumni_App import views, update_profile_view
 
 urlpatterns = [
@@ -43,6 +43,13 @@ urlpatterns = [
     path('events/delete_event/<slug:slug>/', views.delete_event, name='delete_event'),
     path('get_latest_blog/', views.latest_blog, name='get_latest_blog'),
     # path('/get_latest_event/', views.get_latest_event, name='get_latest_event'),
+    path('alumni_chat/', include('Alumni_Chat.urls')),
+    path("__reload__/", include("django_browser_reload.urls")),
+    path('friends/', views.friends_page, name='FriendsPage'),
+    path('send-request/<int:user_id>/', views.send_request, name='SendRequest'),
+    path('accept-request/<int:request_id>/', views.accept_request, name='AcceptRequest'),
+    path('reject-request/<int:request_id>/', views.reject_request, name='RejectRequest'),
+    path('cancel-request/<int:user_id>/', views.cancel_request, name='CancelRequest'),
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Alumni, Teacher, Student, Event, Blog
+from .models import CustomUser, Alumni, Teacher, Student, Event, Blog, FriendRequest
 from django.contrib.auth.admin import UserAdmin
 
 # Register your models here.
@@ -35,3 +35,8 @@ class BlogAdmin(admin.ModelAdmin):
     raw_id_fields = ('author',)
 
 
+@admin.register(FriendRequest)
+class FriendRequestAdmin(admin.ModelAdmin):
+    list_display = ('from_user', 'to_user', 'status', 'timestamp')
+    list_filter = ('status',)
+    search_fields = ('from_user__name', 'to_user__name')

@@ -7,7 +7,7 @@
             Blogs Section
         </h1>
 
-        {% if user.user_type == 'Alumni' or user.user_type == 'Teacher' or user.email == 'mmitcse3@gmail.com' %}
+        {% if user.user_type != 'student' %}
         <div class="text-end mb-4">
             <a href="new_blog" class="btn btn-outline-primary rounded-pill">
                 <i class="bi bi-plus-circle-fill me-1"></i> Add a Blog

@@ -253,6 +253,7 @@
                     <li><a href="/blogs">Blogs</a></li>
                     <li><a href="/events">Events</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="/alumni_chat">Chats</a></li>
                     <li><a href="/admin_profile">Profile</a></li>
                     {% else %}
                     <li><a href="/login">Sign In</a></li>
@@ -334,19 +335,10 @@
                         Maharajganj.</a>
                 </p>
                 <div class="mb-0 px-0 mx-0 text-black">
-                    <p class="mb-1">Developed by:</p>
-                    <ul class="list-unstyled">
-                        <li><a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
-                                target="_blank">Avinash Chaurasiya</a></li>
-                        <li><a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
-                                target="_blank">Avanish Chaurasiya</a></li>
-                        <li><a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
-                                target="_blank">Sudhanshu Chaurasiya</a></li>
-                        <li><a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
-                                target="_blank">Nikhil Dubey</a></li>
-                        <li><a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
-                                target="_blank">Rahul Vishwakarma</a></li>
-                    </ul>
+                    <p class="mb-1">Developed by:
+                        <a class="text-primary" href="https://www.linkedin.com/in/avinash-chaurasiya-72b648247"
+                            target="_blank">Avinash Chaurasiya</a>
+                    </p>
                 </div>
             </div>
         </footer>
@@ -428,33 +420,33 @@
     </script>
 
     <script>
-  document.onreadystatechange = function () {
-    const loaderStatus = document.getElementById("loader-status");
+        document.onreadystatechange = function () {
+            const loaderStatus = document.getElementById("loader-status");
 
-    if (document.readyState === "interactive") {
-      loaderStatus.textContent = "Almost Ready...";
-    }
+            if (document.readyState === "interactive") {
+                loaderStatus.textContent = "Almost Ready...";
+            }
 
-    if (document.readyState === "complete") {
-      loaderStatus.textContent = "Loaded!";
-      setTimeout(() => {
-        document.getElementById("loader-overlay").style.display = "none";
-      }, 700); // optional fade out delay
-    }
-  };
-</script>
+            if (document.readyState === "complete") {
+                loaderStatus.textContent = "Loaded!";
+                setTimeout(() => {
+                    document.getElementById("loader-overlay").style.display = "none";
+                }, 700); // optional fade out delay
+            }
+        };
+    </script>
 
-<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('content', {
-        height: 300,
-        toolbar: [
-            ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
-            ['Format', 'FontSize', '-', 'Link', 'Unlink'],
-            ['Undo', 'Redo']
-        ]
-    });
-</script>
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content', {
+            height: 300,
+            toolbar: [
+                ['Bold', 'Italic', 'Underline', '-', 'NumberedList', 'BulletedList'],
+                ['Format', 'FontSize', '-', 'Link', 'Unlink'],
+                ['Undo', 'Redo']
+            ]
+        });
+    </script>
 
 </body>
 

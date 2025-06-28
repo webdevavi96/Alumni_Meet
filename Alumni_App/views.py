@@ -1,78 +1,70 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
-from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
-from django.contrib.auth.hashers import make_password
-from .models import Blog, Event, Alumni, Teacher, Student, CustomUser
+from .models import Blog, Event, Alumni, Teacher, Student, CustomUser, FriendRequest
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from datetime import datetime, timedelta
 from django.contrib.auth import get_user_model
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.models import Group
+from django.contrib import messages
+from django.db.models import Q
+from django.conf import settings
+
 import random
 import json
-from django.contrib import messages
 
 
 CustomUser = get_user_model()
 
 
-
 def home(request):
     context = {
-        'show_header': True,
+        "show_header": True,
     }
-    return render(request, 'index.html', context)
-
-
+    return render(request, "index.html", context)
 
 
 @login_required
 def admin_profile(request):
-    user = request.user       
+    user = request.user
     students = Student.objects.all()
     social_profiles = [
-        ('website', 'bi-globe2', user.website),
-        ('github', 'bi-github', user.github),
-        ('linkedin', 'bi-linkedin', user.linkedin),
-        ('instagram', 'bi-instagram', user.instagram),
-        ('facebook', 'bi-facebook', user.facebook),
+        ("website", "bi-globe2", user.website),
+        ("github", "bi-github", user.github),
+        ("linkedin", "bi-linkedin", user.linkedin),
+        ("instagram", "bi-instagram", user.instagram),
+        ("facebook", "bi-facebook", user.facebook),
     ]
 
     context = {
-        'user': user,
-        'students': students,
-        'social_profiles': social_profiles,
+        "user": user,
+        "students": students,
+        "social_profiles": social_profiles,
     }
-    return render(request, 'Pages/admin_profile.html', context)
-
+    return render(request, "Pages/admin_profile.html", context)
 
 
 @login_required
 def student_profile(request, student_id):
-    # Fetch the Student object by ID, or return 404 if not found
     student = get_object_or_404(Student, id=student_id)
-
-    # You can access the linked user via student.user
     user = student.user
 
-    # Prepare social profiles list (assuming the user model has these fields)
     social_profiles = [
-        ('website', 'bi-globe2', user.website),
-        ('github', 'bi-github', user.github),
-        ('linkedin', 'bi-linkedin', user.linkedin),
-        ('instagram', 'bi-instagram', user.instagram),
-        ('facebook', 'bi-facebook', user.facebook),
+        ("website", "bi-globe2", user.website),
+        ("github", "bi-github", user.github),
+        ("linkedin", "bi-linkedin", user.linkedin),
+        ("instagram", "bi-instagram", user.instagram),
+        ("facebook", "bi-facebook", user.facebook),
     ]
 
     context = {
-        'student': student,
-        'user': user,
-        'social_profiles': social_profiles,
+        "student": student,
+        "user": user,
+        "social_profiles": social_profiles,
     }
-    return render(request, 'Pages/student_profile.html', context)
-
+    return render(request, "Pages/student_profile.html", context)
 
 
 def login(request):
@@ -85,7 +77,6 @@ def login(request):
         if user is not None:
             auth_login(request, user)
 
-           
             if user.user_type in ["teacher", "alumni"] or user.is_superuser:
                 return redirect("admin_profile")
 
@@ -107,7 +98,9 @@ def logout(request):
     request.session.flush()
     return redirect("login")
 
+
 from django.shortcuts import redirect
+
 
 def signUp(request):
     if request.method == "POST":
@@ -123,12 +116,14 @@ def signUp(request):
 
         # Check email uniqueness
         if CustomUser.objects.filter(email=email).exists():
-            return render(request, "Pages/signUp.html", {"error": "Email already registered."})
+            return render(
+                request, "Pages/signUp.html", {"error": "Email already registered."}
+            )
 
         # Generate OTP
         otp = str(random.randint(100000, 999999))
         # Store data in session
-        request.session['temp_user'] = {
+        request.session["temp_user"] = {
             "first_name": first_name,
             "last_name": last_name,
             "email": email,
@@ -137,8 +132,8 @@ def signUp(request):
             "branch": branch,
             "password": password,
         }
-        request.session['otp'] = otp
-        request.session['otp_time'] = datetime.now().isoformat()
+        request.session["otp"] = otp
+        request.session["otp_time"] = datetime.now().isoformat()
 
         # Send OTP
         send_mail(
@@ -149,7 +144,7 @@ def signUp(request):
             fail_silently=False,
         )
 
-        return redirect('verify_otp')
+        return redirect("verify_otp")
 
     return render(request, "Pages/signUp.html")
 
@@ -165,24 +160,28 @@ def verify_otp_ajax(request):
         temp_user = request.session.get("temp_user")
 
         if not (session_otp and otp_time_str and temp_user):
-            return JsonResponse({"status": "error", "message": "Session expired or invalid."})
+            return JsonResponse(
+                {"status": "error", "message": "Session expired or invalid."}
+            )
 
         otp_time = datetime.fromisoformat(otp_time_str)
         now = datetime.now()
 
         if now - otp_time > timedelta(minutes=5):
-            return JsonResponse({"status": "error", "message": "OTP expired. Please signup again."})
+            return JsonResponse(
+                {"status": "error", "message": "OTP expired. Please signup again."}
+            )
 
         if user_otp == session_otp:
-            user_type = temp_user['user_type'].lower()
+            user_type = temp_user["user_type"].lower()
             user = CustomUser.objects.create_user(
-                username=temp_user['email'],
-                first_name=temp_user['first_name'],
-                last_name=temp_user['last_name'],
-                email=temp_user['email'],
-                phone=temp_user['phone'],
-                user_type=temp_user['user_type'],
-                password=temp_user['password'],
+                username=temp_user["email"],
+                first_name=temp_user["first_name"],
+                last_name=temp_user["last_name"],
+                email=temp_user["email"],
+                phone=temp_user["phone"],
+                user_type=temp_user["user_type"],
+                password=temp_user["password"],
             )
 
             if user_type == "alumni":
@@ -190,7 +189,7 @@ def verify_otp_ajax(request):
             elif user_type == "teacher":
                 Teacher.objects.create(user=user)
             elif user_type == "student":
-                Student.objects.create(user=user, branch=temp_user['branch'])
+                Student.objects.create(user=user, branch=temp_user["branch"])
 
             try:
                 group = Group.objects.get(name=user_type)
@@ -213,44 +212,47 @@ def resend_otp(request):
     if request.method == "POST":
         temp_user = request.session.get("temp_user")
         if not temp_user:
-            return JsonResponse({"status": "error", "message": "Session expired. Please signup again."})
+            return JsonResponse(
+                {"status": "error", "message": "Session expired. Please signup again."}
+            )
 
         new_otp = str(random.randint(100000, 999999))
-        request.session['otp'] = new_otp
-        request.session['otp_time'] = datetime.now().isoformat()
+        request.session["otp"] = new_otp
+        request.session["otp_time"] = datetime.now().isoformat()
 
         try:
             send_mail(
                 "Your New OTP for Signup",
                 f"Hello {temp_user['first_name']}, your new OTP is: {new_otp}",
                 "mmitcse3@gmail.com",  # change this!
-                [temp_user['email']],
+                [temp_user["email"]],
                 fail_silently=False,
             )
         except Exception as e:
-            return JsonResponse({"status": "error", "message": f"Failed to send OTP email: {e}"})
+            return JsonResponse(
+                {"status": "error", "message": f"Failed to send OTP email: {e}"}
+            )
 
-        return JsonResponse({"status": "success", "message": "OTP resent successfully."})
+        return JsonResponse(
+            {"status": "success", "message": "OTP resent successfully."}
+        )
 
     return JsonResponse({"status": "error", "message": "Invalid request method."})
 
 
-
 def verify_otp(request):
-    temp_user = request.session.get('temp_user')
+    temp_user = request.session.get("temp_user")
     if not temp_user:
-        return redirect('signUp')
-    email = temp_user.get('email')
+        return redirect("signUp")
+    email = temp_user.get("email")
     return render(request, "Pages/verify_otp.html", {"email": email})
-
 
 
 @login_required
 def blogs(request):
     blogData = Blog.objects.all()
     user = request.user
-    return render(request, 'Pages/blogs.html', {"blogData": blogData, 'user': user})
-
+    return render(request, "Pages/blogs.html", {"blogData": blogData, "user": user})
 
 
 def details(request, slug):
@@ -259,7 +261,7 @@ def details(request, slug):
     except Blog.DoesNotExist:
         return HttpResponse("Blog not found")
 
-    return render(request, 'Pages/details.html', {'blog': blog})
+    return render(request, "Pages/details.html", {"blog": blog})
 
 def new_blog(request):
     if request.method == "POST":
@@ -268,25 +270,36 @@ def new_blog(request):
         image = request.FILES.get("image")
 
         blog = Blog.objects.create(
-            title=title,
-            content=content,
-            blog_image=image,
-            author=request.user
+            title=title, content=content, blog_image=image, author=request.user
         )
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest' or request.META.get('HTTP_ACCEPT') == 'application/json':
-            return JsonResponse({
-                "success": True,
-                "blog": {
-                    "title": blog.title,
-                    "content": blog.content,
-                    "author": blog.author.get_full_name(),
-                    "slug": blog.slug,
-                    "image_url": blog.blog_image.url if blog.blog_image else "",
-                }
-            })
+
+        # Send push and email notifications only after creation
+        blog_url = request.build_absolute_uri(f"/blogs/{blog.slug}/")
+
+        #Email notification
         send_blog_notification(blog, request)
+
+        #Handle JSON response for AJAX
+        if (
+            request.headers.get("x-requested-with") == "XMLHttpRequest"
+            or request.META.get("HTTP_ACCEPT") == "application/json"
+        ):
+            return JsonResponse(
+                {
+                    "success": True,
+                    "blog": {
+                        "title": blog.title,
+                        "content": blog.content,
+                        "author": blog.author.get_full_name(),
+                        "slug": blog.slug,
+                        "image_url": blog.blog_image.url if blog.blog_image else "",
+                    },
+                }
+            )
+
         return redirect("blogs")
-    return render(request, 'Pages/new_blog.html')
+
+    return render(request, "Pages/new_blog.html")
 
 
 def delete_blog(request, slug):
@@ -296,43 +309,50 @@ def delete_blog(request, slug):
         if blog.author == request.user:
             blog.delete()
             return redirect("blogs")
-        
+
     except Blog.DoesNotExist:
         return HttpResponse("Blog not found.", status=404)
- 
+
+
 def latest_blog(request):
-        latest_blog = Blog.objects.order_by('-created_at').first()
-        if latest_blog:
-            return JsonResponse({
-            "success": True,
-            "blog": {
-                "id": latest_blog.id,
-                "title": latest_blog.title,
-                "content": latest_blog.content,
-                "author": latest_blog.author.get_full_name(),
-                "slug": latest_blog.slug,
-                "image_url": latest_blog.blog_image.url if latest_blog.blog_image else "",
+    latest_blog = Blog.objects.order_by("-created_at").first()
+    if latest_blog:
+        return JsonResponse(
+            {
+                "success": True,
+                "blog": {
+                    "id": latest_blog.id,
+                    "title": latest_blog.title,
+                    "content": latest_blog.content,
+                    "author": latest_blog.author.get_full_name(),
+                    "slug": latest_blog.slug,
+                    "image_url": (
+                        latest_blog.blog_image.url if latest_blog.blog_image else ""
+                    ),
+                },
             }
-            })
-        else:
-             return JsonResponse({"success": False, "error": "No blogs found."}, status=404)
+        )
+    else:
+        return JsonResponse({"success": False, "error": "No blogs found."}, status=404)
 
 
 @login_required
 def events(request):
     eventData = Event.objects.all()
     current_datetime = datetime.now()
-    
+
     for event in eventData:
         event_datetime = datetime.combine(event.date, event.time)
         if event_datetime > current_datetime:
             event.status = "Upcoming"
-        elif event_datetime <= current_datetime < event_datetime + timedelta(minutes=30):
+        elif (
+            event_datetime <= current_datetime < event_datetime + timedelta(minutes=30)
+        ):
             event.status = "Ongoing"
         else:
             event.status = "Ended"
 
-    return render(request, 'pages/events.html', {'eventData': eventData})
+    return render(request, "pages/events.html", {"eventData": eventData})
 
 
 def new_event(request):
@@ -349,17 +369,17 @@ def new_event(request):
             link=link,
             date=date,
             time=time,
-            author=request.user 
+            author=request.user,
         )
 
-        event.save() 
+        event.save()
 
         send_event_notification(event, request)
         return redirect("events")
-       
-    return render(request, 'Pages/new_event.html')
 
-   
+    return render(request, "Pages/new_event.html")
+
+
 def delete_event(request, slug):
     try:
         event = Event.objects.get(slug=slug)
@@ -367,15 +387,13 @@ def delete_event(request, slug):
         if event.author == request.user:
             event.delete()
             return redirect("events")
-        
+
     except Event.DoesNotExist:
         return HttpResponse("Event not found.", status=404)
 
 
-
-
-def send_event_notification(event,request):
-    event_url = request.build_absolute_uri(f'/event/{event.slug}/')
+def send_event_notification(event, request):
+    event_url = request.build_absolute_uri(f"/event/{event.slug}/")
     subject = f"New Event: {event.title}"
     message = f"""Hello,
                 A new event has been created: Title:  {event.title}
@@ -385,14 +403,15 @@ def send_event_notification(event,request):
                 Don't miss it!
                 View Event: {event_url}
                 """
-                
+
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [user.email for user in CustomUser.objects.all() if user.email]
 
     send_mail(subject, message, from_email, recipient_list)
 
+
 def send_blog_notification(blog, request):
-    blog_url = request.build_absolute_uri(f'/blogs/{blog.slug}/')
+    blog_url = request.build_absolute_uri(f"/blogs/{blog.slug}/")
     subject = f"New Blog: {blog.title}"
     message = f"""Hello,
         A new blog has been posted:
@@ -406,7 +425,8 @@ def send_blog_notification(blog, request):
     recipient_list = [user.email for user in CustomUser.objects.all() if user.email]
 
     send_mail(subject, message, from_email, recipient_list)
-    
+
+
 def set_notify(request, slug):
     event = get_object_or_404(Event, slug=slug)
 
@@ -416,5 +436,71 @@ def set_notify(request, slug):
         event.isNotified = False
         event.save()
 
-    return redirect('events')
+    return redirect("events")
 
+
+# Friends Page
+def friends_page(request):
+    query = request.GET.get('q', '')
+    current_user = request.user
+
+    friends = current_user.friends()  # ✅ This is your custom method
+
+    if query:
+        users = CustomUser.objects.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(email__icontains=query)
+        ).exclude(id=current_user.id)
+    else:
+        users = CustomUser.objects.exclude(id=current_user.id)
+
+    sent_requests = FriendRequest.objects.filter(from_user=current_user)
+    received_requests = FriendRequest.objects.filter(to_user=current_user)
+
+    context = {
+        'query': query,
+        'users': users,
+        'friends': friends,
+        'sent_requests': sent_requests,
+        'received_requests': received_requests,
+    }
+
+    return render(request, 'pages/friends.html', context)
+
+
+# Send request
+@login_required
+def send_request(request, user_id):
+    to_user = get_object_or_404(CustomUser, id=user_id)
+    if to_user != request.user:
+        FriendRequest.objects.get_or_create(
+            from_user=request.user, to_user=to_user, status="pending"
+        )
+    return redirect("FriendsPage")
+
+
+# Accept request
+@login_required
+def accept_request(request, request_id):
+    fr = get_object_or_404(FriendRequest, id=request_id, to_user=request.user)
+    fr.status = "accepted"
+    fr.save()
+    return redirect("FriendsPage")
+
+
+# Reject request
+@login_required
+def reject_request(request, request_id):
+    fr = get_object_or_404(FriendRequest, id=request_id, to_user=request.user)
+    fr.delete()
+    return redirect("FriendsPage")
+
+
+# Cancel sent request
+@login_required
+def cancel_request(request, user_id):
+    FriendRequest.objects.filter(
+        from_user=request.user, to_user_id=user_id, status="pending"
+    ).delete()
+    return redirect("FriendsPage")
