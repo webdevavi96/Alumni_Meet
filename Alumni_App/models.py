@@ -1,6 +1,9 @@
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 import uuid
+import json
 from autoslug import AutoSlugField
 from django.conf import settings
 
@@ -82,7 +85,6 @@ class Student(models.Model):
         return self.user.email
 
 
-from django.utils import timezone
 
 
 class Event(models.Model):
@@ -107,6 +109,9 @@ class Blog(models.Model):
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     slug = AutoSlugField(populate_from="title", unique=True, null=True, blank=True)
+
+    class Meta:
+        ordering = ["created_at"]
 
     def __str__(self):
         return self.title
@@ -137,3 +142,27 @@ class FriendRequest(models.Model):
 
     def __str__(self):
         return f"{self.from_user} → {self.to_user} ({self.status})"
+
+
+class Notifications(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    notification = models.TextField(max_length=100)
+    is_sent = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        super(Notifications, self).save(*args, **kwargs)
+
+        channel_layer = get_channel_layer()
+        notification_count = Notifications.objects.filter(is_sent=False).count()
+        data = {
+            "count": notification_count,
+            "current_notification": self.notification,
+        }
+        async_to_sync(channel_layer.group_send)(
+            "notification_group_consumer",
+            {"type": "send_notification", "value": json.dumps(data)},
+        )
+
+        if not self.is_sent:
+            self.is_sent = True
+            super(Notifications, self).save(update_fields=["is_sent"])

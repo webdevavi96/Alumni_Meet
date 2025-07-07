@@ -8,7 +8,7 @@ urlpatterns = [
     path("settings/", views.settings, name="Settings"),
     # Chats
     path("", views.mainPage, name="ChatHome"),
-    path("chat/<int:user_id>/", views.chat, name="Chat"),
+    path("chat/<str:username>/", views.chat, name="chat_room"),
     # Notifications
     path("notifications/", views.notifications, name="notifications"),
 ]

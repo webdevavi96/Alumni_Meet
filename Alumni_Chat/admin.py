@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Community
+from .models import Community, Messages
 # Register your models here.
 
 
@@ -7,3 +7,5 @@ from .models import Community
 class CommunityAdmin(admin.ModelAdmin):
     list_display = ('community_name', 'community_id')
     search_fields = ('community_name', 'community_id')
+    
+admin.site.register(Messages)

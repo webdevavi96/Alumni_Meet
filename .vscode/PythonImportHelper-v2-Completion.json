@@ -1,0 +1,2514 @@
+[
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "Group",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "now",
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "isExtraImport": true,
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "autoslug.fields",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "autoslug.fields",
+        "description": "autoslug.fields",
+        "detail": "autoslug.fields",
+        "documentation": {}
+    },
+    {
+        "label": "template",
+        "importPath": "django",
+        "description": "django",
+        "isExtraImport": true,
+        "detail": "django",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "messages",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "admin",
+        "importPath": "django.contrib",
+        "description": "django.contrib",
+        "isExtraImport": true,
+        "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "UserAdmin",
+        "importPath": "django.contrib.auth.admin",
+        "description": "django.contrib.auth.admin",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.admin",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "AppConfig",
+        "importPath": "django.apps",
+        "description": "django.apps",
+        "isExtraImport": true,
+        "detail": "django.apps",
+        "documentation": {}
+    },
+    {
+        "label": "ModelBackend",
+        "importPath": "django.contrib.auth.backends",
+        "description": "django.contrib.auth.backends",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.backends",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncJsonWebsocketConsumer",
+        "importPath": "channels.generic.websocket",
+        "description": "channels.generic.websocket",
+        "isExtraImport": true,
+        "detail": "channels.generic.websocket",
+        "documentation": {}
+    },
+    {
+        "label": "AsyncWebsocketConsumer",
+        "importPath": "channels.generic.websocket",
+        "description": "channels.generic.websocket",
+        "isExtraImport": true,
+        "detail": "channels.generic.websocket",
+        "documentation": {}
+    },
+    {
+        "label": "serialize",
+        "importPath": "django.core.serializers",
+        "description": "django.core.serializers",
+        "isExtraImport": true,
+        "detail": "django.core.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "async_to_sync",
+        "importPath": "asgiref.sync",
+        "description": "asgiref.sync",
+        "isExtraImport": true,
+        "detail": "asgiref.sync",
+        "documentation": {}
+    },
+    {
+        "label": "async_to_sync",
+        "importPath": "asgiref.sync",
+        "description": "asgiref.sync",
+        "isExtraImport": true,
+        "detail": "asgiref.sync",
+        "documentation": {}
+    },
+    {
+        "label": "async_to_sync",
+        "importPath": "asgiref.sync",
+        "description": "asgiref.sync",
+        "isExtraImport": true,
+        "detail": "asgiref.sync",
+        "documentation": {}
+    },
+    {
+        "label": "async_to_sync",
+        "importPath": "asgiref.sync",
+        "description": "asgiref.sync",
+        "isExtraImport": true,
+        "detail": "asgiref.sync",
+        "documentation": {}
+    },
+    {
+        "label": "database_sync_to_async",
+        "importPath": "channels.db",
+        "description": "channels.db",
+        "isExtraImport": true,
+        "detail": "channels.db",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUser",
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "isExtraImport": true,
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "Messages",
+        "importPath": "Alumni_Chat.models",
+        "description": "Alumni_Chat.models",
+        "isExtraImport": true,
+        "detail": "Alumni_Chat.models",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "get_channel_layer",
+        "importPath": "channels.layers",
+        "description": "channels.layers",
+        "isExtraImport": true,
+        "detail": "channels.layers",
+        "documentation": {}
+    },
+    {
+        "label": "get_channel_layer",
+        "importPath": "channels.layers",
+        "description": "channels.layers",
+        "isExtraImport": true,
+        "detail": "channels.layers",
+        "documentation": {}
+    },
+    {
+        "label": "get_channel_layer",
+        "importPath": "channels.layers",
+        "description": "channels.layers",
+        "isExtraImport": true,
+        "detail": "channels.layers",
+        "documentation": {}
+    },
+    {
+        "label": "uuid",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uuid",
+        "description": "uuid",
+        "detail": "uuid",
+        "documentation": {}
+    },
+    {
+        "label": "AutoSlugField",
+        "importPath": "autoslug",
+        "description": "autoslug",
+        "isExtraImport": true,
+        "detail": "autoslug",
+        "documentation": {}
+    },
+    {
+        "label": "post_save",
+        "importPath": "django.db.models.signals",
+        "description": "django.db.models.signals",
+        "isExtraImport": true,
+        "detail": "django.db.models.signals",
+        "documentation": {}
+    },
+    {
+        "label": "django.dispatch",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.dispatch",
+        "description": "django.dispatch",
+        "detail": "django.dispatch",
+        "documentation": {}
+    },
+    {
+        "label": "receiver",
+        "importPath": "django.dispatch",
+        "description": "django.dispatch",
+        "isExtraImport": true,
+        "detail": "django.dispatch",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "TestCase",
+        "importPath": "django.test",
+        "description": "django.test",
+        "isExtraImport": true,
+        "detail": "django.test",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponse",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "get_object_or_404",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "login_required",
+        "importPath": "django.contrib.auth.decorators",
+        "description": "django.contrib.auth.decorators",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_model",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
+        "documentation": {}
+    },
+    {
+        "label": "HttpResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "FileSystemStorage",
+        "importPath": "django.core.files.storage",
+        "description": "django.core.files.storage",
+        "isExtraImport": true,
+        "detail": "django.core.files.storage",
+        "documentation": {}
+    },
+    {
+        "label": "send_mail",
+        "importPath": "django.core.mail",
+        "description": "django.core.mail",
+        "isExtraImport": true,
+        "detail": "django.core.mail",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "csrf_exempt",
+        "importPath": "django.views.decorators.csrf",
+        "description": "django.views.decorators.csrf",
+        "isExtraImport": true,
+        "detail": "django.views.decorators.csrf",
+        "documentation": {}
+    },
+    {
+        "label": "Q",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUser",
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "isExtraImport": true,
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "isExtraImport": true,
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "re_path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "views",
+        "importPath": "Alumni_Chat",
+        "description": "Alumni_Chat",
+        "isExtraImport": true,
+        "detail": "Alumni_Chat",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "get_asgi_application",
+        "importPath": "django.core.asgi",
+        "description": "django.core.asgi",
+        "isExtraImport": true,
+        "detail": "django.core.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "ProtocolTypeRouter",
+        "importPath": "channels.routing",
+        "description": "channels.routing",
+        "isExtraImport": true,
+        "detail": "channels.routing",
+        "documentation": {}
+    },
+    {
+        "label": "URLRouter",
+        "importPath": "channels.routing",
+        "description": "channels.routing",
+        "isExtraImport": true,
+        "detail": "channels.routing",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "isExtraImport": true,
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "AuthMiddlewareStack",
+        "importPath": "channels.auth",
+        "description": "channels.auth",
+        "isExtraImport": true,
+        "detail": "channels.auth",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "static",
+        "importPath": "django.conf.urls.static",
+        "description": "django.conf.urls.static",
+        "isExtraImport": true,
+        "detail": "django.conf.urls.static",
+        "documentation": {}
+    },
+    {
+        "label": "views",
+        "importPath": "Alumni_App",
+        "description": "Alumni_App",
+        "isExtraImport": true,
+        "detail": "Alumni_App",
+        "documentation": {}
+    },
+    {
+        "label": "update_profile_view",
+        "importPath": "Alumni_App",
+        "description": "Alumni_App",
+        "isExtraImport": true,
+        "detail": "Alumni_App",
+        "documentation": {}
+    },
+    {
+        "label": "mainPage",
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "isExtraImport": true,
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_wsgi_application",
+        "importPath": "django.core.wsgi",
+        "description": "django.core.wsgi",
+        "isExtraImport": true,
+        "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0001_initial",
+        "description": "Alumni_App.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Alumni',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('first_name', models.CharField(max_length=100)),",
+        "detail": "Alumni_App.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0002_rename_useer_type_student_user_type_alumni_password_and_more",
+        "description": "Alumni_App.migrations.0002_rename_useer_type_student_user_type_alumni_password_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0001_initial'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='student',\n            old_name='useer_type',\n            new_name='user_type',\n        ),",
+        "detail": "Alumni_App.migrations.0002_rename_useer_type_student_user_type_alumni_password_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0003_remove_alumni_bio_remove_alumni_email_and_more",
+        "description": "Alumni_App.migrations.0003_remove_alumni_bio_remove_alumni_email_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0002_rename_useer_type_student_user_type_alumni_password_and_more'),\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='alumni',\n            name='bio',\n        ),",
+        "detail": "Alumni_App.migrations.0003_remove_alumni_bio_remove_alumni_email_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0004_alter_student_user_alter_teacher_user",
+        "description": "Alumni_App.migrations.0004_alter_student_user_alter_teacher_user",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0003_remove_alumni_bio_remove_alumni_email_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='student',\n            name='user',\n            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),\n        ),",
+        "detail": "Alumni_App.migrations.0004_alter_student_user_alter_teacher_user",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0005_alter_customuser_first_name_and_more",
+        "description": "Alumni_App.migrations.0005_alter_customuser_first_name_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0004_alter_student_user_alter_teacher_user'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='customuser',\n            name='first_name',\n            field=models.CharField(blank=True, max_length=30, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0005_alter_customuser_first_name_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0006_alter_customuser_email",
+        "description": "Alumni_App.migrations.0006_alter_customuser_email",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0005_alter_customuser_first_name_and_more'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='customuser',\n            name='email',\n            field=models.EmailField(blank=True, max_length=254, null=True, unique=True),\n        ),",
+        "detail": "Alumni_App.migrations.0006_alter_customuser_email",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0007_alter_customuser_user_type",
+        "description": "Alumni_App.migrations.0007_alter_customuser_user_type",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0006_alter_customuser_email'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='customuser',\n            name='user_type',\n            field=models.CharField(blank=True, choices=[('alumni', 'Alumni'), ('teacher', 'Teacher'), ('student', 'Student')], max_length=10, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0007_alter_customuser_user_type",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0008_alter_customuser_phone",
+        "description": "Alumni_App.migrations.0008_alter_customuser_phone",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0007_alter_customuser_user_type'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='customuser',\n            name='phone',\n            field=models.CharField(blank=True, max_length=15, null=True, unique=True),\n        ),",
+        "detail": "Alumni_App.migrations.0008_alter_customuser_phone",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0009_remove_alumni_graduation_year_alter_customuser_email_and_more",
+        "description": "Alumni_App.migrations.0009_remove_alumni_graduation_year_alter_customuser_email_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0008_alter_customuser_phone'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='alumni',\n            name='graduation_year',\n        ),\n        migrations.AlterField(",
+        "detail": "Alumni_App.migrations.0009_remove_alumni_graduation_year_alter_customuser_email_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0010_customuser_address_customuser_facebook_and_more",
+        "description": "Alumni_App.migrations.0010_customuser_address_customuser_facebook_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0009_remove_alumni_graduation_year_alter_customuser_email_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='customuser',\n            name='address',\n            field=models.TextField(blank=True, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0010_customuser_address_customuser_facebook_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0011_blog_blog_details",
+        "description": "Alumni_App.migrations.0011_blog_blog_details",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0010_customuser_address_customuser_facebook_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='blog',\n            name='blog_details',\n            field=models.TextField(blank=True, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0011_blog_blog_details",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0012_alter_blog_blog_details",
+        "description": "Alumni_App.migrations.0012_alter_blog_blog_details",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0011_blog_blog_details'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='blog',\n            name='blog_details',\n            field=models.JSONField(blank=True, default=list, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0012_alter_blog_blog_details",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0013_alter_blog_blog_details",
+        "description": "Alumni_App.migrations.0013_alter_blog_blog_details",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0012_alter_blog_blog_details'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='blog',\n            name='blog_details',\n            field=models.TextField(blank=True, default=list, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0013_alter_blog_blog_details",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0014_alter_alumni_user_alter_student_user",
+        "description": "Alumni_App.migrations.0014_alter_alumni_user_alter_student_user",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0013_alter_blog_blog_details'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='alumni',\n            name='user',\n            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),\n        ),",
+        "detail": "Alumni_App.migrations.0014_alter_alumni_user_alter_student_user",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0015_customuser_alumni_id_customuser_student_id_and_more",
+        "description": "Alumni_App.migrations.0015_customuser_alumni_id_customuser_student_id_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0014_alter_alumni_user_alter_student_user'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='customuser',\n            name='alumni_id',\n            field=models.CharField(max_length=10, null=True, unique=True),\n        ),",
+        "detail": "Alumni_App.migrations.0015_customuser_alumni_id_customuser_student_id_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0016_blog_slug_event_slug",
+        "description": "Alumni_App.migrations.0016_blog_slug_event_slug",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0015_customuser_alumni_id_customuser_student_id_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='blog',\n            name='slug',\n            field=autoslug.fields.AutoSlugField(blank=True, editable=False, null=True, populate_from='title', unique=True),\n        ),",
+        "detail": "Alumni_App.migrations.0016_blog_slug_event_slug",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0017_alter_blog_author",
+        "description": "Alumni_App.migrations.0017_alter_blog_author",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0016_blog_slug_event_slug'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='blog',\n            name='author',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),\n        ),",
+        "detail": "Alumni_App.migrations.0017_alter_blog_author",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0018_event_author",
+        "description": "Alumni_App.migrations.0018_event_author",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0017_alter_blog_author'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='event',\n            name='author',\n            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),\n        ),",
+        "detail": "Alumni_App.migrations.0018_event_author",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0019_event_link",
+        "description": "Alumni_App.migrations.0019_event_link",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0018_event_author'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='event',\n            name='link',\n            field=models.URLField(blank=True, max_length=300, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0019_event_link",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0020_event_isnotified_event_isnotify",
+        "description": "Alumni_App.migrations.0020_event_isnotified_event_isnotify",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0019_event_link'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='event',\n            name='isNotified',\n            field=models.BooleanField(default=False),\n        ),",
+        "detail": "Alumni_App.migrations.0020_event_isnotified_event_isnotify",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0021_event_notify_users",
+        "description": "Alumni_App.migrations.0021_event_notify_users",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0020_event_isnotified_event_isnotify'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='event',\n            name='notify_users',\n            field=models.ManyToManyField(blank=True, related_name='notified_events', to=settings.AUTH_USER_MODEL),\n        ),",
+        "detail": "Alumni_App.migrations.0021_event_notify_users",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0022_remove_event_isnotified_remove_event_isnotify_and_more",
+        "description": "Alumni_App.migrations.0022_remove_event_isnotified_remove_event_isnotify_and_more",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0021_event_notify_users'),\n    ]\n    operations = [\n        migrations.RemoveField(\n            model_name='event',\n            name='isNotified',\n        ),\n        migrations.RemoveField(",
+        "detail": "Alumni_App.migrations.0022_remove_event_isnotified_remove_event_isnotify_and_more",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0023_student_enrollment_number",
+        "description": "Alumni_App.migrations.0023_student_enrollment_number",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0022_remove_event_isnotified_remove_event_isnotify_and_more'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='student',\n            name='enrollment_number',\n            field=models.CharField(max_length=15, null=True, unique=True),\n        ),",
+        "detail": "Alumni_App.migrations.0023_student_enrollment_number",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0024_friendrequest",
+        "description": "Alumni_App.migrations.0024_friendrequest",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0023_student_enrollment_number'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='FriendRequest',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('status', models.CharField(choices=[('pending', 'Pending'), ('accepted', 'Accepted'), ('rejected', 'Rejected')], default='pending', max_length=10)),",
+        "detail": "Alumni_App.migrations.0024_friendrequest",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0025_pushsubscription",
+        "description": "Alumni_App.migrations.0025_pushsubscription",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0024_friendrequest'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='PushSubscription',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('endpoint', models.CharField(max_length=512, unique=True)),",
+        "detail": "Alumni_App.migrations.0025_pushsubscription",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0026_delete_pushsubscription",
+        "description": "Alumni_App.migrations.0026_delete_pushsubscription",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0025_pushsubscription'),\n    ]\n    operations = [\n        migrations.DeleteModel(\n            name='PushSubscription',\n        ),\n    ]",
+        "detail": "Alumni_App.migrations.0026_delete_pushsubscription",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0027_event_created_at",
+        "description": "Alumni_App.migrations.0027_event_created_at",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0026_delete_pushsubscription'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='event',\n            name='created_at',\n            field=models.DateTimeField(auto_now_add=True, null=True),\n        ),",
+        "detail": "Alumni_App.migrations.0027_event_created_at",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0028_notifications",
+        "description": "Alumni_App.migrations.0028_notifications",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0027_event_created_at'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Notifications',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('notification', models.TextField(max_length=100)),",
+        "detail": "Alumni_App.migrations.0028_notifications",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_App.migrations.0029_alter_blog_options",
+        "description": "Alumni_App.migrations.0029_alter_blog_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_App', '0028_notifications'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='blog',\n            options={'ordering': ['created_at']},\n        ),\n    ]",
+        "detail": "Alumni_App.migrations.0029_alter_blog_options",
+        "documentation": {}
+    },
+    {
+        "label": "has_sent_request",
+        "kind": 2,
+        "importPath": "Alumni_App.templatetags.friends_extras",
+        "description": "Alumni_App.templatetags.friends_extras",
+        "peekOfCode": "def has_sent_request(sent_requests, user):\n    return sent_requests.filter(to_user=user).exists()\n@register.filter\ndef has_received_request(received_requests, user):\n    return received_requests.filter(from_user=user).exists()\n@register.filter\ndef get_request_id(received_requests, user):\n    req = received_requests.filter(from_user=user).first()\n    return req.id if req else None",
+        "detail": "Alumni_App.templatetags.friends_extras",
+        "documentation": {}
+    },
+    {
+        "label": "has_received_request",
+        "kind": 2,
+        "importPath": "Alumni_App.templatetags.friends_extras",
+        "description": "Alumni_App.templatetags.friends_extras",
+        "peekOfCode": "def has_received_request(received_requests, user):\n    return received_requests.filter(from_user=user).exists()\n@register.filter\ndef get_request_id(received_requests, user):\n    req = received_requests.filter(from_user=user).first()\n    return req.id if req else None",
+        "detail": "Alumni_App.templatetags.friends_extras",
+        "documentation": {}
+    },
+    {
+        "label": "get_request_id",
+        "kind": 2,
+        "importPath": "Alumni_App.templatetags.friends_extras",
+        "description": "Alumni_App.templatetags.friends_extras",
+        "peekOfCode": "def get_request_id(received_requests, user):\n    req = received_requests.filter(from_user=user).first()\n    return req.id if req else None",
+        "detail": "Alumni_App.templatetags.friends_extras",
+        "documentation": {}
+    },
+    {
+        "label": "register",
+        "kind": 5,
+        "importPath": "Alumni_App.templatetags.friends_extras",
+        "description": "Alumni_App.templatetags.friends_extras",
+        "peekOfCode": "register = template.Library()\n@register.filter\ndef has_sent_request(sent_requests, user):\n    return sent_requests.filter(to_user=user).exists()\n@register.filter\ndef has_received_request(received_requests, user):\n    return received_requests.filter(from_user=user).exists()\n@register.filter\ndef get_request_id(received_requests, user):\n    req = received_requests.filter(from_user=user).first()",
+        "detail": "Alumni_App.templatetags.friends_extras",
+        "documentation": {}
+    },
+    {
+        "label": "AlumniAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class AlumniAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone']\n    list_filter = ['user__user_type']\n@admin.register(Teacher)\nclass TeacherAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone']\n    list_filter = ['user__user_type']\n@admin.register(Student)\nclass StudentAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone', 'branch']",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "TeacherAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class TeacherAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone']\n    list_filter = ['user__user_type']\n@admin.register(Student)\nclass StudentAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone', 'branch']\n    list_filter = ['user__user_type', 'branch']\n@admin.register(Event)\nclass EventAdmin(admin.ModelAdmin):\n    list_display = ('title', 'description', 'date', 'time')",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "StudentAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class StudentAdmin(admin.ModelAdmin):\n    list_display = ['user__first_name', 'user__last_name', 'user__email', 'user__phone', 'branch']\n    list_filter = ['user__user_type', 'branch']\n@admin.register(Event)\nclass EventAdmin(admin.ModelAdmin):\n    list_display = ('title', 'description', 'date', 'time')\n    search_fields = ('title', 'description')\n    list_filter = ('date',)\n@admin.register(Blog)\nclass BlogAdmin(admin.ModelAdmin):",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "EventAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class EventAdmin(admin.ModelAdmin):\n    list_display = ('title', 'description', 'date', 'time')\n    search_fields = ('title', 'description')\n    list_filter = ('date',)\n@admin.register(Blog)\nclass BlogAdmin(admin.ModelAdmin):\n    list_display = ('title', 'author', 'created_at')\n    search_fields = ('title', 'content')\n    list_filter = ('created_at',)\n    raw_id_fields = ('author',)",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "BlogAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class BlogAdmin(admin.ModelAdmin):\n    list_display = ('title', 'author', 'created_at')\n    search_fields = ('title', 'content')\n    list_filter = ('created_at',)\n    raw_id_fields = ('author',)\n@admin.register(FriendRequest)\nclass FriendRequestAdmin(admin.ModelAdmin):\n    list_display = ('from_user', 'to_user', 'status', 'timestamp')\n    list_filter = ('status',)\n    search_fields = ('from_user__name', 'to_user__name')",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "FriendRequestAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class FriendRequestAdmin(admin.ModelAdmin):\n    list_display = ('from_user', 'to_user', 'status', 'timestamp')\n    list_filter = ('status',)\n    search_fields = ('from_user__name', 'to_user__name')\n@admin.register(Notifications)\nclass NotificationsAdmin(admin.ModelAdmin):\n    list_display= ('user', 'notification', 'is_sent')",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "NotificationsAdmin",
+        "kind": 6,
+        "importPath": "Alumni_App.admin",
+        "description": "Alumni_App.admin",
+        "peekOfCode": "class NotificationsAdmin(admin.ModelAdmin):\n    list_display= ('user', 'notification', 'is_sent')",
+        "detail": "Alumni_App.admin",
+        "documentation": {}
+    },
+    {
+        "label": "AlumniAppConfig",
+        "kind": 6,
+        "importPath": "Alumni_App.apps",
+        "description": "Alumni_App.apps",
+        "peekOfCode": "class AlumniAppConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"Alumni_App\"\n    def ready(self):\n        import Alumni_App.signals",
+        "detail": "Alumni_App.apps",
+        "documentation": {}
+    },
+    {
+        "label": "EmailBackend",
+        "kind": 6,
+        "importPath": "Alumni_App.backends",
+        "description": "Alumni_App.backends",
+        "peekOfCode": "class EmailBackend(ModelBackend):\n    def authenticate(self, request, email=None, password=None, **kwargs):\n        try:\n            user = CustomUser.objects.get(email=email)\n            if user.check_password(password):\n                return user\n        except CustomUser.DoesNotExist:\n            return None",
+        "detail": "Alumni_App.backends",
+        "documentation": {}
+    },
+    {
+        "label": "NotificationConsumer",
+        "kind": 6,
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "peekOfCode": "class NotificationConsumer(AsyncJsonWebsocketConsumer):\n    async def connect(self):\n        self.room_name = \"notification_consumer\"\n        self.group_name = \"notification_group_consumer\"\n        await self.channel_layer.group_add(self.group_name, self.channel_name)\n        await self.accept()\n        notifications = await self.get_unsent_notifications()\n        await self.send_json(\n            {\"type\": \"initial_notification_list\", \"status\": 200, \"data\": notifications}\n        )",
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "ChatConsumer",
+        "kind": 6,
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "peekOfCode": "class ChatConsumer(AsyncWebsocketConsumer):\n    async def connect(self):\n        self.sender = self.scope[\"user\"]\n        self.receiver_username = self.scope[\"url_route\"][\"kwargs\"][\"username\"]\n        self.receiver = await database_sync_to_async(CustomUser.objects.get)(username=self.receiver_username)\n        self.room_name = f\"{min(self.sender.id, self.receiver.id)}_{max(self.sender.id, self.receiver.id)}\"\n        self.room_group_name = f\"chat_{self.room_name}\"\n        await self.channel_layer.group_add(self.room_group_name, self.channel_name)\n        await self.accept()\n    async def disconnect(self, close_code):",
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUser",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class CustomUser(AbstractUser):\n    first_name = models.CharField(max_length=30, null=True)\n    last_name = models.CharField(max_length=30, null=True)\n    USER_TYPES = [\n        (\"alumni\", \"Alumni\"),\n        (\"teacher\", \"Teacher\"),\n        (\"student\", \"Student\"),\n    ]\n    email = models.EmailField(unique=True, null=True)\n    user_type = models.CharField(max_length=10, choices=USER_TYPES, null=True)",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Alumni",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Alumni(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.email\nclass Teacher(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.email\nclass Student(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=1)",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Teacher",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Teacher(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)\n    def __str__(self):\n        return self.user.email\nclass Student(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=1)\n    branch = models.CharField(\n        max_length=100,\n        choices=[\n            (\"CSE\", \"Computer Science and Engineering\"),",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Student(models.Model):\n    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, default=1)\n    branch = models.CharField(\n        max_length=100,\n        choices=[\n            (\"CSE\", \"Computer Science and Engineering\"),\n            (\"ECE\", \"Electronics Engineering\"),\n            (\"EE\", \"Electrical Engineering\"),\n        ],\n    )",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Event",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Event(models.Model):\n    title = models.CharField(max_length=200)\n    description = models.TextField()\n    link = models.URLField(max_length=300, blank=True, null=True)\n    date = models.DateField()\n    time = models.TimeField()\n    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=1)\n    slug = AutoSlugField(populate_from=\"title\", unique=True, null=True, blank=True)\n    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)\n    def __str__(self):",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Blog",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Blog(models.Model):\n    title = models.CharField(max_length=200)\n    content = models.TextField()\n    blog_image = models.ImageField(upload_to=\"blog_images/\", blank=True, null=True)\n    blog_details = models.TextField(default=list, blank=True, null=True)\n    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)\n    created_at = models.DateTimeField(auto_now_add=True)\n    slug = AutoSlugField(populate_from=\"title\", unique=True, null=True, blank=True)\n    class Meta:\n        ordering = [\"created_at\"]",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "FriendRequest",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class FriendRequest(models.Model):\n    from_user = models.ForeignKey(\n        settings.AUTH_USER_MODEL, related_name=\"sent_requests\", on_delete=models.CASCADE\n    )\n    to_user = models.ForeignKey(\n        settings.AUTH_USER_MODEL,\n        related_name=\"received_requests\",\n        on_delete=models.CASCADE,\n    )\n    status = models.CharField(",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "Notifications",
+        "kind": 6,
+        "importPath": "Alumni_App.models",
+        "description": "Alumni_App.models",
+        "peekOfCode": "class Notifications(models.Model):\n    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)\n    notification = models.TextField(max_length=100)\n    is_sent = models.BooleanField(default=False)\n    def save(self, *args, **kwargs):\n        super(Notifications, self).save(*args, **kwargs)\n        channel_layer = get_channel_layer()\n        notification_count = Notifications.objects.filter(is_sent=False).count()\n        data = {\n            \"count\": notification_count,",
+        "detail": "Alumni_App.models",
+        "documentation": {}
+    },
+    {
+        "label": "send_notification_on_create",
+        "kind": 2,
+        "importPath": "Alumni_App.signals",
+        "description": "Alumni_App.signals",
+        "peekOfCode": "def send_notification_on_create(sender, instance, created, **kwargs):\n    if created and not instance.is_sent:\n        channel_layer = get_channel_layer()\n        data = {\n            \"count\": Notifications.objects.filter(is_sent=False).count(),\n            \"current_notification\": instance.notification,\n        }\n        async_to_sync(channel_layer.group_send)(\n            \"notification_group_consumer\",\n            {",
+        "detail": "Alumni_App.signals",
+        "documentation": {}
+    },
+    {
+        "label": "NotificationThread",
+        "kind": 6,
+        "importPath": "Alumni_App.thread",
+        "description": "Alumni_App.thread",
+        "peekOfCode": "class NotificationThread(threading.Thread):\n    def __init__(self):\n        threading.Thread.__init__(self)\n    def run(self):\n        try:\n            channel_layer = get_channel_layer()\n            count = Notifications.objects.filter(is_sent=False).count()\n            latest_notification = Notifications.objects.filter(is_sent=False).last()\n            if latest_notification:\n                data = {",
+        "detail": "Alumni_App.thread",
+        "documentation": {}
+    },
+    {
+        "label": "update_profile",
+        "kind": 2,
+        "importPath": "Alumni_App.update_profile_view",
+        "description": "Alumni_App.update_profile_view",
+        "peekOfCode": "def update_profile(request):\n    if request.method == 'POST':\n        user = request.user\n        first_name = request.POST.get('first_name')\n        last_name = request.POST.get('last_name')\n        email = request.POST.get('email')\n        phone = request.POST.get('phone')\n        address = request.POST.get('address')\n        website = request.POST.get('website')\n        github = request.POST.get('github')",
+        "detail": "Alumni_App.update_profile_view",
+        "documentation": {}
+    },
+    {
+        "label": "home",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def home(request):\n    context = {\n        \"show_header\": True,\n    }\n    return render(request, \"index.html\", context)\n@login_required\ndef admin_profile(request):\n    user = request.user\n    students = Student.objects.all()\n    social_profiles = [",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "admin_profile",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def admin_profile(request):\n    user = request.user\n    students = Student.objects.all()\n    social_profiles = [\n        (\"website\", \"bi-globe2\", user.website),\n        (\"github\", \"bi-github\", user.github),\n        (\"linkedin\", \"bi-linkedin\", user.linkedin),\n        (\"instagram\", \"bi-instagram\", user.instagram),\n        (\"facebook\", \"bi-facebook\", user.facebook),\n    ]",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "student_profile",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def student_profile(request, student_id):\n    student = get_object_or_404(Student, id=student_id)\n    user = student.user\n    social_profiles = [\n        (\"website\", \"bi-globe2\", user.website),\n        (\"github\", \"bi-github\", user.github),\n        (\"linkedin\", \"bi-linkedin\", user.linkedin),\n        (\"instagram\", \"bi-instagram\", user.instagram),\n        (\"facebook\", \"bi-facebook\", user.facebook),\n    ]",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "login",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def login(request):\n    if request.method == \"POST\":\n        email = request.POST.get(\"email\")\n        password = request.POST.get(\"password\")\n        user = authenticate(request, email=email, password=password)\n        if user is not None:\n            auth_login(request, user)\n            if user.user_type in [\"teacher\", \"alumni\"] or user.is_superuser:\n                return redirect(\"admin_profile\")\n            elif user.user_type == \"student\":",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "logout",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def logout(request):\n    request.session.flush()\n    return redirect(\"login\")\nfrom django.shortcuts import redirect\ndef signUp(request):\n    if request.method == \"POST\":\n        # Get form data\n        first_name = request.POST.get(\"first_name\")\n        last_name = request.POST.get(\"last_name\")\n        email = request.POST.get(\"email\")",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "signUp",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def signUp(request):\n    if request.method == \"POST\":\n        # Get form data\n        first_name = request.POST.get(\"first_name\")\n        last_name = request.POST.get(\"last_name\")\n        email = request.POST.get(\"email\")\n        phone = request.POST.get(\"phone\")\n        user_type = request.POST.get(\"user_type\")\n        branch = request.POST.get(\"branch\")\n        password = request.POST.get(\"password\")",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "verify_otp_ajax",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def verify_otp_ajax(request):\n    if request.method == \"POST\":\n        data = json.loads(request.body)\n        user_otp = data.get(\"otp\")\n        session_otp = request.session.get(\"otp\")\n        otp_time_str = request.session.get(\"otp_time\")\n        temp_user = request.session.get(\"temp_user\")\n        if not (session_otp and otp_time_str and temp_user):\n            return JsonResponse(\n                {\"status\": \"error\", \"message\": \"Session expired or invalid.\"}",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "resend_otp",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def resend_otp(request):\n    if request.method == \"POST\":\n        temp_user = request.session.get(\"temp_user\")\n        if not temp_user:\n            return JsonResponse(\n                {\"status\": \"error\", \"message\": \"Session expired. Please signup again.\"}\n            )\n        new_otp = str(random.randint(100000, 999999))\n        request.session[\"otp\"] = new_otp\n        request.session[\"otp_time\"] = datetime.now().isoformat()",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "verify_otp",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def verify_otp(request):\n    temp_user = request.session.get(\"temp_user\")\n    if not temp_user:\n        return redirect(\"signUp\")\n    email = temp_user.get(\"email\")\n    return render(request, \"Pages/verify_otp.html\", {\"email\": email})\n@login_required\ndef blogs(request):\n    blogData = Blog.objects.all()\n    user = request.user",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "blogs",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def blogs(request):\n    blogData = Blog.objects.all()\n    user = request.user\n    return render(request, \"Pages/blogs.html\", {\"blogData\": blogData, \"user\": user})\ndef details(request, slug):\n    try:\n        blog = Blog.objects.get(slug=slug)\n    except Blog.DoesNotExist:\n        return HttpResponse(\"Blog not found\")\n    return render(request, \"Pages/details.html\", {\"blog\": blog})",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "details",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def details(request, slug):\n    try:\n        blog = Blog.objects.get(slug=slug)\n    except Blog.DoesNotExist:\n        return HttpResponse(\"Blog not found\")\n    return render(request, \"Pages/details.html\", {\"blog\": blog})\ndef new_blog(request):\n    if request.method == \"POST\":\n        title = request.POST.get(\"title\")\n        content = request.POST.get(\"content\")",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "new_blog",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def new_blog(request):\n    if request.method == \"POST\":\n        title = request.POST.get(\"title\")\n        content = request.POST.get(\"content\")\n        image = request.FILES.get(\"image\")\n        blog = Blog.objects.create(\n            title=title, content=content, blog_image=image, author=request.user\n        )\n        # Send push and email notifications only after creation\n        blog_url = request.build_absolute_uri(f\"/blogs/{blog.slug}/\")",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_blog",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def delete_blog(request, slug):\n    try:\n        blog = Blog.objects.get(slug=slug)\n        if blog.author == request.user:\n            blog.delete()\n            return redirect(\"blogs\")\n    except Blog.DoesNotExist:\n        return HttpResponse(\"Blog not found.\", status=404)\ndef latest_blog(request):\n    latest_blog = Blog.objects.order_by(\"-created_at\").first()",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "latest_blog",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def latest_blog(request):\n    latest_blog = Blog.objects.order_by(\"-created_at\").first()\n    if latest_blog:\n        return JsonResponse(\n            {\n                \"success\": True,\n                \"blog\": {\n                    \"id\": latest_blog.id,\n                    \"title\": latest_blog.title,\n                    \"content\": latest_blog.content,",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "events",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def events(request):\n    eventData = Event.objects.all()\n    current_datetime = datetime.now()\n    for event in eventData:\n        event_datetime = datetime.combine(event.date, event.time)\n        if event_datetime > current_datetime:\n            event.status = \"Upcoming\"\n        elif (\n            event_datetime <= current_datetime < event_datetime + timedelta(minutes=30)\n        ):",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "new_event",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def new_event(request):\n    if request.method == \"POST\":\n        title = request.POST.get(\"title\")\n        description = request.POST.get(\"description\")\n        link = request.POST.get(\"event_link\")\n        date = request.POST.get(\"date\")\n        time = request.POST.get(\"time\")\n        event = Event.objects.create(\n            title=title,\n            description=description,",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "delete_event",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def delete_event(request, slug):\n    try:\n        event = Event.objects.get(slug=slug)\n        if event.author == request.user:\n            event.delete()\n            return redirect(\"events\")\n    except Event.DoesNotExist:\n        return HttpResponse(\"Event not found.\", status=404)\ndef send_event_notification(event, request):\n    event_url = request.build_absolute_uri(f\"/event/{event.slug}/\")",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "send_event_notification",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def send_event_notification(event, request):\n    event_url = request.build_absolute_uri(f\"/event/{event.slug}/\")\n    subject = f\"New Event: {event.title}\"\n    message = f\"\"\"Hello,\n                A new event has been created: Title:  {event.title}\n                Date: {event.date}\n                Time: {event.time}\n                Description: {event.description}\n                Don't miss it!\n                View Event: {event_url}",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "send_blog_notification",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def send_blog_notification(blog, request):\n    blog_url = request.build_absolute_uri(f\"/blogs/{blog.slug}/\")\n    subject = f\"New Blog: {blog.title}\"\n    message = f\"\"\"Hello,\n        A new blog has been posted:\n        Title: {blog.title}\n        Description: {blog.content}\n        Author: {blog.author.get_full_name()}\n        Don't miss it!\n        View Blog: {blog_url}",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "set_notify",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def set_notify(request, slug):\n    event = get_object_or_404(Event, slug=slug)\n    if request.method == \"POST\":\n        event.notify_users.add(request.user)\n        event.isNotify = True\n        event.isNotified = False\n        event.save()\n    return redirect(\"events\")\n# Friends Page\ndef friends_page(request):",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "friends_page",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def friends_page(request):\n    query = request.GET.get(\"q\", \"\")\n    current_user = request.user\n    friends = current_user.friends()  # ✅ This is your custom method\n    if query:\n        users = CustomUser.objects.filter(\n            Q(first_name__icontains=query)\n            | Q(last_name__icontains=query)\n            | Q(email__icontains=query)\n        ).exclude(id=current_user.id)",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "send_request",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def send_request(request, user_id):\n    to_user = get_object_or_404(CustomUser, id=user_id)\n    if to_user != request.user:\n        FriendRequest.objects.get_or_create(\n            from_user=request.user, to_user=to_user, status=\"pending\"\n        )\n        notify_friend(request, user_id)\n    return redirect(\"FriendsPage\")\n# Accept request\n@login_required",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "accept_request",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def accept_request(request, request_id):\n    fr = get_object_or_404(FriendRequest, id=request_id, to_user=request.user)\n    fr.status = \"accepted\"\n    fr.save()\n    return redirect(\"FriendsPage\")\n# Reject request\n@login_required\ndef reject_request(request, request_id):\n    fr = get_object_or_404(FriendRequest, id=request_id, to_user=request.user)\n    fr.delete()",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "reject_request",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def reject_request(request, request_id):\n    fr = get_object_or_404(FriendRequest, id=request_id, to_user=request.user)\n    fr.delete()\n    return redirect(\"FriendsPage\")\n# Cancel sent request\n@login_required\ndef cancel_request(request, user_id):\n    FriendRequest.objects.filter(\n        from_user=request.user, to_user_id=user_id, status=\"pending\"\n    ).delete()",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "cancel_request",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def cancel_request(request, user_id):\n    FriendRequest.objects.filter(\n        from_user=request.user, to_user_id=user_id, status=\"pending\"\n    ).delete()\n    return redirect(\"FriendsPage\")\ndef notify_friend(request, user_id):\n    to_user = get_object_or_404(CustomUser, id=user_id)\n    from_user = request.user\n    if to_user.email:\n        subject = f\"New friend request from {from_user.get_full_name()}\"",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "notify_friend",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def notify_friend(request, user_id):\n    to_user = get_object_or_404(CustomUser, id=user_id)\n    from_user = request.user\n    if to_user.email:\n        subject = f\"New friend request from {from_user.get_full_name()}\"\n        message = f\"\"\"\n      Hi {to_user.first_name} {to_user.last_name},\n      {from_user.first_name} {from_user.last_name} has sent you a friend request on Alumni Meet.\n      Login to your account to view and respond to the request.\n      Regards,",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "get_notification",
+        "kind": 2,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "def get_notification(request):\n    try:\n        thread = NotificationThread()\n        thread.start()\n        return JsonResponse({\"status\": 200, \"message\": \"Notification thread started.\"})\n    except Exception as e:\n        return JsonResponse({\"status\": 500, \"error\": str(e)})",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "CustomUser",
+        "kind": 5,
+        "importPath": "Alumni_App.views",
+        "description": "Alumni_App.views",
+        "peekOfCode": "CustomUser = get_user_model()\ndef home(request):\n    context = {\n        \"show_header\": True,\n    }\n    return render(request, \"index.html\", context)\n@login_required\ndef admin_profile(request):\n    user = request.user\n    students = Student.objects.all()",
+        "detail": "Alumni_App.views",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_Chat.migrations.0001_initial",
+        "description": "Alumni_Chat.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Community',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "Alumni_Chat.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_Chat.migrations.0002_messages",
+        "description": "Alumni_Chat.migrations.0002_messages",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_Chat', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Messages',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "Alumni_Chat.migrations.0002_messages",
+        "documentation": {}
+    },
+    {
+        "label": "CommunityAdmin",
+        "kind": 6,
+        "importPath": "Alumni_Chat.admin",
+        "description": "Alumni_Chat.admin",
+        "peekOfCode": "class CommunityAdmin(admin.ModelAdmin):\n    list_display = ('community_name', 'community_id')\n    search_fields = ('community_name', 'community_id')\nadmin.site.register(Messages)",
+        "detail": "Alumni_Chat.admin",
+        "documentation": {}
+    },
+    {
+        "label": "AlumniChatConfig",
+        "kind": 6,
+        "importPath": "Alumni_Chat.apps",
+        "description": "Alumni_Chat.apps",
+        "peekOfCode": "class AlumniChatConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'Alumni_Chat'",
+        "detail": "Alumni_Chat.apps",
+        "documentation": {}
+    },
+    {
+        "label": "Community",
+        "kind": 6,
+        "importPath": "Alumni_Chat.models",
+        "description": "Alumni_Chat.models",
+        "peekOfCode": "class Community(models.Model):\n    community_name = models.CharField(max_length=50)\n    community_id = models.CharField(max_length=10, unique=True, null=True, blank=True)\n    community_image = models.ImageField(\n        upload_to=\"community_image/\", blank=True, null=True\n    )\n    description = models.TextField(blank=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    created_by = models.ForeignKey(\n        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True",
+        "detail": "Alumni_Chat.models",
+        "documentation": {}
+    },
+    {
+        "label": "Messages",
+        "kind": 6,
+        "importPath": "Alumni_Chat.models",
+        "description": "Alumni_Chat.models",
+        "peekOfCode": "class Messages(models.Model):\n    sender = models.ForeignKey(CustomUser,on_delete=models.CASCADE, related_name=\"sent_messages\")\n    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name=\"received_messages\")\n    content = models.TextField()\n    timestamp = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        ordering = [\"timestamp\"]",
+        "detail": "Alumni_Chat.models",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "Alumni_Chat.urls",
+        "description": "Alumni_Chat.urls",
+        "peekOfCode": "urlpatterns = [\n    # Communities\n    path(\"communities/\", views.community_page, name=\"Communities\"),\n    # Settings\n    path(\"settings/\", views.settings, name=\"Settings\"),\n    # Chats\n    path(\"\", views.mainPage, name=\"ChatHome\"),\n    path(\"chat/<str:username>/\", views.chat, name=\"chat_room\"),\n    # Notifications\n    path(\"notifications/\", views.notifications, name=\"notifications\"),",
+        "detail": "Alumni_Chat.urls",
+        "documentation": {}
+    },
+    {
+        "label": "mainPage",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def mainPage(request):\n    users = CustomUser.objects.all().exclude(id=request.user.id)\n    chat_user = None\n    return render(\n        request, \"master.html\", {\"users\": users, \"chat_user\": chat_user, \"chat\": True}\n    )\ndef chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver],",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "chat",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver],\n        receiver__in=[request.user, receiver]\n    )\n    users = CustomUser.objects.exclude(id=request.user.id)\n    return render(request, 'master.html', {\n        'receiver': receiver,\n        'selected_user': receiver,",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "community_page",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def community_page(request):\n    communities = Community.objects.all()\n    selected_id = request.GET.get(\"id\")\n    selected_community = None\n    if selected_id:\n        selected_community = get_object_or_404(Community, id=selected_id)\n    return render(\n        request,\n        \"pages/community.html\",\n        {",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def settings(request):\n    return render(request, \"pages/settings.html\")\n# Notifications Pannel\n@login_required\ndef notifications(request):\n    user = request.user\n    recent_time = now() - timedelta(hours=24)\n    # for new Blogs\n    blogs = Blog.objects.filter(created_at=recent_time)\n    blog_notifications = [",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "notifications",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def notifications(request):\n    user = request.user\n    recent_time = now() - timedelta(hours=24)\n    # for new Blogs\n    blogs = Blog.objects.filter(created_at=recent_time)\n    blog_notifications = [\n        {\n            \"type\": \"blog\",\n            \"message\": f\"📢 New blog posted: {b.title}\",\n            \"timestamp\": b.created_at.strftime(\"%Y-%m-%d %H:%M\"),",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "django_asgi_app",
+        "kind": 5,
+        "importPath": "Alumni_Meet.asgi",
+        "description": "Alumni_Meet.asgi",
+        "peekOfCode": "django_asgi_app = get_asgi_application()\nfrom channels.routing import ProtocolTypeRouter, URLRouter\nfrom Alumni_App.consumers import *\nfrom django.urls import re_path\nfrom channels.auth import AuthMiddlewareStack\nws_patterns = [\n    re_path(r\"ws/notifications/$\", NotificationConsumer.as_asgi()),\n    re_path(r\"^ws/chat/(?P<username>[^/]+)/$\", ChatConsumer.as_asgi()),\n]\napplication = ProtocolTypeRouter(",
+        "detail": "Alumni_Meet.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "ws_patterns",
+        "kind": 5,
+        "importPath": "Alumni_Meet.asgi",
+        "description": "Alumni_Meet.asgi",
+        "peekOfCode": "ws_patterns = [\n    re_path(r\"ws/notifications/$\", NotificationConsumer.as_asgi()),\n    re_path(r\"^ws/chat/(?P<username>[^/]+)/$\", ChatConsumer.as_asgi()),\n]\napplication = ProtocolTypeRouter(\n    {\"http\": django_asgi_app, \"websocket\": AuthMiddlewareStack(URLRouter(ws_patterns))}\n)",
+        "detail": "Alumni_Meet.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "Alumni_Meet.asgi",
+        "description": "Alumni_Meet.asgi",
+        "peekOfCode": "application = ProtocolTypeRouter(\n    {\"http\": django_asgi_app, \"websocket\": AuthMiddlewareStack(URLRouter(ws_patterns))}\n)",
+        "detail": "Alumni_Meet.asgi",
+        "documentation": {}
+    },
+    {
+        "label": "BASE_DIR",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECRET_KEY",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "SECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEBUG",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ALLOWED_HOSTS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "ALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "INSTALLED_APPS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "INSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",\n    \"Alumni_App\",\n    \"Alumni_Chat\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MIDDLEWARE",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "MIDDLEWARE = [\n    \"django.middleware.security.SecurityMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",\n    \"django.middleware.csrf.CsrfViewMiddleware\",\n    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\n    \"django.contrib.messages.middleware.MessageMiddleware\",\n    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\n    \"django_user_agents.middleware.UserAgentMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ROOT_URLCONF",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "ROOT_URLCONF = \"Alumni_Meet.urls\"\nTEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.request\",\n                \"django.contrib.auth.context_processors.auth\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TEMPLATES",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "TEMPLATES = [\n    {\n        \"BACKEND\": \"django.template.backends.django.DjangoTemplates\",\n        \"DIRS\": [],\n        \"APP_DIRS\": True,\n        \"OPTIONS\": {\n            \"context_processors\": [\n                \"django.template.context_processors.request\",\n                \"django.contrib.auth.context_processors.auth\",\n                \"django.contrib.messages.context_processors.messages\",",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "ASGI_APPLICATION",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "ASGI_APPLICATION = \"Alumni_Meet.asgi.application\"\nCHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [(\"127.0.0.1\", 6379)],\n        },\n    },\n}\n# Database",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CHANNEL_LAYERS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "CHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [(\"127.0.0.1\", 6379)],\n        },\n    },\n}\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASES",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"Alumni_Meet\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"laptop@63_88\",\n        \"HOST\": \"localhost\",\n        \"PORT\": \"3306\",\n    }\n}",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_PASSWORD_VALIDATORS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "AUTH_PASSWORD_VALIDATORS = [\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.UserAttributeSimilarityValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.MinimumLengthValidator\",\n    },\n    {\n        \"NAME\": \"django.contrib.auth.password_validation.CommonPasswordValidator\",\n    },",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "LANGUAGE_CODE",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "LANGUAGE_CODE = \"en-us\"\nTIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = \"static/\"\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "TIME_ZONE",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "TIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = \"static/\"\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]\nMEDIA_URL = \"/media/\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_I18N",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = \"static/\"\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "USE_TZ",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.2/howto/static-files/\nSTATIC_URL = \"static/\"\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_URL",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "STATIC_URL = \"static/\"\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATICFILES_DIRS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "STATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"Alumni_App\", \"static\"),\n]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_URL",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "MEDIA_ROOT",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nSTATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "STATIC_ROOT",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "STATIC_ROOT = BASE_DIR / \"staticfiles\"\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "DEFAULT_AUTO_FIELD",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_USER_MODEL",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "AUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTHENTICATION_BACKENDS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_BACKEND",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_PORT",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_USE_TLS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_USER",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "EMAIL_HOST_PASSWORD",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "Alumni_Meet.urls",
+        "description": "Alumni_Meet.urls",
+        "peekOfCode": "urlpatterns = [\n    path('admin/', admin.site.urls),\n    path('', views.home, name='home'),\n    path('blogs/', views.blogs, name='blogs'),\n    path('events/', views.events, name='events'),\n    path('admin_profile/', views.admin_profile, name='admin_profile'),\n    path('student_profile/<int:student_id>/', views.student_profile, name='student_profile'),\n    path('login/', views.login, name='login'),\n    path('signUp/', views.signUp, name='signUp'),\n    path('verify_otp_ajax/', views.verify_otp_ajax, name='verify_otp_ajax'),",
+        "detail": "Alumni_Meet.urls",
+        "documentation": {}
+    },
+    {
+        "label": "application",
+        "kind": 5,
+        "importPath": "Alumni_Meet.wsgi",
+        "description": "Alumni_Meet.wsgi",
+        "peekOfCode": "application = get_wsgi_application()",
+        "detail": "Alumni_Meet.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "manage",
+        "description": "manage",
+        "peekOfCode": "def main():\n    \"\"\"Run administrative tasks.\"\"\"\n    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Alumni_Meet.settings')\n    try:\n        from django.core.management import execute_from_command_line\n    except ImportError as exc:\n        raise ImportError(\n            \"Couldn't import Django. Are you sure it's installed and \"\n            \"available on your PYTHONPATH environment variable? Did you \"\n            \"forget to activate a virtual environment?\"",
+        "detail": "manage",
+        "documentation": {}
+    }
+]

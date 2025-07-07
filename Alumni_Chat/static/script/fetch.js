@@ -23,9 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    loadNotifications()
 
-    setInterval(loadNotifications, 5000)
+
 
     document.addEventListener("visibilitychange", () => {
         if (!document.hidden) {
@@ -33,4 +32,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission().then(function (permission) {
+
+        });
+    }
+
+
+    const notificationSocket = new WebSocket("ws://127.0.0.1:8000/ws/notifications/");
+
+    notificationSocket.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+
+        if (data.type === "new_notification" && data.payload?.current_notification) {
+            if (Notification.permission === "granted") {
+                new Notification("🔔 New Notification", {
+                    body: data.payload.current_notification,
+                });
+                console.log(Notification);
+
+            } else {
+                alert("🔔 " + data.payload.current_notification);
+            }
+
+        }
+
+    };
+
+
 })
+
+
+

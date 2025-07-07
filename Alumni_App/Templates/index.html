@@ -1,7 +1,6 @@
 {% load static %}
 {% load django_browser_reload %}
 {% django_browser_reload_script %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -254,29 +253,33 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'blogs' %}">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'blogs' %}">
                                 <i class="bi bi-journal-text"></i> <span class="d-none d-md-inline">Blogs</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'events' %}">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'events' %}">
                                 <i class="bi bi-calendar-event-fill"></i> <span class="d-none d-md-inline">Events</span>
                             </a>
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="alumni_chat/">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'ChatPage' %}">
                                 <i class="bi bi-chat-dots-fill"></i> <span class="d-none d-md-inline">Chats</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'admin_profile' %}">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'admin_profile' %}">
                                 <i class="bi bi-person-circle"></i> <span class="d-none d-md-inline">Profile</span>
                             </a>
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'login' %}">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'login' %}">
                                 <i class="bi bi-box-arrow-in-right"></i> <span class="d-none d-md-inline">Sign In</span>
                             </a>
                         </li>
@@ -472,6 +475,8 @@
             ]
         });
     </script>
+
+  
 
 </body>
 

@@ -98,20 +98,20 @@ function getNewBlog() {
 }
 
 
-function sendNotification(blog) {
-    if (Notification.permission === "granted") {
-        new Notification("📝 New Blog: " + blog.title, {
-            body: blog.content.slice(0, 100) + "...",
-            icon: blog.image_url || "/static/default_icon.png",
-        });
-    } else if (Notification.permission !== "denied") {
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                sendNotification(blog); // retry once permission is granted
-            }
-        });
-    }
-}
+// function sendNotification(blog) {
+//     if (Notification.permission === "granted") {
+//         new Notification("📝 New Blog: " + blog.title, {
+//             body: blog.content.slice(0, 100) + "...",
+//             icon: blog.image_url || "/static/default_icon.png",
+//         });
+//     } else if (Notification.permission !== "denied") {
+//         Notification.requestPermission().then(permission => {
+//             if (permission === "granted") {
+//                 sendNotification(blog); // retry once permission is granted
+//             }
+//         });
+//     }
+// }
 
 async function verifyOtp(e) {
     e.preventDefault();

@@ -11,6 +11,21 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Alumni_Meet.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Alumni_Meet.settings")
+django_asgi_app = get_asgi_application()
 
-application = get_asgi_application()
+from channels.routing import ProtocolTypeRouter, URLRouter
+from Alumni_App.consumers import *
+from django.urls import re_path
+from channels.auth import AuthMiddlewareStack
+
+
+ws_patterns = [
+    re_path(r"ws/notifications/$", NotificationConsumer.as_asgi()),
+    re_path(r"^ws/chat/(?P<username>[^/]+)/$", ChatConsumer.as_asgi()),
+
+]
+
+application = ProtocolTypeRouter(
+    {"http": django_asgi_app, "websocket": AuthMiddlewareStack(URLRouter(ws_patterns))}
+)

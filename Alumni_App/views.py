@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
-from .models import Blog, Event, Alumni, Teacher, Student, CustomUser, FriendRequest
+from .models import *
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from datetime import datetime, timedelta
@@ -11,7 +11,8 @@ from django.contrib.auth.models import Group
 from django.contrib import messages
 from django.db.models import Q
 from django.conf import settings
-
+from .thread import *
+from django.http import JsonResponse
 import random
 import json
 
@@ -263,6 +264,7 @@ def details(request, slug):
 
     return render(request, "Pages/details.html", {"blog": blog})
 
+
 def new_blog(request):
     if request.method == "POST":
         title = request.POST.get("title")
@@ -276,10 +278,10 @@ def new_blog(request):
         # Send push and email notifications only after creation
         blog_url = request.build_absolute_uri(f"/blogs/{blog.slug}/")
 
-        #Email notification
+        # Email notification
         send_blog_notification(blog, request)
 
-        #Handle JSON response for AJAX
+        # Handle JSON response for AJAX
         if (
             request.headers.get("x-requested-with") == "XMLHttpRequest"
             or request.META.get("HTTP_ACCEPT") == "application/json"
@@ -406,8 +408,11 @@ def send_event_notification(event, request):
 
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [user.email for user in CustomUser.objects.all() if user.email]
-
     send_mail(subject, message, from_email, recipient_list)
+    Notifications.objects.create(
+        user=event.author,
+        notification=f"{event.author.get_full_name()} has created a new Event, check it out now.",
+    )
 
 
 def send_blog_notification(blog, request):
@@ -423,8 +428,11 @@ def send_blog_notification(blog, request):
         """
     from_email = settings.EMAIL_HOST_USER
     recipient_list = [user.email for user in CustomUser.objects.all() if user.email]
-
     send_mail(subject, message, from_email, recipient_list)
+    Notifications.objects.create(
+        user=blog.author,
+        notification=f"{blog.author.get_full_name()} has posted a new blog, check it out now.",
+    )
 
 
 def set_notify(request, slug):
@@ -441,16 +449,16 @@ def set_notify(request, slug):
 
 # Friends Page
 def friends_page(request):
-    query = request.GET.get('q', '')
+    query = request.GET.get("q", "")
     current_user = request.user
 
     friends = current_user.friends()  # ✅ This is your custom method
 
     if query:
         users = CustomUser.objects.filter(
-            Q(first_name__icontains=query) |
-            Q(last_name__icontains=query) |
-            Q(email__icontains=query)
+            Q(first_name__icontains=query)
+            | Q(last_name__icontains=query)
+            | Q(email__icontains=query)
         ).exclude(id=current_user.id)
     else:
         users = CustomUser.objects.exclude(id=current_user.id)
@@ -459,14 +467,14 @@ def friends_page(request):
     received_requests = FriendRequest.objects.filter(to_user=current_user)
 
     context = {
-        'query': query,
-        'users': users,
-        'friends': friends,
-        'sent_requests': sent_requests,
-        'received_requests': received_requests,
+        "query": query,
+        "users": users,
+        "friends": friends,
+        "sent_requests": sent_requests,
+        "received_requests": received_requests,
     }
 
-    return render(request, 'pages/friends.html', context)
+    return render(request, "pages/friends.html", context)
 
 
 # Send request
@@ -506,13 +514,14 @@ def cancel_request(request, user_id):
     ).delete()
     return redirect("FriendsPage")
 
+
 def notify_friend(request, user_id):
-  to_user =   get_object_or_404(CustomUser, id=user_id)
-  from_user=request.user
-  
-  if to_user.email:
-      subject=f"New friend request from {from_user.get_full_name()}"
-      message=f"""
+    to_user = get_object_or_404(CustomUser, id=user_id)
+    from_user = request.user
+
+    if to_user.email:
+        subject = f"New friend request from {from_user.get_full_name()}"
+        message = f"""
       Hi {to_user.first_name} {to_user.last_name},
       
       {from_user.first_name} {from_user.last_name} has sent you a friend request on Alumni Meet.
@@ -522,16 +531,30 @@ def notify_friend(request, user_id):
       Regards,
       Alumni Meet Team
       """
-      send_mail(
-          subject,
-          message,
-          settings.DEFAULT_FROM_EMAIL,
-         [to_user.email],
-         fail_silently=False,
-      )
-      
-      messages.success(request, "Notification sent successfully.")
-      
-  else:
+        send_mail(
+            subject,
+            message,
+            settings.DEFAULT_FROM_EMAIL,
+            [to_user.email],
+            fail_silently=False,
+        )
+
+        Notifications.objects.create(
+            user=to_user,
+            notification=f"You have a new friend request from {from_user.get_full_name()}",
+        )
+
+        messages.success(request, "Notification sent successfully.")
+
+    else:
         messages.warning(request, "User has no email associated with their account.")
-  return redirect("FriendsPage")
+    return redirect("FriendsPage")
+
+
+def get_notification(request):
+    try:
+        thread = NotificationThread()
+        thread.start()
+        return JsonResponse({"status": 200, "message": "Notification thread started."})
+    except Exception as e:
+        return JsonResponse({"status": 500, "error": str(e)})

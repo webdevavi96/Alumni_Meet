@@ -1,10 +1,14 @@
-from django.shortcuts import render, get_object_or_404
-from Alumni_App.models import CustomUser, Event, Blog, FriendRequest
-from .models import Community
+import django.contrib
+import django.dispatch
+from django.shortcuts import render, get_object_or_404, redirect
+from Alumni_App.models import *
+from django.contrib.auth.models import User
+from .models import Community, Messages
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.utils.timezone import now
 from datetime import timedelta
+
 
 
 def mainPage(request):
@@ -14,13 +18,21 @@ def mainPage(request):
         request, "master.html", {"users": users, "chat_user": chat_user, "chat": True}
     )
 
-
-# Chat Detail View
-def chat(request, user_id):
+def chat(request, username):
+    receiver = CustomUser.objects.get(username=username)
+    messages = Messages.objects.filter(
+        sender__in=[request.user, receiver],
+        receiver__in=[request.user, receiver]
+    )
     users = CustomUser.objects.exclude(id=request.user.id)
-    chat_user = get_object_or_404(CustomUser, id=user_id)
-
-    return render(request, "master.html", {"users": users, "chat_user": chat_user})
+    
+    
+    return render(request, 'master.html', {
+        'receiver': receiver,
+        'selected_user': receiver,
+        'messages': messages,
+        'users': users
+    })
 
 
 def community_page(request):
@@ -53,7 +65,7 @@ def notifications(request):
     recent_time = now() - timedelta(hours=24)
 
     # for new Blogs
-    blogs = Blog.objects.filter(created_at__gte=recent_time)
+    blogs = Blog.objects.filter(created_at=recent_time)
     blog_notifications = [
         {
             "type": "blog",
@@ -90,16 +102,16 @@ def notifications(request):
         for fr in friend_requests
     ]
 
-    # # for new Messages
-    # friend_messages = Message.objects.filter(receiver=user, is_read=False, timestamp__gte=recent_time)
-    # message_notifications = [
-    #     {
-    #         'type': 'chat_message',
-    #         'message': f"💬 New message from {msg.sender.get_full_name()}",
-    #         'timestamp': msg.timestamp.strftime("%Y-%m-%d %H:%M"),
-    #         'url': "/alumni_chat/"
-    #     } for msg in friend_messages
-    # ]
+    # for new Messages
+    friend_messages = Messages.objects.filter(receiver=user, is_read=False, timestamp__gte=recent_time)
+    message_notifications = [
+        {
+            'type': 'chat_message',
+            'message': f"💬 New message from {msg.sender.get_full_name()}",
+            'timestamp': msg.timestamp.strftime("%Y-%m-%d %H:%M"),
+            'url': "/alumni_chat/"
+        } for msg in friend_messages
+    ]
 
     # for Community Messages
     # community_messages = CommunityMessage.objects.filter(timestamp__gte=recent_time).exclude(sender=user)
@@ -114,6 +126,6 @@ def notifications(request):
 
     # # Merge all
     # notifications = blog_notifications + event_notifications + friend_notifications + message_notifications + community_notifications
-    notifications = blog_notifications + event_notifications + friend_notifications
+    notifications = blog_notifications + event_notifications + friend_notifications + message_notifications
     notifications.sort(key=lambda n: n["timestamp"], reverse=True)
     return JsonResponse({"notifications": notifications})
