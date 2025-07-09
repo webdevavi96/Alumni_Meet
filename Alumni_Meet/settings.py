@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "Alumni_App",
     "Alumni_Chat",
-    "django_browser_reload",
     "django_user_agents",
 ]
 
