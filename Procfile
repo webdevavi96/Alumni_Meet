@@ -1,1 +1,1 @@
-web: daphne Alumni_Meet.asgi:application
+web: daphne -b 0.0.0.0 -p $PORT Alumni_Meet.asgi:application
