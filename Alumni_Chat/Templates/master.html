@@ -170,7 +170,7 @@
 
     <script>
 
-        
+
         function openChat(userName) {
             const chatPanel = document.getElementById('chatPanel');
             const chatSidebar = document.getElementById('chatSidebar');
@@ -215,11 +215,11 @@
 
     {% if receiver %}
     <script>
-
+        const protocol = window.location.protocol === "https:" ? "wss://" : "ws://";
+        const host = window.location.host;
+        const socketUrl = protocol + host + "/ws/chat/" + username + "/";
         const username = encodeURIComponent("{{ receiver.username }}");
-        const socket = new WebSocket(
-            "ws://127.0.0.1:8000" + "/ws/chat/" + username + "/"
-        );
+        const socket = new WebSocket(socketUrl);
 
         socket.onmessage = function (e) {
             const data = JSON.parse(e.data);

@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
-    const notificationSocket = new WebSocket("ws://127.0.0.1:8000/ws/notifications/");
+    const notifSocketUrl = protocol + host + "/ws/notifications" + "/";
+    const notificationSocket = new WebSocket(notifSocketUrl);
 
     notificationSocket.onmessage = function (event) {
         const data = JSON.parse(event.data);
