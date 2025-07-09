@@ -1308,6 +1308,14 @@
         "documentation": {}
     },
     {
+        "label": "load_dotenv",
+        "importPath": "dotenv",
+        "description": "dotenv",
+        "isExtraImport": true,
+        "detail": "dotenv",
+        "documentation": {}
+    },
+    {
         "label": "Path",
         "importPath": "pathlib",
         "description": "pathlib",
@@ -2305,7 +2313,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"SECRET_KEY\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.environ.get(\"DEBUG\", \"False\") == \"True\"\nALLOWED_HOSTS = os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1\").split(\",\")\n# Application definition\nINSTALLED_APPS = [",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2314,7 +2322,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "SECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
+        "peekOfCode": "SECRET_KEY = \"SECRET_KEY\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.environ.get(\"DEBUG\", \"False\") == \"True\"\nALLOWED_HOSTS = os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1\").split(\",\")\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2323,7 +2331,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "DEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
+        "peekOfCode": "DEBUG = os.environ.get(\"DEBUG\", \"False\") == \"True\"\nALLOWED_HOSTS = os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1\").split(\",\")\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2332,7 +2340,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "ALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
+        "peekOfCode": "ALLOWED_HOSTS = os.environ.get(\"ALLOWED_HOSTS\", \"127.0.0.1\").split(\",\")\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2395,7 +2403,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"Alumni_Meet\",\n        \"USER\": \"root\",\n        \"PASSWORD\": \"laptop@63_88\",\n        \"HOST\": \"localhost\",\n        \"PORT\": \"3306\",\n    }\n}",
+        "peekOfCode": "DATABASES = {\n    \"default\": {\n        \"ENGINE\": \"django.db.backends.mysql\",\n        \"NAME\": \"DB_NAME\",\n        \"USER\": \"DB_USER\",\n        \"PASSWORD\": \"DB_PASSWORD\",\n        \"HOST\": \"DB_HOST\",\n        \"PORT\": \"DB_PORT\",\n    }\n}",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2494,7 +2502,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "DEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"\nAUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2503,7 +2511,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "AUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "AUTH_USER_MODEL = \"Alumni_App.CustomUser\"\nAUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2512,7 +2520,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "AUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\"Alumni_App.backends.EmailBackend\"]\n# To send email notifications to all users\nEMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2521,7 +2529,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_BACKEND = \"django.core.mail.backends.smtp.EmailBackend\"\nEMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2530,7 +2538,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_HOST = \"smtp.gmail.com\"\nEMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2539,7 +2547,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_PORT = 587\nEMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2548,7 +2556,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_USE_TLS = True\nEMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2557,7 +2565,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_HOST_USER = \"mmitcse3@gmail.com\"\nEMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_HOST_USER = \"EMAIL_HOST_USER\"\nEMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2566,7 +2574,43 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "EMAIL_HOST_PASSWORD = \"qsvj tbfn hnra yihp\"",
+        "peekOfCode": "EMAIL_HOST_PASSWORD = \"EMAIL_HOST_PASSWORD\"\nSECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_SSL_REDIRECT",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "SECURE_SSL_REDIRECT = True\nSESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SESSION_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "SESSION_COOKIE_SECURE = True\nCSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "CSRF_COOKIE_SECURE",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "CSRF_COOKIE_SECURE = True\nSECURE_HSTS_SECONDS = 3600",
+        "detail": "Alumni_Meet.settings",
+        "documentation": {}
+    },
+    {
+        "label": "SECURE_HSTS_SECONDS",
+        "kind": 5,
+        "importPath": "Alumni_Meet.settings",
+        "description": "Alumni_Meet.settings",
+        "peekOfCode": "SECURE_HSTS_SECONDS = 3600",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
