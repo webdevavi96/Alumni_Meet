@@ -1,0 +1,29 @@
+[
+  {
+    "model": "Alumni_App.blog",
+    "pk": 1,
+    "fields": {
+      "title": "Alumni Portal Launching",
+      "content": "Get ready to reconnect! We're thrilled to announce the launch of our alumni portal, a platform designed to bridge the gap between past and present. Here, you'll find a community of like-minded individuals who share your alma mater spirit. Share your journey through blogs, stay updated on upcoming events, and network with fellow alumni. Join us in celebrating this milestone and take the first step towards staying connected with your college family forever!",
+      "blog_image": "blog_images/Screenshot_2025-07-09_173703_rSncPuI.png",
+      "blog_details": "The Alumni Meet project is a comprehensive Django-based web application designed to foster collaboration, networking, and engagement among alumni, students, and teachers of an institution. This platform serves as a bridge to connect the academic community, enabling users to share experiences, insights, and updates. The application features a robust user management system that supports multiple user types, including alumni, students, and teachers, each with personalized profiles. Users can create and manage blogs, sharing their knowledge and experiences with the community, while the blog details page provides an in-depth view of each post, including content, images, and additional details. The platform also includes an events module, allowing users to stay informed about upcoming, ongoing, and past events, complete with detailed descriptions and statuses. With a responsive design, the application ensures seamless accessibility across devices, while its intuitive interface enhances user experience. The integration of media support for profile pictures and blog images adds a personal touch, making the platform visually engaging. Built with Django for the backend, Bootstrap for the frontend, and SQLite for the database, the project is a scalable and efficient solution for institutions aiming to strengthen their alumni network and foster a sense of community.",
+      "author": 2,
+      "created_at": "2025-05-01T12:55:02.012Z",
+      "slug": "alumni-portal-launching"
+    }
+  },
+  {
+    "model": "Alumni_App.event",
+    "pk": 1,
+    "fields": {
+      "title": "Alumni Portal Launch Event",
+      "description": "On this day our Alumni Portal has Launched to connect students together to build a good relation.",
+      "link": null,
+      "date": "2025-07-09",
+      "time": "19:00:00",
+      "author": 2,
+      "slug": "alumni-portal-launch-event",
+      "created_at": "2025-06-28T08:49:22.876Z"
+    }
+  }
+]

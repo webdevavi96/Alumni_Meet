@@ -481,6 +481,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -844,6 +868,14 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "pytz",
+        "description": "pytz",
+        "isExtraImport": true,
+        "detail": "pytz",
         "documentation": {}
     },
     {
@@ -1724,7 +1756,34 @@
         "kind": 6,
         "importPath": "Alumni_App.consumers",
         "description": "Alumni_App.consumers",
-        "peekOfCode": "class ChatConsumer(AsyncWebsocketConsumer):\n    async def connect(self):\n        self.sender = self.scope[\"user\"]\n        self.receiver_username = self.scope[\"url_route\"][\"kwargs\"][\"username\"]\n        self.receiver = await database_sync_to_async(CustomUser.objects.get)(username=self.receiver_username)\n        self.room_name = f\"{min(self.sender.id, self.receiver.id)}_{max(self.sender.id, self.receiver.id)}\"\n        self.room_group_name = f\"chat_{self.room_name}\"\n        await self.channel_layer.group_add(self.room_group_name, self.channel_name)\n        await self.accept()\n    async def disconnect(self, close_code):",
+        "peekOfCode": "class ChatConsumer(AsyncWebsocketConsumer):\n    async def connect(self):\n        self.sender = self.scope[\"user\"]\n        self.receiver_username = self.scope[\"url_route\"][\"kwargs\"][\"username\"]\n        self.receiver = await database_sync_to_async(CustomUser.objects.get)(\n            username=self.receiver_username\n        )\n        self.room_name = f\"{min(self.sender.id, self.receiver.id)}_{max(self.sender.id, self.receiver.id)}\"\n        self.room_group_name = f\"chat_{self.room_name}\"\n        await self.channel_layer.group_add(self.room_group_name, self.channel_name)",
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "IST",
+        "kind": 5,
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "peekOfCode": "IST = timezone(\"Asia/Kolkata\")\nONLINE_USERS = set()\nclass NotificationConsumer(AsyncJsonWebsocketConsumer):\n    async def connect(self):\n        self.room_name = \"notification_consumer\"\n        self.group_name = \"notification_group_consumer\"\n        await self.channel_layer.group_add(self.group_name, self.channel_name)\n        await self.accept()\n        notifications = await self.get_unsent_notifications()\n        await self.send_json(",
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "ONLINE_USERS",
+        "kind": 5,
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "peekOfCode": "ONLINE_USERS = set()\nclass NotificationConsumer(AsyncJsonWebsocketConsumer):\n    async def connect(self):\n        self.room_name = \"notification_consumer\"\n        self.group_name = \"notification_group_consumer\"\n        await self.channel_layer.group_add(self.group_name, self.channel_name)\n        await self.accept()\n        notifications = await self.get_unsent_notifications()\n        await self.send_json(\n            {\"type\": \"initial_notification_list\", \"status\": 200, \"data\": notifications}",
+        "detail": "Alumni_App.consumers",
+        "documentation": {}
+    },
+    {
+        "label": "ONLINE_USERS",
+        "kind": 5,
+        "importPath": "Alumni_App.consumers",
+        "description": "Alumni_App.consumers",
+        "peekOfCode": "ONLINE_USERS = set()\nclass ChatConsumer(AsyncWebsocketConsumer):\n    async def connect(self):\n        self.sender = self.scope[\"user\"]\n        self.receiver_username = self.scope[\"url_route\"][\"kwargs\"][\"username\"]\n        self.receiver = await database_sync_to_async(CustomUser.objects.get)(\n            username=self.receiver_username\n        )\n        self.room_name = f\"{min(self.sender.id, self.receiver.id)}_{max(self.sender.id, self.receiver.id)}\"\n        self.room_group_name = f\"chat_{self.room_name}\"",
         "detail": "Alumni_App.consumers",
         "documentation": {}
     },
@@ -2098,6 +2157,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_Chat.migrations.0003_messages_is_sen",
+        "description": "Alumni_Chat.migrations.0003_messages_is_sen",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_Chat', '0002_messages'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='messages',\n            name='is_sen',\n            field=models.BooleanField(default=False),\n        ),",
+        "detail": "Alumni_Chat.migrations.0003_messages_is_sen",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Alumni_Chat.migrations.0004_rename_is_sen_messages_is_seen",
+        "description": "Alumni_Chat.migrations.0004_rename_is_sen_messages_is_seen",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('Alumni_Chat', '0003_messages_is_sen'),\n    ]\n    operations = [\n        migrations.RenameField(\n            model_name='messages',\n            old_name='is_sen',\n            new_name='is_seen',\n        ),",
+        "detail": "Alumni_Chat.migrations.0004_rename_is_sen_messages_is_seen",
+        "documentation": {}
+    },
+    {
         "label": "CommunityAdmin",
         "kind": 6,
         "importPath": "Alumni_Chat.admin",
@@ -2129,7 +2206,7 @@
         "kind": 6,
         "importPath": "Alumni_Chat.models",
         "description": "Alumni_Chat.models",
-        "peekOfCode": "class Messages(models.Model):\n    sender = models.ForeignKey(CustomUser,on_delete=models.CASCADE, related_name=\"sent_messages\")\n    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name=\"received_messages\")\n    content = models.TextField()\n    timestamp = models.DateTimeField(auto_now_add=True)\n    class Meta:\n        ordering = [\"timestamp\"]",
+        "peekOfCode": "class Messages(models.Model):\n    sender = models.ForeignKey(CustomUser,on_delete=models.CASCADE, related_name=\"sent_messages\")\n    receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name=\"received_messages\")\n    content = models.TextField()\n    timestamp = models.DateTimeField(auto_now_add=True)\n    is_seen = models.BooleanField(default=False)\n    class Meta:\n        ordering = [\"timestamp\"]",
         "detail": "Alumni_Chat.models",
         "documentation": {}
     },
@@ -2138,7 +2215,7 @@
         "kind": 5,
         "importPath": "Alumni_Chat.urls",
         "description": "Alumni_Chat.urls",
-        "peekOfCode": "urlpatterns = [\n    # Communities\n    path(\"communities/\", views.community_page, name=\"Communities\"),\n    # Settings\n    path(\"settings/\", views.settings, name=\"Settings\"),\n    # Chats\n    path(\"\", views.mainPage, name=\"ChatHome\"),\n    path(\"chat/<str:username>/\", views.chat, name=\"chat_room\"),\n    # Notifications\n    path(\"notifications/\", views.notifications, name=\"notifications\"),",
+        "peekOfCode": "urlpatterns = [\n    # Communities\n    path(\"communities/\", views.community_page, name=\"Communities\"),\n    # Settings\n    path(\"settings/\", views.settings, name=\"Settings\"),\n    # Chats\n    path(\"\", views.mainPage, name=\"ChatHome\"),\n    path(\"chat/<str:username>/\", views.chat, name=\"chat_room\"),\n    path(\"save_message/\", views.saveMessage, name=\"save_message\"),\n    path(\"get_messages/\", views.getMessages, name=\"get_messages\"),",
         "detail": "Alumni_Chat.urls",
         "documentation": {}
     },
@@ -2147,7 +2224,7 @@
         "kind": 2,
         "importPath": "Alumni_Chat.views",
         "description": "Alumni_Chat.views",
-        "peekOfCode": "def mainPage(request):\n    users = CustomUser.objects.all().exclude(id=request.user.id)\n    chat_user = None\n    return render(\n        request, \"master.html\", {\"users\": users, \"chat_user\": chat_user, \"chat\": True}\n    )\ndef chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver],",
+        "peekOfCode": "def mainPage(request):\n    users = CustomUser.objects.all().exclude(id=request.user.id)\n    chat_user = None\n    return render(\n        request, \"master.html\", {\"users\": users, \"chat_user\": chat_user, \"chat\": True}\n    )\ndef chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver], receiver__in=[request.user, receiver]",
         "detail": "Alumni_Chat.views",
         "documentation": {}
     },
@@ -2156,7 +2233,7 @@
         "kind": 2,
         "importPath": "Alumni_Chat.views",
         "description": "Alumni_Chat.views",
-        "peekOfCode": "def chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver],\n        receiver__in=[request.user, receiver]\n    )\n    users = CustomUser.objects.exclude(id=request.user.id)\n    return render(request, 'master.html', {\n        'receiver': receiver,\n        'selected_user': receiver,",
+        "peekOfCode": "def chat(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver], receiver__in=[request.user, receiver]\n    )\n    users = CustomUser.objects.exclude(id=request.user.id)\n    return render(\n        request,\n        \"master.html\",\n        {",
         "detail": "Alumni_Chat.views",
         "documentation": {}
     },
@@ -2188,20 +2265,29 @@
         "documentation": {}
     },
     {
+        "label": "saveMessage",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def saveMessage(request):\n    if request.method == \"POST\":\n        sender = request.User\n        receiver = request.POST.get(\"receiver\")\n        content = request.POST.get(\"content\")\n        timestamp = now()\n        message = Messages.objects.create(\n            sender=sender, receiver=receiver, content=content, timestamp=timestamp\n        )\n        return JsonResponse({\"status\": \"success\"})",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
+        "label": "getMessages",
+        "kind": 2,
+        "importPath": "Alumni_Chat.views",
+        "description": "Alumni_Chat.views",
+        "peekOfCode": "def getMessages(request, username):\n    receiver = CustomUser.objects.get(username=username)\n    messages = Messages.objects.filter(\n        sender__in=[request.user, receiver], receiver__in=[request.user, receiver]\n    ).order_by(\"timestamp\")\n    return JsonResponse(\n        {\n            \"messages\": [\n                {\n                    \"sender\": msg.sender.username,",
+        "detail": "Alumni_Chat.views",
+        "documentation": {}
+    },
+    {
         "label": "django_asgi_app",
         "kind": 5,
         "importPath": "Alumni_Meet.asgi",
         "description": "Alumni_Meet.asgi",
-        "peekOfCode": "django_asgi_app = get_asgi_application()\nfrom channels.routing import ProtocolTypeRouter, URLRouter\nfrom Alumni_App.consumers import *\nfrom django.urls import re_path\nfrom channels.auth import AuthMiddlewareStack\nws_patterns = [\n    re_path(r\"ws/notifications/$\", NotificationConsumer.as_asgi()),\n    re_path(r\"^ws/chat/(?P<username>[^/]+)/$\", ChatConsumer.as_asgi()),\n]\napplication = ProtocolTypeRouter(",
-        "detail": "Alumni_Meet.asgi",
-        "documentation": {}
-    },
-    {
-        "label": "ws_patterns",
-        "kind": 5,
-        "importPath": "Alumni_Meet.asgi",
-        "description": "Alumni_Meet.asgi",
-        "peekOfCode": "ws_patterns = [\n    re_path(r\"ws/notifications/$\", NotificationConsumer.as_asgi()),\n    re_path(r\"^ws/chat/(?P<username>[^/]+)/$\", ChatConsumer.as_asgi()),\n]\napplication = ProtocolTypeRouter(\n    {\"http\": django_asgi_app, \"websocket\": AuthMiddlewareStack(URLRouter(ws_patterns))}\n)",
+        "peekOfCode": "django_asgi_app = get_asgi_application()\nfrom channels.routing import ProtocolTypeRouter, URLRouter\nfrom Alumni_App.consumers import *\nfrom django.urls import re_path\nfrom channels.auth import AuthMiddlewareStack\napplication = ProtocolTypeRouter({\n    \"http\": get_asgi_application(),\n    \"websocket\": AuthMiddlewareStack(\n        URLRouter([\n            re_path(r\"^ws/notifications/$\", NotificationConsumer.as_asgi()),",
         "detail": "Alumni_Meet.asgi",
         "documentation": {}
     },
@@ -2210,7 +2296,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.asgi",
         "description": "Alumni_Meet.asgi",
-        "peekOfCode": "application = ProtocolTypeRouter(\n    {\"http\": django_asgi_app, \"websocket\": AuthMiddlewareStack(URLRouter(ws_patterns))}\n)",
+        "peekOfCode": "application = ProtocolTypeRouter({\n    \"http\": get_asgi_application(),\n    \"websocket\": AuthMiddlewareStack(\n        URLRouter([\n            re_path(r\"^ws/notifications/$\", NotificationConsumer.as_asgi()),\n            re_path(r\"^ws/chat/(?P<username>[^/]+)/$\", ChatConsumer.as_asgi()),\n        ])\n    ),\n})",
         "detail": "Alumni_Meet.asgi",
         "documentation": {}
     },
@@ -2219,7 +2305,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2228,7 +2314,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "SECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
+        "peekOfCode": "SECRET_KEY = \"django-insecure-fmmdum$@^oul#c3)iml6@n9#iuu%3h&mr4l$+uo3i5rx17=#co\"\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2237,7 +2323,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
+        "peekOfCode": "DEBUG = False\nALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2246,7 +2332,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "ALLOWED_HOSTS = [\"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
+        "peekOfCode": "ALLOWED_HOSTS = [\".railway.app\", \"127.0.0.1\"]\n# Application definition\nINSTALLED_APPS = [\n    \"channels\",\n    \"django.contrib.admin\",\n    \"django.contrib.auth\",\n    \"django.contrib.contenttypes\",\n    \"django.contrib.sessions\",\n    \"django.contrib.messages\",\n    \"django.contrib.staticfiles\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2264,7 +2350,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    \"django.middleware.security.SecurityMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",\n    \"django.middleware.csrf.CsrfViewMiddleware\",\n    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\n    \"django.contrib.messages.middleware.MessageMiddleware\",\n    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\n    \"django_user_agents.middleware.UserAgentMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",",
+        "peekOfCode": "MIDDLEWARE = [\n    \"whitenoise.middleware.WhiteNoiseMiddleware\",\n    \"django.middleware.security.SecurityMiddleware\",\n    \"django.contrib.sessions.middleware.SessionMiddleware\",\n    \"django.middleware.common.CommonMiddleware\",\n    \"django.middleware.csrf.CsrfViewMiddleware\",\n    \"django.contrib.auth.middleware.AuthenticationMiddleware\",\n    \"django.contrib.messages.middleware.MessageMiddleware\",\n    \"django.middleware.clickjacking.XFrameOptionsMiddleware\",\n    \"django_user_agents.middleware.UserAgentMiddleware\",",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2291,7 +2377,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "ASGI_APPLICATION = \"Alumni_Meet.asgi.application\"\nCHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [(\"127.0.0.1\", 6379)],\n        },\n    },\n}\n# Database",
+        "peekOfCode": "ASGI_APPLICATION = \"Alumni_Meet.asgi.application\"\nCHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [os.environ.get(\"REDIS_URL\", \"redis://localhost:6379\")],\n        },\n    },\n}\n# Database",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },
@@ -2300,7 +2386,7 @@
         "kind": 5,
         "importPath": "Alumni_Meet.settings",
         "description": "Alumni_Meet.settings",
-        "peekOfCode": "CHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [(\"127.0.0.1\", 6379)],\n        },\n    },\n}\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases",
+        "peekOfCode": "CHANNEL_LAYERS = {\n    \"default\": {\n        \"BACKEND\": \"channels_redis.core.RedisChannelLayer\",\n        \"CONFIG\": {\n            \"hosts\": [os.environ.get(\"REDIS_URL\", \"redis://localhost:6379\")],\n        },\n    },\n}\n# Database\n# https://docs.djangoproject.com/en/5.2/ref/settings/#databases",
         "detail": "Alumni_Meet.settings",
         "documentation": {}
     },

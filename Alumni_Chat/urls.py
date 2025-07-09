@@ -9,6 +9,9 @@ urlpatterns = [
     # Chats
     path("", views.mainPage, name="ChatHome"),
     path("chat/<str:username>/", views.chat, name="chat_room"),
+    path("save_message/", views.saveMessage, name="save_message"),
+    path("get_messages/", views.getMessages, name="get_messages"),
     # Notifications
     path("notifications/", views.notifications, name="notifications"),
+    
 ]

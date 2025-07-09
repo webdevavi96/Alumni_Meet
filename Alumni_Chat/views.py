@@ -10,7 +10,6 @@ from django.utils.timezone import now
 from datetime import timedelta
 
 
-
 def mainPage(request):
     users = CustomUser.objects.all().exclude(id=request.user.id)
     chat_user = None
@@ -18,21 +17,24 @@ def mainPage(request):
         request, "master.html", {"users": users, "chat_user": chat_user, "chat": True}
     )
 
+
 def chat(request, username):
     receiver = CustomUser.objects.get(username=username)
     messages = Messages.objects.filter(
-        sender__in=[request.user, receiver],
-        receiver__in=[request.user, receiver]
+        sender__in=[request.user, receiver], receiver__in=[request.user, receiver]
     )
     users = CustomUser.objects.exclude(id=request.user.id)
-    
-    
-    return render(request, 'master.html', {
-        'receiver': receiver,
-        'selected_user': receiver,
-        'messages': messages,
-        'users': users
-    })
+
+    return render(
+        request,
+        "master.html",
+        {
+            "receiver": receiver,
+            "selected_user": receiver,
+            "messages": messages,
+            "users": users,
+        },
+    )
 
 
 def community_page(request):
@@ -103,14 +105,17 @@ def notifications(request):
     ]
 
     # for new Messages
-    friend_messages = Messages.objects.filter(receiver=user, is_read=False, timestamp__gte=recent_time)
+    friend_messages = Messages.objects.filter(
+        receiver=user, is_read=False, timestamp__gte=recent_time
+    )
     message_notifications = [
         {
-            'type': 'chat_message',
-            'message': f"💬 New message from {msg.sender.get_full_name()}",
-            'timestamp': msg.timestamp.strftime("%Y-%m-%d %H:%M"),
-            'url': "/alumni_chat/"
-        } for msg in friend_messages
+            "type": "chat_message",
+            "message": f"💬 New message from {msg.sender.get_full_name()}",
+            "timestamp": msg.timestamp.strftime("%Y-%m-%d %H:%M"),
+            "url": "/alumni_chat/",
+        }
+        for msg in friend_messages
     ]
 
     # for Community Messages
@@ -126,6 +131,44 @@ def notifications(request):
 
     # # Merge all
     # notifications = blog_notifications + event_notifications + friend_notifications + message_notifications + community_notifications
-    notifications = blog_notifications + event_notifications + friend_notifications + message_notifications
+    notifications = (
+        blog_notifications
+        + event_notifications
+        + friend_notifications
+        + message_notifications
+    )
     notifications.sort(key=lambda n: n["timestamp"], reverse=True)
     return JsonResponse({"notifications": notifications})
+
+
+def saveMessage(request):
+    if request.method == "POST":
+        sender = request.User
+        receiver = request.POST.get("receiver")
+        content = request.POST.get("content")
+        timestamp = now()
+        message = Messages.objects.create(
+            sender=sender, receiver=receiver, content=content, timestamp=timestamp
+        )
+        return JsonResponse({"status": "success"})
+
+
+def getMessages(request, username):
+    receiver = CustomUser.objects.get(username=username)
+    messages = Messages.objects.filter(
+        sender__in=[request.user, receiver], receiver__in=[request.user, receiver]
+    ).order_by("timestamp")
+    
+    return JsonResponse(
+        {
+            "messages": [
+                {
+                    "sender": msg.sender.username,
+                    "receiver": msg.receiver.username,
+                    "content": msg.content,
+                    "timestamp": msg.timestamp.strftime("%Y-%m-%d %H:%M"),
+                }
+                for msg in messages
+            ]
+        }
+    )

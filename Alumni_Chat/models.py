@@ -25,6 +25,7 @@ class Messages(models.Model):
     receiver = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="received_messages")
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    is_seen = models.BooleanField(default=False)
     
     class Meta:
         ordering = ["timestamp"]

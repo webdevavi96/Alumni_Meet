@@ -40,7 +40,7 @@
                         {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link text-success fs-4" href="{% url 'Communities' %}" title="Community">
+                            <a class="nav-link text-success fs-4"  href="{% url 'Communities' %}" title="Community">
                                 <i class="bi bi-people"></i>
                             </a>
                         </li>
@@ -221,13 +221,17 @@
 
         socket.onmessage = function (e) {
             const data = JSON.parse(e.data);
-
             const msgDiv = document.createElement('div');
             msgDiv.className = (data.sender === "{{ user.username }}") ? 'sent' : 'received';
             msgDiv.innerHTML = `
         ${data.message}
         <small>${data.timestamp}</small>
     `;
+            const chatSound = new Audio("{% static 'audio/chatSound.mp3' %}");
+            chatSound.play();
+            chatSound.addEventListener('ended', () => {
+                chatSound.currentTime = 0;
+            })
             document.querySelector('#chatBody').appendChild(msgDiv);
             chatBody.scrollTop = chatBody.scrollHeight;
         };
