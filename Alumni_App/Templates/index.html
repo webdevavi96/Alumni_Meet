@@ -1,6 +1,5 @@
 {% load static %}
-{% load django_browser_reload %}
-{% django_browser_reload_script %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -266,7 +265,8 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center gap-1 text-dark small" href="{% url 'ChatPage' %}">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'ChatPage' %}">
                                 <i class="bi bi-chat-dots-fill"></i> <span class="d-none d-md-inline">Chats</span>
                             </a>
                         </li>
@@ -330,6 +330,9 @@
 
         <!-- Footer -->
         <footer class=" text-white pt-5 mt-5">
+
+             <p class="text-center text-bg-danger text-white fw-bold py-3" style="font-size: 16px;">Some features are under testing phase so may be bugs aquire. We are seeking for suggestions and imporvements. If you have any suggestions or you pahses any bugs, please notify the <a class="text-primary" href="https://webdevavi96.netlify.app/">developer</a>.</p>
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
@@ -476,7 +479,7 @@
         });
     </script>
 
-  
+
 
 </body>
 

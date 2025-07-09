@@ -1,6 +1,4 @@
 {% load static %}
-{% load django_browser_reload %}
-{% django_browser_reload_script %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +38,7 @@
                         {% endif %}
 
                         <li class="nav-item">
-                            <a class="nav-link text-success fs-4"  href="{% url 'Communities' %}" title="Community">
+                            <a class="nav-link text-success fs-4" href="{% url 'Communities' %}" title="Community">
                                 <i class="bi bi-people"></i>
                             </a>
                         </li>
@@ -162,13 +160,17 @@
 
         </div>
     </div>
+
     {% endblock %}
+
+
+
     <script src="{% static 'script/fetch.js' %}"></script>
     <script src="{% static 'css\node_modules\bootstrap\dist\js\bootstrap.bundle.min.js' %}"></script>
 
     <script>
 
-
+        
         function openChat(userName) {
             const chatPanel = document.getElementById('chatPanel');
             const chatSidebar = document.getElementById('chatSidebar');
