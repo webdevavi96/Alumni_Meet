@@ -35,7 +35,7 @@ SECRET_KEY = "SECRET_KEY"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS","mmitalumni.up.railway.app/").split(",")
+ALLOWED_HOSTS = "mmitalumni.up.railway.app"
 
 
 # Application definition
