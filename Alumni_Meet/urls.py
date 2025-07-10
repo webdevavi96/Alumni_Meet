@@ -43,7 +43,6 @@ urlpatterns = [
     path('get_latest_blog/', views.latest_blog, name='get_latest_blog'),
     path('alumni_chat/', include('Alumni_Chat.urls')),
     path('chats', mainPage, name="ChatPage"),
-    path("__reload__/", include("django_browser_reload.urls")),
     path('friends/', views.friends_page, name='FriendsPage'),
     path('send-request/<int:user_id>/', views.send_request, name='SendRequest'),
     path('accept-request/<int:request_id>/', views.accept_request, name='AcceptRequest'),
