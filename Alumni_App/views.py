@@ -352,7 +352,7 @@ def events(request):
         else:
             event.status = "Ended"
 
-    return render(request, "pages/events.html", {"eventData": eventData})
+    return render(request, "Pages/events.html", {"eventData": eventData})
 
 
 def new_event(request):
@@ -472,7 +472,7 @@ def friends_page(request):
         "received_requests": received_requests,
     }
 
-    return render(request, "pages/friends.html", context)
+    return render(request, "Pages/friends.html", context)
 
 
 # Send request
