@@ -24,7 +24,7 @@ def home(request):
     context = {
         "show_header": True,
     }
-    return render(request, "index.html", context)
+    return render(request, "Alumni_App/Templates/index.html", context)
 
 
 @login_required
@@ -44,7 +44,7 @@ def admin_profile(request):
         "students": students,
         "social_profiles": social_profiles,
     }
-    return render(request, "Pages/admin_profile.html", context)
+    return render(request, "Alumni_App/Templates/Pages/admin_profile.html", context)
 
 
 @login_required
@@ -65,7 +65,7 @@ def student_profile(request, student_id):
         "user": user,
         "social_profiles": social_profiles,
     }
-    return render(request, "Pages/student_profile.html", context)
+    return render(request, "Alumni_App/Templates/Pages/student_profile.html", context)
 
 
 def login(request):
@@ -90,9 +90,9 @@ def login(request):
                     return redirect("signIn")
         else:
             messages.error(request, "Invalid email or password.")
-            return render(request, "Pages/signIn.html", status=401)
+            return render(request, "Alumni_App/Templates/Pages/signIn.html", status=401)
 
-    return render(request, "Pages/signIn.html")
+    return render(request, "Alumni_App/Templates/Pages/signIn.html")
 
 
 def logout(request):
@@ -100,7 +100,6 @@ def logout(request):
     return redirect("login")
 
 
-from django.shortcuts import redirect
 
 
 def signUp(request):
@@ -118,7 +117,7 @@ def signUp(request):
         # Check email uniqueness
         if CustomUser.objects.filter(email=email).exists():
             return render(
-                request, "Pages/signUp.html", {"error": "Email already registered."}
+                request, "Alumni_App/Templates/Pages/signUp.html", {"error": "Email already registered."}
             )
 
         # Generate OTP
@@ -147,7 +146,7 @@ def signUp(request):
 
         return redirect("verify_otp")
 
-    return render(request, "Pages/signUp.html")
+    return render(request, "Alumni_App/Templates/Pages/signUp.html")
 
 
 @csrf_exempt
@@ -246,14 +245,14 @@ def verify_otp(request):
     if not temp_user:
         return redirect("signUp")
     email = temp_user.get("email")
-    return render(request, "Pages/verify_otp.html", {"email": email})
+    return render(request, "Alumni_App/Templates/Pages/verify_otp.html", {"email": email})
 
 
 @login_required
 def blogs(request):
     blogData = Blog.objects.all()
     user = request.user
-    return render(request, "Pages/blogs.html", {"blogData": blogData, "user": user})
+    return render(request, "Alumni_App/Templates/Pages/blogs.html", {"blogData": blogData, "user": user})
 
 
 def details(request, slug):
@@ -262,7 +261,7 @@ def details(request, slug):
     except Blog.DoesNotExist:
         return HttpResponse("Blog not found")
 
-    return render(request, "Pages/details.html", {"blog": blog})
+    return render(request, "Alumni_App/Templates/Pages/details.html", {"blog": blog})
 
 
 def new_blog(request):
@@ -301,7 +300,7 @@ def new_blog(request):
 
         return redirect("blogs")
 
-    return render(request, "Pages/new_blog.html")
+    return render(request, "Alumni_App/Templates/Pages/new_blog.html")
 
 
 def delete_blog(request, slug):
@@ -354,7 +353,7 @@ def events(request):
         else:
             event.status = "Ended"
 
-    return render(request, "pages/events.html", {"eventData": eventData})
+    return render(request, "Alumni_App/Templates/pages/events.html", {"eventData": eventData})
 
 
 def new_event(request):
@@ -379,7 +378,7 @@ def new_event(request):
         send_event_notification(event, request)
         return redirect("events")
 
-    return render(request, "Pages/new_event.html")
+    return render(request, "Alumni_App/Templates/Pages/new_event.html")
 
 
 def delete_event(request, slug):
@@ -452,7 +451,7 @@ def friends_page(request):
     query = request.GET.get("q", "")
     current_user = request.user
 
-    friends = current_user.friends()  # ✅ This is your custom method
+    friends = current_user.friends()
 
     if query:
         users = CustomUser.objects.filter(
@@ -474,7 +473,7 @@ def friends_page(request):
         "received_requests": received_requests,
     }
 
-    return render(request, "pages/friends.html", context)
+    return render(request, "Alumni_App/Templates/pages/friends.html", context)
 
 
 # Send request

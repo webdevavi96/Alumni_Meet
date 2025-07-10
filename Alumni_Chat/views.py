@@ -14,7 +14,7 @@ def mainPage(request):
     users = CustomUser.objects.all().exclude(id=request.user.id)
     chat_user = None
     return render(
-        request, "master.html", {"users": users, "chat_user": chat_user, "chat": True}
+        request, "Alumni_Chat/Templates/master.html", {"users": users, "chat_user": chat_user, "chat": True}
     )
 
 
@@ -27,7 +27,7 @@ def chat(request, username):
 
     return render(
         request,
-        "master.html",
+        "Alumni_Chat/Templates/master.html",
         {
             "receiver": receiver,
             "selected_user": receiver,
@@ -47,7 +47,7 @@ def community_page(request):
 
     return render(
         request,
-        "pages/community.html",
+        "Alumni_Chat/Templates/pages/community.html",
         {
             "communities": communities,
             "selected_community": selected_community,
@@ -57,7 +57,7 @@ def community_page(request):
 
 # Settings Page
 def settings(request):
-    return render(request, "pages/settings.html")
+    return render(request, "Alumni_Chat/Templates/pages/settings.html")
 
 
 # Notifications Pannel
