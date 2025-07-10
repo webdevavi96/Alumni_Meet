@@ -251,6 +251,7 @@
                                 <i class="bi bi-house-door-fill"></i> <span class="d-none d-md-inline">Home</span>
                             </a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center gap-1 text-dark small"
                                 href="{% url 'blogs' %}">
@@ -263,7 +264,7 @@
                                 <i class="bi bi-calendar-event-fill"></i> <span class="d-none d-md-inline">Events</span>
                             </a>
                         </li>
-                        {% if user.is_authenticated %}
+
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center gap-1 text-dark small"
                                 href="{% url 'ChatPage' %}">
@@ -283,6 +284,10 @@
                                 <i class="bi bi-box-arrow-in-right"></i> <span class="d-none d-md-inline">Sign In</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center gap-1 text-dark small"
+                                href="{% url 'signUp' %}">
+                                <i class="bi bi-person-plus-fill"></i> <span class="d-none d-md-inline">Sign Up</span>
                         {% endif %}
                     </ul>
                 </div>
@@ -331,7 +336,10 @@
         <!-- Footer -->
         <footer class=" text-white pt-5 mt-5">
 
-             <p class="text-center text-bg-danger text-white fw-bold py-3" style="font-size: 16px;">Some features are under testing phase so may be bugs aquire. We are seeking for suggestions and imporvements. If you have any suggestions or you pahses any bugs, please notify the <a class="text-primary" href="https://webdevavi96.netlify.app/">developer</a>.</p>
+            <p class="text-center text-bg-danger text-white fw-bold py-3" style="font-size: 16px;">Some features are
+                under testing phase so may be bugs aquire. We are seeking for suggestions and imporvements. If you have
+                any suggestions or you pahses any bugs, please notify the <a class="text-primary"
+                    href="https://webdevavi96.netlify.app/">developer</a>.</p>
 
             <div class="container">
                 <div class="row">
