@@ -273,13 +273,10 @@ def new_blog(request):
             title=title, content=content, blog_image=image, author=request.user
         )
 
-        # Send push and email notifications only after creation
         blog_url = request.build_absolute_uri(f"/blogs/{blog.slug}/")
 
-        # Email notification
         send_blog_notification(blog, request)
 
-        # Handle JSON response for AJAX
         if (
             request.headers.get("x-requested-with") == "XMLHttpRequest"
             or request.META.get("HTTP_ACCEPT") == "application/json"
@@ -450,7 +447,7 @@ def friends_page(request):
     query = request.GET.get("q", "")
     current_user = request.user
 
-    friends = current_user.friends()  # ✅ This is your custom method
+    friends = current_user.friends()
 
     if query:
         users = CustomUser.objects.filter(
