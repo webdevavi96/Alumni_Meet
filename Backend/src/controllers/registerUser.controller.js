@@ -6,24 +6,24 @@ import uploadToCloudinary from "../utils/cloudinary.js";
 
 // generating Refresh and Access Token ->
 const generateAccessandRefreshToken = async (userId) => {
-  try {
-    const user = await User.findById(userId);
-    if (!user) throw new ApiError(404, "User not found");
+    try {
+        const user = await User.findById(userId);
+        if (!user) throw new ApiError(404, "User not found");
 
-    // make sure these methods return tokens
-    const accessToken = user.generateAccessToken();
-    const refreshToken = user.generateRefreshToken();
+        // make sure these methods return tokens
+        const accessToken = user.generateAccessToken();
+        const refreshToken = user.generateRefreshToken();
 
-    // store refresh token in DB
-    user.refreshToken = refreshToken;
-    await user.save({ validateBeforeSave: false });
+        // store refresh token in DB
+        user.refreshToken = refreshToken;
+        await user.save({ validateBeforeSave: false });
 
-    return { accessToken, refreshToken };
+        return { accessToken, refreshToken };
 
-  } catch (error) {
-    console.error("Error generating tokens:", error);
-    throw new ApiError(500, "Internal server error. Please try again later.");
-  }
+    } catch (error) {
+        console.error("Error generating tokens:", error);
+        throw new ApiError(500, "Internal server error. Please try again later.");
+    }
 };
 
 // Options for cookies security ->
@@ -36,7 +36,7 @@ const options = {
 // Register controller ->
 const registerUser = asyncHandler(async (req, res) => {
     const { userType, fullName, username, email, gender, password } = req.body;
-    if ((!userType || !fullName || !username || !email || !gender || !password)) throw new ApiError(400, "User type is required");
+    if ((!userType || !fullName || !username || !email || !gender || !password)) throw new ApiError(400, "All fields are required");
 
     let userData = {};
     userData.fullName = fullName;
@@ -63,28 +63,19 @@ const registerUser = asyncHandler(async (req, res) => {
     };
 
     if (userType === "Alumni") {
-        const { passingYear, branch, jobTitle, compony } = req.body;
-        if ((!passingYear || !branch || !jobTitle || !compony)) throw new ApiError(400, "All fields are required");
+        const { passingYear, branch, jobTitle, company } = req.body;
+        if ((!passingYear || !branch || !jobTitle || !company)) throw new ApiError(400, "All Alumni fields are required");
         userData.passingYear = passingYear;
         userData.branch = branch;
         userData.jobTitle = jobTitle;
-        userData.compony = compony;
+        userData.company = company;
     };
 
     const avatarLocalPath = req.files?.avatarImage[0]?.path;
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
-
     if (!avatarLocalPath) throw new ApiError(400, "Avatar file is required");
     const avatar = await uploadToCloudinary(avatarLocalPath);
     if (!avatar) throw new ApiError(501, "Something went wrong while uploading your avatar image");
     userData.avatar = avatar.url;
-
-    let coverImage;
-    if (coverImageLocalPath) {
-        coverImage = await uploadToCloudinary(coverImageLocalPath);
-        if (!coverImage) throw new ApiError(501, "Something went wrong while uploading your cover image");
-        userData.coverImage = coverImage.url;
-    }
 
     const user = await User.create(userData);
     if (!user) throw new ApiError(500, "Internal server error");
@@ -93,11 +84,10 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // Login Contrller ->
 const logInUser = asyncHandler(async (req, res) => {
-    const { username, email, password } = req.body;
-
-    if (!(username || email)) throw new ApiError(400, "username or email is required!");
+    const { email, password } = req.body;
+    if (!email) throw new ApiError(400, "email is required!");
     if (!password) throw new ApiError(400, "Password is required");
-    const user = await User.findOne({ $or: [{ username }, { email }] });
+    const user = await User.findOne({ email });
     if (!user) throw new ApiError(404, "User not found, check your credentials and try again");
 
     const isPassword = await user.isPasswordCorrect(password);

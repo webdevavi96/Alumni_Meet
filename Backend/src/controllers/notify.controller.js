@@ -1,5 +1,5 @@
 import { Notification } from "../models/notify.models.js";
-import sendMail from "../utils/sendMail.js";
+import {sendMail} from "../utils/sendMail.js";
 import { isValidObjectId } from "mongoose";
 import { User } from "../models/user.models.js";
 import { Event } from "../models/events.models.js";

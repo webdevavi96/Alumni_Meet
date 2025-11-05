@@ -1,11 +1,11 @@
 import { React, useContext } from 'react';
 import { useForm } from "react-hook-form"
-import { login } from '../../services/authService'
+import { logInUser } from '../../services/authService'
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../utils/authContext';
+import { AuthContext } from '../../utils/authContext.jsx';
 
 function Login() {
-  const { setIsAuthenticated } = useContext(AuthContext)
+  const { login } = useContext(AuthContext);
   const Navigate = useNavigate()
   const {
     register,
@@ -14,21 +14,34 @@ function Login() {
     formState: { errors, isSubmitting },
   } = useForm()
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     try {
-      const response = await login(data)
+
+      if (!data.email || !data.password) {
+        alert("All fields are required");
+        return;
+      }
+
+
+
+      const response = await logInUser(data);
+      console.log(response)
+
       if (response.status === 200) {
-        setIsAuthenticated(true)
-        reset()
-        Navigate('/home')
+        const user = await response.data.user;
+        const accessToken = response.data.accessToken;
+        login(user, accessToken);
+        navigate('/home');
+      } else {
+        console.log(response.status);
       }
-      else{
-        console.log(response.status)
-      }
+
     } catch (error) {
-      console.error("Login failed:", error)
+      console.error("Login failed:", error);
     }
-  }
+  };
 
   return (
     <>

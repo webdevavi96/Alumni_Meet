@@ -1,13 +1,15 @@
-import { Suspense } from 'react';
-import { StrictMode, lazy } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Loader from './components/Loader/Loader';
+import { AuthContextProvider } from './utils/authContext.jsx';
+
 // import './index.css'
 import App from './App.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
   </StrictMode>,
 )

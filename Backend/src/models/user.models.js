@@ -31,6 +31,7 @@ const userSchema = new mongoose.Schema({
     },
     avatar: {
         type: String,
+        required: true
     },
     coverImage: {
         type: String,
@@ -55,7 +56,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 
 // Generating access token.
 userSchema.methods.generateAccessToken = function () {
-   return jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             username: this.username,

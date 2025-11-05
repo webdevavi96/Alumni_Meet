@@ -1,21 +1,31 @@
 // Login, Registration, Logout, Token verification code will be written here ->
 import axios from 'axios';
 
-export async function login(data) {
+export async function logInUser(data) {
     // Logic for user login
-    const response = await axios.post('/api/auth/login', { data });
+    const response = await axios.post("/api/auth/users/login", data,);
     return response.data;
 }
 
-export async function register(data) {
-    // Logic for user registration
-    const response = await axios.post('/api/auth/register', { data });
+export async function registerUser(data) {
+    const response = await axios.post(
+        "/api/auth/users/register",
+        data,
+        {
+            withCredentials: true
+        }
+    );
     return response.data;
 }
 
 export async function logout() {
     // Logic for user logout
-    const response = await axios.post('/api/auth/logout');
+    const response = await axios.post('/api/auth/users/logout', { withCredentials: true });
+    return response.data;
+}
+
+export async function getUser() {
+    const response = await axios.get("/api/auth/users/", { withCredentials: true });
     return response.data;
 }
 

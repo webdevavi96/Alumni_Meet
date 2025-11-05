@@ -1,6 +1,6 @@
 // Navbar.jsx
 import React, { useState, useContext } from 'react'
-import { AuthContext } from '../../utils/authContext'
+import { AuthContext } from '../../utils/authContext.jsx'
 import { NavLink } from 'react-router-dom'
 import { FiMenu, FiX } from 'react-icons/fi'
 
@@ -93,6 +93,12 @@ function Navbar() {
                                         Chats
                                     </NavLink>
                                 </li>
+                                <li>
+                                    <NavLink to="/profile" className={linkClasses} onClick={toggleMenu}>
+                                        Profile
+                                    </NavLink>
+                                </li>
+
                             </>
                         )}
 

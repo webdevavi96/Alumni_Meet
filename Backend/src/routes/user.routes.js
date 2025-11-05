@@ -12,7 +12,7 @@ import { JWTVerify } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { Router } from "express";
 
-const router = Router();
+const router = Router(); 
 
 router.route("/register")
     .post(
