@@ -1,10 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom'
 import ProtectedRoutes from '../utils/ProtectedRoutes.jsx'
 import Layout from '../layouts/Layout'
-import { Login, Register, Landing, Home, Blogs, Contact, Events, Chats, Profile, Login_Required } from '../pages/Pages'
+import { Login, Register, Landing, Home, Blogs, CreateBlog, Contact, Events, CreateEvents, Chats, Profile, Login_Required } from '../pages/Pages'
 import { Suspense } from 'react'
 import Loader from '../components/Loader/Loader'
-// import CreateBlog from '../pages/CreateBlog/CreateBlog.jsx'
 
 
 const router = createBrowserRouter([
@@ -25,8 +24,8 @@ const router = createBrowserRouter([
       { path: 'events', element: <ProtectedRoutes><Events /></ProtectedRoutes> },
       { path: 'chats', element: <ProtectedRoutes><Chats /></ProtectedRoutes> },
       { path: 'profile', element: <ProtectedRoutes><Profile /></ProtectedRoutes> },
-      // { path: 'dashboard', element: <ProtectedRoutes><Dashboard /></ProtectedRoutes> },
-      // { path: 'create-blog', element: <ProtectedRoutes><CreateBlog /></ProtectedRoutes> },
+      { path: 'create_blog', element: <ProtectedRoutes><CreateBlog /></ProtectedRoutes> },
+      { path: 'create_event', element: <ProtectedRoutes><CreateEvents /></ProtectedRoutes> },
     ]
   }
 ])

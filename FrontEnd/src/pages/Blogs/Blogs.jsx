@@ -1,133 +1,49 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../utils/authContext.jsx";
-// import BlogEditor from "../../components/BlogEditor/BlogEditor.jsx";
-import Loader from "../../components/Loader/Loader.jsx";
+import React, { useContext } from "react";
+import { FaCirclePlus } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../utils/authContext.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import BlogsCard from "../../components/Cards/BlogsCard.jsx";
 
 function Blogs() {
   const { user, loading } = useContext(AuthContext);
-  const [blogs, setBlogs] = useState([]);
-  const [showEditor, setShowEditor] = useState(false);
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-  const [posting, setPosting] = useState(false);
-
-  // Fetch blogs
-  const fetchBlogs = async () => {
-    const res = await fetch("http://localhost:5000/api/blogs");
-    const data = await res.json();
-    if (data.success) setBlogs(data.blogs);
-  };
-
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
-
-  const handlePublish = async () => {
-    if (!title || !content) return alert("Please add title and content!");
-    setPosting(true);
-    try {
-      const blogData = {
-        title,
-        content,
-        author: user?.fullName || "Anonymous",
-      };
-
-      const res = await fetch("http://localhost:5000/api/blogs", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(blogData),
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        alert("✅ Blog posted successfully!");
-        setTitle("");
-        setContent("");
-        setShowEditor(false);
-        fetchBlogs();
-      } else {
-        alert("❌ Failed to post blog");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong!");
-    } finally {
-      setPosting(false);
-    }
-  };
 
   if (loading) return <Loader />;
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-black text-white flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold mb-6">Blogs</h1>
+    <div className="w-full min-h-screen bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-blue-900 via-indigo-900 to-black text-white flex flex-col items-center p-4 sm:p-8">
+      
+      {/* Header */}
+      <div className="w-full max-w-7xl flex flex-col sm:flex-row justify-between items-center mb-8 border-b border-slate-600 pb-3">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-cyan-400 mb-3 sm:mb-0">
+          Blogs
+        </h1>
 
-      {/* Show create option only for non-students */}
-      {user?.userType !== "Student" && (
-        <div className="mb-8 text-center">
-          {!showEditor ? (
-            <button>
-              create
-            </button>
-            // <NavLink
-            //   to="/create-blog"
-            //   className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg shadow-md"
-            // >
-            //   ✍️ Post a New Blog
-            // </NavLink>
-          ) : (
-            <div className="bg-white text-black p-4 rounded-lg shadow-md max-w-2xl w-full">
-              <input
-                type="text"
-                placeholder="Enter blog title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full border p-2 mb-3 rounded-md"
-              />
-              <BlogEditor onChange={setContent} />
-              <div className="flex justify-end mt-4 gap-3">
-                <button
-                  onClick={() => setShowEditor(false)}
-                  className="bg-gray-300 px-4 py-2 rounded-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handlePublish}
-                  disabled={posting}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-                >
-                  {posting ? "Publishing..." : "Publish"}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* Display Blogs */}
-      <div className="w-full max-w-4xl space-y-6">
-        {blogs.length > 0 ? (
-          blogs.map((blog) => (
-            <div
-              key={blog._id}
-              className="bg-white/10 rounded-lg p-4 shadow-md backdrop-blur-sm"
-            >
-              <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
-              <div
-                dangerouslySetInnerHTML={{ __html: blog.content }}
-                className="prose prose-invert max-w-none"
-              />
-              <p className="text-sm text-gray-300 mt-2">
-                By {blog.author} —{" "}
-                {new Date(blog.createdAt).toLocaleString()}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p className="text-gray-400">No blogs yet.</p>
+        {(user?.userType === "Alumni" || user?.userType === "Teacher") && (
+          <NavLink to ="/create_blog"
+          className="py-2 px-6 bg-white hover:bg-slate-100 text-teal-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+           <FaCirclePlus />
+          </NavLink>
         )}
+      </div>
+
+      {/* Body / Cards Section */}
+      <div className="w-full max-w-7xl flex flex-col gap-6">
+        <BlogsCard
+          title="AI Revolution in 2025"
+          content="Artificial intelligence continues to evolve, transforming industries through automation, creativity, and data analysis. Here's what the next phase looks like..."
+          image={{ url: "https://source.unsplash.com/800x600/?ai,technology" }}
+          author="Avinash Chaurasiya"
+          date="Nov 6, 2025"
+        />
+
+        <BlogsCard
+          title="Cybersecurity in a Connected World"
+          content="As our devices grow smarter, so do threats. Learn how cybersecurity experts are adapting to safeguard user privacy in the IoT era."
+          image={{ url: "https://source.unsplash.com/800x600/?cybersecurity,network" }}
+          author="Tech Community"
+          date="Oct 31, 2025"
+        />
       </div>
     </div>
   );
