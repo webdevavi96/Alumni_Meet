@@ -11,7 +11,7 @@ function Profile() {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-gray-900 via-black to-gray-900 p-6 text-white">
-      
+
       {/* Welcome Message */}
       <h1 className="text-3xl font-semibold mb-6">
         Welcome, <span className="text-cyan-400">{user.fullName}</span> 👋
@@ -57,7 +57,7 @@ function Profile() {
         </button>
       </div>
 
-<Dashboard />
+      <Dashboard />
 
     </div>
   );

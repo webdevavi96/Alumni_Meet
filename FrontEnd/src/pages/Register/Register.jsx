@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { registerUser } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader/Loader';
 
 function Register() {
 
@@ -12,7 +13,7 @@ function Register() {
         handleSubmit,
         watch,
         reset,
-        formState: { errors },
+        formState: { errors, isSubmitting },
     } = useForm();
 
     const userType = watch("userType");
@@ -63,6 +64,7 @@ function Register() {
 
     };
 
+    if (isSubmitting) return <Loader />
 
     return (
         <div className="min-h-screen pt-16 flex items-center justify-center bg-gradient-to-r from-gray-900 via-black to-gray-900 px-4">
@@ -233,7 +235,9 @@ function Register() {
                     </div>
 
                     {/* Submit Button */}
-                    <button type="submit" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-lg text-lg font-semibold transition">
+                    <button
+                        disabled={isSubmitting}
+                        type="submit" className="w-full bg-cyan-500 hover:bg-cyan-600 text-white py-3 rounded-lg text-lg font-semibold transition">
                         Register Account
                     </button>
                 </form>

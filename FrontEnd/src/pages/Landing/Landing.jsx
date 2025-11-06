@@ -1,9 +1,22 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { BlueCard, PurpleCard, GreenCard } from '../../components/Components'
+import React, { useContext, useEffect } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { BlueCard, PurpleCard, GreenCard } from '../../components/Components';
+import { AuthContext } from '../../utils/authContext.jsx';
+import Loader from "../../components/Loader/Loader.jsx"
 
 
 function Landing() {
+
+  const { user, loading } = useContext(AuthContext)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+if(loading) return <Loader />
+    if (!user) navigate("/");
+    else navigate("/home")
+
+  }, [user])
+
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-r from-blue-900 via-indigo-900 to-black text-white flex flex-col">
@@ -25,9 +38,9 @@ function Landing() {
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 mt-4">
-            <NavLink 
-            to='/home'
-            className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 font-semibold text-white transition duration-300 shadow-lg">
+            <NavLink
+              to='/home'
+              className="px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 font-semibold text-white transition duration-300 shadow-lg">
               Explore
             </NavLink>
             <NavLink

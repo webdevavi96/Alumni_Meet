@@ -43,6 +43,8 @@ function Login() {
     }
   };
 
+  if (isSubmitting) return <Loader />
+
   return (
     <>
       <div className="min-h-screen pt-16 flex items-center justify-center bg-gradient-to-r from-gray-900 via-black to-gray-900 px-4">
