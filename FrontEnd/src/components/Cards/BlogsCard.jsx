@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { TbThumbUpFilled, TbThumbUp } from "react-icons/tb";
 import { FaCommentDots } from "react-icons/fa";
 import { IoIosShareAlt } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 
 
-function BlogsCard({ title, content, image, author, date }) {
+function BlogsCard({ title, content, image, author, date, blogId }) {
 
     const [liked, setliked] = useState(false)
     const imageSrc = typeof image === "string" ? image : image?.url;
@@ -43,12 +44,12 @@ function BlogsCard({ title, content, image, author, date }) {
                             ? content.slice(0, 150) + "..."
                             : "Blog content will be shown here..."}
                         {content && (
-                            <a
-                                href="/readmore"
-                                className="text-black font-semibold underline hover:text-white ml-1"
+                            <Link
+                                to={`/readmore/${blogId}`}
+                                className="text-cyan-300 font-semibold underline hover:text-white ml-1"
                             >
                                 Read more →
-                            </a>
+                            </Link>
                         )}
                     </p>
                 </div>

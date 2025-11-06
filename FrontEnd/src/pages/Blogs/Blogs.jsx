@@ -12,7 +12,7 @@ function Blogs() {
 
   return (
     <div className="w-full min-h-screen bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-blue-900 via-indigo-900 to-black text-white flex flex-col items-center p-4 sm:p-8">
-      
+
       {/* Header */}
       <div className="w-full max-w-7xl flex flex-col sm:flex-row justify-between items-center mb-8 border-b border-slate-600 pb-3">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-cyan-400 mb-3 sm:mb-0">
@@ -20,9 +20,9 @@ function Blogs() {
         </h1>
 
         {(user?.userType === "Alumni" || user?.userType === "Teacher") && (
-          <NavLink to ="/create_blog"
-          className="py-2 px-6 bg-white hover:bg-slate-100 text-teal-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
-           <FaCirclePlus />
+          <NavLink to="/create_blog"
+            className="py-2 px-6 bg-white hover:bg-slate-100 text-teal-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+            <FaCirclePlus />
           </NavLink>
         )}
       </div>
@@ -35,6 +35,7 @@ function Blogs() {
           image={{ url: "https://source.unsplash.com/800x600/?ai,technology" }}
           author="Avinash Chaurasiya"
           date="Nov 6, 2025"
+          blogId="1"
         />
 
         <BlogsCard
@@ -43,6 +44,7 @@ function Blogs() {
           image={{ url: "https://source.unsplash.com/800x600/?cybersecurity,network" }}
           author="Tech Community"
           date="Oct 31, 2025"
+          blogId="2"
         />
       </div>
     </div>

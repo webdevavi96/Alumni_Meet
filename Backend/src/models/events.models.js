@@ -21,7 +21,7 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    endTime:{
+    duration:{
         type: String,
         required: true,
     },

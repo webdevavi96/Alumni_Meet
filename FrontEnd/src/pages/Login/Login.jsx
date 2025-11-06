@@ -47,7 +47,7 @@ function Login() {
 
   return (
     <>
-      <div className="min-h-screen pt-16 flex items-center justify-center bg-gradient-to-r from-gray-900 via-black to-gray-900 px-4">
+      <div className="min-h-screen pt-16 flex items-center justify-center bg-linear-to-r from-gray-900 via-black to-gray-900 px-4">
         <div className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-8">
           <h1 className="text-3xl font-bold text-cyan-400 mb-6 text-center">Log In</h1>
           <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
