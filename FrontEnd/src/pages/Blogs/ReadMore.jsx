@@ -1,9 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import { readMore } from "../../utils/readMore";
 
 function ReadMore() {
 
-    const { blogId } = useParams();
+   const { state: blog } = useLocation(); 
 
     return (
         <div className="w-full min-h-screen bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-blue-900 via-indigo-900 to-black text-white flex flex-col items-center p-4 sm:p-8">
@@ -13,7 +14,7 @@ function ReadMore() {
                 {/* Blog Header */}
                 <div className="text-center mb-10">
                     <h1 className="text-3xl sm:text-5xl font-extrabold mb-4 text-white tracking-tight">
-                        Blog Title Placeholder {blogId}
+                        Blog Title Placeholder {blog.title}
                     </h1>
                     <p className="text-gray-300 text-sm sm:text-base italic">
                         ✍️ Written by <span className="font-semibold text-indigo-300">Author Name</span> •{" "}

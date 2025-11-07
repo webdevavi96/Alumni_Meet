@@ -24,13 +24,12 @@ const postBlog = asyncHandler(async (req, res) => {
     const user = await checkUserType(userId);
     if (!user) return new ApiError(400, "Invalid user Id");
     if (user.userType === "Student") return res.status(402).json(new ApiError(402, "Access denied"));
-    const author = user.username
+    const author = user._id;
 
-    const { title, content } = req.body;
+    const { title, content } = req.body
 
     // Optional blog Image
-    const blogImage = req?.files?.blogImage?.file?.path[0]
-
+    const blogImage = req?.file?.path;
     // Validating the data
     if (!userId) return res.status(400).json(new ApiError(400, "Invalid user Id"));
     if (!(title || content)) return res.status(400).json(new ApiError(400, "ALl fields are required"));
@@ -41,6 +40,7 @@ const postBlog = asyncHandler(async (req, res) => {
         imagePath = await uploadToCloudinary(blogImage)
     }
     if (!imagePath) return res.status(501).json(new ApiError(501, "Something went wrong while uploading your image on cloud"));
+
 
     const blog = await Blog.create({
         title: title,
@@ -141,7 +141,6 @@ const likeBlog = asyncHandler(async (req, res) => {
 
 const fecthAllBlogs = asyncHandler(async (req, res) => {
     const { page = 1, limit = 10, query, sortBy, sortType } = req.query;
-    if (!query) return new ApiError(402, "Something went wrong, Please try again later");
 
     const pageNum = parseInt(page);
     const limitNum = parseInt(limit);
@@ -158,7 +157,7 @@ const fecthAllBlogs = asyncHandler(async (req, res) => {
         { content: { $regex: query, $options: "i" } }
     ];
 
-    const blogs = Blog.aggregate([
+    const blogs = await Blog.aggregate([
         { $match: match },
         { $sort: { [sortBy]: sortType == "asc" ? 1 : -1 } },
         {
@@ -175,7 +174,7 @@ const fecthAllBlogs = asyncHandler(async (req, res) => {
                 title: 1,
                 content: 1,
                 image: 1,
-                createBy: 1,
+                createdBy: 1,
                 createdAt: 1,
                 "author._id": 1,
                 "author.username": 1,
@@ -184,11 +183,11 @@ const fecthAllBlogs = asyncHandler(async (req, res) => {
             }
         },
         { $skip: skip },
-        { $limit: limit }
+        { $limit: limitNum }
     ]);
 
-    const totalBlogs = Blog.countDocuments(match);
-    if (!totalBlogs) return res.status(404).json(new ApiError(404, "No blogs found at this time"));
+    const totalBlogs = await Blog.countDocuments(match);
+    if (!totalBlogs) return res.status(404).json(new ApiError(404, {}, "No blogs found at this time"));
 
     const totalPages = Math.ceil(totalBlogs / limitNum);
 

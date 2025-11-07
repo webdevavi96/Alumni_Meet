@@ -67,7 +67,7 @@ function Register() {
     if (isSubmitting) return <Loader />
 
     return (
-        <div className="min-h-screen pt-16 flex items-center justify-center bg-gradient-to-r from-gray-900 via-black to-gray-900 px-4">
+        <div className="min-h-screen pt-16 flex items-center justify-center bg-linear-to-r from-gray-900 via-black to-gray-900 px-4">
             <div className="w-full max-w-2xl bg-gray-800 rounded-2xl shadow-xl border border-gray-700 p-10">
 
                 <h1 className="text-4xl font-semibold text-cyan-400 mb-8 text-center">

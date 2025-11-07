@@ -10,7 +10,7 @@ router.route("/").get(
     JWTVerify,
     fecthAllBlogs
 );
-router.route("/post/").post(
+router.route("/post-blog/").post(
     JWTVerify,
     upload.single("blogImage"), 
     postBlog

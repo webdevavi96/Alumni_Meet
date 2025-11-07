@@ -1,12 +1,44 @@
 import React, { useContext } from "react";
 import { FaCirclePlus } from "react-icons/fa6";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../utils/authContext.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
 import BlogsCard from "../../components/Cards/BlogsCard.jsx";
+import { fetchAllBlogs } from "../../services/blogServices.js";
+import { useState } from "react";
+import { useEffect } from "react";
 
 function Blogs() {
   const { user, loading } = useContext(AuthContext);
+  const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(false)
+
+  const navigate = useNavigate();
+  const handleClick = (blog) => {
+    navigate(`readmore${blog._id}`, { state: blog });
+  };
+
+  useEffect(() => {
+    const fecthBlogs = async () => {
+      try {
+        setIsLoading(true)
+        const res = await fetchAllBlogs();
+        if (res) {
+          console.log(res);
+          const allBlogs = res.data?.blogs
+          console.log(allBlogs)
+          setBlogs(allBlogs);
+          console.log(blogs)
+        }
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fecthBlogs()
+  }, [user])
+
 
   if (loading) return <Loader />;
 
@@ -29,23 +61,21 @@ function Blogs() {
 
       {/* Body / Cards Section */}
       <div className="w-full max-w-7xl flex flex-col gap-6">
-        <BlogsCard
-          title="AI Revolution in 2025"
-          content="Artificial intelligence continues to evolve, transforming industries through automation, creativity, and data analysis. Here's what the next phase looks like..."
-          image={{ url: "https://source.unsplash.com/800x600/?ai,technology" }}
-          author="Avinash Chaurasiya"
-          date="Nov 6, 2025"
-          blogId="1"
-        />
+        {isLoading ? <Loader /> :
 
-        <BlogsCard
-          title="Cybersecurity in a Connected World"
-          content="As our devices grow smarter, so do threats. Learn how cybersecurity experts are adapting to safeguard user privacy in the IoT era."
-          image={{ url: "https://source.unsplash.com/800x600/?cybersecurity,network" }}
-          author="Tech Community"
-          date="Oct 31, 2025"
-          blogId="2"
-        />
+          blogs.map((blog) => (
+            <BlogsCard
+              key={blog._id}
+              title={blog.title}
+              content={blog.content}
+              image={blog.image}
+              author={blog.author?.fullName || blog.author?.username}
+              date={new Date(blog.createdAt).toLocaleDateString()}
+              handlerFn={() => navigate(`/readmore/${blog._id}`, { state: blog })}
+            />
+          ))
+
+        }
       </div>
     </div>
   );

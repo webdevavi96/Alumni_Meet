@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
-function BlogsCard({ title, content, image, author, date, blogId }) {
-
+function BlogsCard({ title, content, image, author, date, handlerFn = () => { } }) {
     const [liked, setliked] = useState(false)
     const imageSrc = typeof image === "string" ? image : image?.url;
 
@@ -44,12 +43,18 @@ function BlogsCard({ title, content, image, author, date, blogId }) {
                             ? content.slice(0, 150) + "..."
                             : "Blog content will be shown here..."}
                         {content && (
-                            <Link
-                                to={`/readmore/${blogId}`}
+                            // <Link
+                            //     to={`/readmore/${blogId}`}
+                            //     className="text-cyan-300 font-semibold underline hover:text-white ml-1"
+                            // >
+                            //     Read more →
+                            // </Link>
+                            <button
+                                onClick={handlerFn}
                                 className="text-cyan-300 font-semibold underline hover:text-white ml-1"
                             >
-                                Read more →
-                            </Link>
+                                Read more..
+                            </button>
                         )}
                     </p>
                 </div>
