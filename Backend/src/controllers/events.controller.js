@@ -9,26 +9,27 @@ import { sendMail } from "../utils/sendMail.js";
 
 const newEvent = asyncHandler(async (req, res) => {
     const userId = req.user?._id;
+    console.log(req.user._id)
     if (!isValidObjectId(userId)) throw new ApiError(400, "Invalid user Id");
     const user = await User.findById(userId);
     if (!user) throw new ApiError(401, "User not found");
     if (user.userType === "Student") throw new ApiError((403, "Forbiden request"));
 
-    const { title, description, meetingUrl, startTime, endTime, eventDate } = req.params;
-    if ((!title || !description || !meetingUrl || !startTime || !endTime || !eventDate)) throw new ApiError(400, "All fields are required");
+    const { title, description, meetingUrl, startTime, eventDate, duration } = req.body;
+    if ((!title || !description || !meetingUrl || !startTime || !eventDate || !duration)) throw new ApiError(400, "All fields are required");
 
     const event = await Event.create({
         title: title,
         description: description,
         meetingUrl: meetingUrl,
         startTime: startTime,
-        endTime: endTime,
         eventDate: eventDate,
+        duration: duration,
         createdBy: req.user?._id,
     });
 
     if (!event) throw new ApiError(500, "Internal server error");
-    return res.status(200).json(new ApiResponse(200, "success"));
+    return res.status(200).json(new ApiResponse(200, {}, "success"));
 });
 
 const updateEvent = asyncHandler(async (req, res) => {
@@ -72,8 +73,7 @@ const deleteEvent = asyncHandler(async (req, res) => {
 const fetchAllEvents = asyncHandler(async (req, res) => {
     const userId = req.user?._id;
     if (!isValidObjectId(userId)) throw new ApiError(400, "Invalid user Id");
-    const { page = 1, limit = 10, query, sortBy, sortType } = req.query;
-    if (!query) throw new ApiError(402, "Something went wrong, Please try again later");
+    const { page = 1, limit = 10, query = "", sortBy = "createdAt", sortType = "desc" } = req.query;
     const pageNum = parseInt(page);
     const limitNum = parseInt(limit);
     const skip = (pageNum - 1) * limitNum;
@@ -83,13 +83,13 @@ const fetchAllEvents = asyncHandler(async (req, res) => {
         { title: { $regex: query, $options: "i" } },
         { description: { $regex: query, $options: "i" } }
     ];
-    const event = await Event.aggregate([
+    const events = await Event.aggregate([
         { $match: match },
         { $sort: { [sortBy]: sortType == "asc" ? 1 : -1 } },
         {
             $lookup: {
                 from: "users",
-                localField: "createBy",
+                localField: "createdBy",
                 foreignField: "_id",
                 as: "author"
             }
@@ -101,7 +101,7 @@ const fetchAllEvents = asyncHandler(async (req, res) => {
                 description: 1,
                 meetingUrl: 1,
                 startTime: 1,
-                endTime: 1,
+                duration: 1,
                 eventDate: 1,
                 createdBy: 1,
                 "author._id": 1,
@@ -110,14 +110,14 @@ const fetchAllEvents = asyncHandler(async (req, res) => {
             }
         },
         { $skip: skip },
-        { $limit: limit }
+        { $limit: limitNum }
     ]);
 
-    const totalEvents = Event.countDocuments(match);
+    const totalEvents = await Event.countDocuments(match);
     if (!totalEvents) throw new ApiError(404, "No events found");
     const totalPages = Math.ceil(totalEvents / limitNum);
     const data = {
-        event,
+        events,
         pagination: {
             totalPages,
             currentPage: pageNum,

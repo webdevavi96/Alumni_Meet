@@ -1,11 +1,9 @@
-import axios from "axios";
+import api from "../utils/api.js";
 
 const createEvent = async (event) => {
     if (!event) return;
     try {
-        const res = await axios.post("/api/events/create/new/", event, {
-            withCredentials: true
-        });
+        const res = await api.post("/events/create/new/", event);
         return res.data;
     } catch (error) {
         console.error("Error creating event: ", error);
@@ -17,7 +15,7 @@ const createEvent = async (event) => {
 const updateEvent = async (eventId) => {
     if (!eventId) return;
     try {
-        const res = await axios.patch(`/api/events/update/${eventId}`, { withCredentials: true });
+        const res = await api.patch(`/events/update/${eventId}`);
         return res.data;
     } catch (error) {
         console.error("update error: ", error);
@@ -29,7 +27,7 @@ const updateEvent = async (eventId) => {
 const deleteEvent = async (eventId) => {
     if (!eventId) return;
     try {
-        const res = await axios.delete(`/api/events/delete/${eventId}`, { withCredentials: true })
+        const res = await api.delete(`/events/delete/${eventId}`)
         return res.data;
     } catch (error) {
         console.error("error deletinf: ", error);
@@ -41,18 +39,18 @@ const deleteEvent = async (eventId) => {
 const subscribeEvent = async (eventId) => {
     if (!eventId) return;
     try {
-        const res = await axios.get(`/api/events/notify/subscribe/${eventId}`, { withCredentials: true });
+        const res = await api.get(`/events/notify/subscribe/${eventId}`);
         return res.data;
     } catch (error) {
         console.error("error notify setting: ", error);
-        throw error
+        throw error;
     }
 };
 
 const unsubscribeEvent = async (eventId) => {
     if (!eventId) return;
     try {
-        const res = await axios.get(`/api/events/notify/unsubscribe/${eventId}`, { withCredentials: true });
+        const res = await api.get(`/events/notify/unsubscribe/${eventId}`);
         return res.data;
     } catch (error) {
         console.error("error in unsibscribing: ", error);
@@ -61,4 +59,21 @@ const unsubscribeEvent = async (eventId) => {
 };
 
 
-export { createEvent, updateEvent, deleteEvent, subscribeEvent, unsubscribeEvent };
+const fetchAllEvents = async () => {
+    try {
+        const queryParams = {
+            page: 1,
+            limit: 10,
+            query: "",
+            sortBy: "createdAt",
+            sortType: "desc"
+        };
+        const res = await api.get("/events/", { params: queryParams });
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching events: ", error);
+        throw error;
+    }
+};
+
+export { createEvent, updateEvent, deleteEvent, subscribeEvent, unsubscribeEvent, fetchAllEvents };

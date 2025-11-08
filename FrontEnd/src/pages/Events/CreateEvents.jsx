@@ -1,19 +1,27 @@
 import React, { useState } from "react";
+import {useNavigate} from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { createEvent } from "../../services/eventServices";
 
 function CreateEvents() {
-  const [duration, setDuration] = useState(60); // default 60 min (1 hour)
+  const [duration, setDuration] = useState(60);
+  const navigate = useNavigate()
 
   const {
     handleSubmit,
     register,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const finalData = { ...data, durationMinutes: duration };
+  const onSubmit = async (data) => {
+    const finalData = { ...data, duration: duration };
     console.log("Event Data:", finalData);
-    alert("✅ Event created successfully!");
+    const res = await createEvent(finalData);
+    if (res.status === 200 || res.status === "Success") {
+      reset();
+      navigate("/events");
+    }
   };
 
   // Convert minutes → hours & mins
@@ -84,7 +92,7 @@ function CreateEvents() {
           {/* Date & Time */}
           <div className="flex flex-col sm:flex-row gap-6">
             <div className="flex-1">
-              <label className="block text-gray-300 mb-1 font-medium">Start Time</label>
+              <label className="block text-gray-300 mb-1 font-medium">Start Time: (24H Formate)</label>
               <input
                 type="time"
                 className="w-full px-4 py-3 rounded-lg bg-gray-900/70 border border-gray-700 text-white focus:ring-2 focus:ring-indigo-400 outline-none"

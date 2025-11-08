@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { TbThumbUpFilled, TbThumbUp } from "react-icons/tb";
 import { FaCommentDots } from "react-icons/fa";
 import { IoIosShareAlt } from "react-icons/io";
-import { Link } from "react-router-dom";
-
-
+import DOMPurify from "dompurify";
 
 function BlogsCard({ title, content, image, author, date, handlerFn = () => { } }) {
-    const [liked, setliked] = useState(false)
+    const [liked, setLiked] = useState(false);
     const imageSrc = typeof image === "string" ? image : image?.url;
 
-    const handleLike = () => {
-        setliked(!liked)
-    }
+    const handleLike = () => setLiked(!liked);
+
+    // 🧼 Sanitize the HTML and truncate safely
+    const sanitizedHTML = DOMPurify.sanitize(content || "");
+    const truncatedHTML = sanitizedHTML.length > 300
+        ? sanitizedHTML.slice(0, 300) + "..."
+        : sanitizedHTML;
 
     return (
         <div className="flex flex-col sm:flex-row w-full max-w-6xl mx-auto bg-[linear-gradient(to_top_right,var(--tw-gradient-stops))] from-green-600 to-teal-500 text-white rounded-2xl p-5 sm:p-6 shadow-lg shadow-green-900/30 hover:shadow-xl hover:shadow-teal-700/30 transition-all duration-300 mt-5">
@@ -38,25 +40,22 @@ function BlogsCard({ title, content, image, author, date, handlerFn = () => { } 
                     <h2 className="text-xl sm:text-2xl font-extrabold mb-2">
                         {title || "Blog Title"}
                     </h2>
-                    <p className="text-sm sm:text-base text-slate-100/90 leading-relaxed">
-                        {content
-                            ? content.slice(0, 150) + "..."
-                            : "Blog content will be shown here..."}
-                        {content && (
-                            // <Link
-                            //     to={`/readmore/${blogId}`}
-                            //     className="text-cyan-300 font-semibold underline hover:text-white ml-1"
-                            // >
-                            //     Read more →
-                            // </Link>
-                            <button
-                                onClick={handlerFn}
-                                className="text-cyan-300 font-semibold underline hover:text-white ml-1"
-                            >
-                                Read more..
-                            </button>
-                        )}
-                    </p>
+
+                    {/* Render HTML safely */}
+                    <div
+                        className="prose prose-invert max-w-none text-gray-200 leading-relaxed"
+                        dangerouslySetInnerHTML={{ __html: truncatedHTML }}
+                    />
+
+                    {/* Read More Button */}
+                    {content && (
+                        <button
+                            onClick={handlerFn}
+                            className="text-cyan-300 font-semibold underline hover:text-white mt-1"
+                        >
+                            Read more →
+                        </button>
+                    )}
                 </div>
 
                 {/* Author + Actions */}
@@ -69,17 +68,14 @@ function BlogsCard({ title, content, image, author, date, handlerFn = () => { } 
                     <div className="flex gap-3 mt-3 sm:mt-0">
                         <button
                             onClick={handleLike}
-                            className="bg-white text-teal-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100">
+                            className="bg-white text-teal-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100"
+                        >
                             {liked ? <TbThumbUpFilled /> : <TbThumbUp />}
                         </button>
-                        <button
-                            onClick={handleLike}
-                            className="bg-white text-blue-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100">
+                        <button className="bg-white text-blue-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100">
                             <FaCommentDots />
                         </button>
-                        <button
-                            onClick={handleLike}
-                            className="bg-white text-pink-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100">
+                        <button className="bg-white text-pink-700 font-semibold px-4 py-1.5 rounded-lg shadow-md hover:bg-slate-100 transition-all duration-100">
                             <IoIosShareAlt />
                         </button>
                     </div>

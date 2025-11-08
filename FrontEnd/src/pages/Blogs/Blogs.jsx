@@ -12,11 +12,7 @@ function Blogs() {
   const { user, loading } = useContext(AuthContext);
   const [blogs, setBlogs] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
-
   const navigate = useNavigate();
-  const handleClick = (blog) => {
-    navigate(`readmore${blog._id}`, { state: blog });
-  };
 
   useEffect(() => {
     const fecthBlogs = async () => {
