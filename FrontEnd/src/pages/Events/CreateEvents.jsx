@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { createEvent } from "../../services/eventServices";
+import { toast } from "react-toastify";
+
 
 function CreateEvents() {
   const [duration, setDuration] = useState(60);
@@ -17,10 +19,15 @@ function CreateEvents() {
   const onSubmit = async (data) => {
     const finalData = { ...data, duration: duration };
     console.log("Event Data:", finalData);
-    const res = await createEvent(finalData);
-    if (res.status === 200 || res.status === "Success") {
-      reset();
-      navigate("/events");
+    try {
+      const res = await createEvent(finalData);
+      if (res.status === 200 || res.status === "Success") {
+        toast.success("Event created successfully!");
+        reset();
+        navigate("/events");
+      }
+    } catch (error) {
+      toast.error("Error while creating event!");
     }
   };
 

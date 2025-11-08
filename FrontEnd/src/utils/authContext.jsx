@@ -30,7 +30,7 @@ export const AuthContextProvider = ({ children }) => {
     setIsAuthenticated(true);
   };
 
-  const logout = () => {
+  const logOut = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
     delete axios.defaults.headers.common["Authorization"];
@@ -44,7 +44,7 @@ export const AuthContextProvider = ({ children }) => {
         isAuthenticated,
         user,
         login,
-        logout,
+        logOut,
         loading,
       }}
     >

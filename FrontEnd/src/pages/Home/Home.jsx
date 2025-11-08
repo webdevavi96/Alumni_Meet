@@ -6,6 +6,9 @@ import { fetchAllEvents } from "../../services/eventServices.js";
 import { fetchAllBlogs } from "../../services/blogServices.js";
 import Loader from "../../components/Loader/Loader.jsx";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
+
 
 function Home() {
   const { user } = useContext(AuthContext);
@@ -25,6 +28,12 @@ function Home() {
     const fetchData = async () => {
       try {
         setLoading(true);
+
+        if (user && !sessionStorage.getItem("toastShown")) {
+          toast.info(`Welcome! ${user.fullName}`, { toastId: "welcome-toast" });
+          sessionStorage.setItem("toastShown", "true");
+        }
+        
         const fetchedEvents = await fetchAllEvents();
         const fetchedBlogs = await fetchAllBlogs();
 
@@ -39,9 +48,12 @@ function Home() {
       }
     };
     fetchData();
+
   }, [user]);
 
+
   if (loading) return <Loader />;
+
 
   return (
     <div className="w-full min-h-screen bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-blue-900 via-indigo-900 to-black text-white flex flex-col items-center py-10 px-4 sm:px-8">
@@ -68,9 +80,9 @@ function Home() {
       </div>
 
       {/* Content */}
-      <article 
-      className="w-full max-w-6xl flex flex-col gap-6"
-      
+      <article
+        className="w-full max-w-6xl flex flex-col gap-6"
+
       >
         {tab === "Blogs" && (
           <>
