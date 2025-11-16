@@ -47,14 +47,11 @@ function Profile() {
   };
 
   useEffect(() => {
-<<<<<<< HEAD
     if (user && !sessionStorage.getItem("toastShown")) {
       toast.info(`Welcome! ${user.fullName}`, { toastId: "welcome-toast" });
       sessionStorage.setItem("toastShown", "true");
     }
-=======
     if (user) toast.info(`Welcome! ${user.fullName}`);
->>>>>>> 6d56cc0b397cc48f83220cf90687f23bc9a1a138
   }, [])
 
 
