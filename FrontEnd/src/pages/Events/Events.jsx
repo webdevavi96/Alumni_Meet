@@ -1,38 +1,46 @@
 import React, { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 import { FaCirclePlus } from "react-icons/fa6";
 import { AuthContext } from "../../utils/authContext.jsx";
 import EventCard from "../../components/Cards/EventCard";
 import { fetchAllEvents } from "../../services/eventServices.js";
+import { getEventStatus } from "../../utils/eventActions.js";
 
 function Events() {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [events, setEvents] = useState([]);
   const [tab, setTab] = useState("Upcoming Events");
+
   const tabs = ["Upcoming Events", "Ongoing Events", "Ended Events"];
 
-  const handleClick = (e) => {
-    setTab(e.target.innerText);
-  };
-
+  // Fetch events
   useEffect(() => {
     const fetchEvent = async () => {
       const fetchedEvents = await fetchAllEvents();
-      if (fetchedEvents.status === 200 || fetchedEvents.message === "Success") {
-        console.log(fetchedEvents);
+      if (fetchedEvents.status === 200 && fetchedEvents.data?.events) {
         setEvents(fetchedEvents.data.events);
       }
-    }
-    fetchEvent()
+    };
+    fetchEvent();
   }, [user]);
 
+  // Filter events based on tab
+  const filteredEvents = events.filter((event) => {
+    const status = getEventStatus(event); // "upcoming", "ongoing", "ended"
+    if (tab === "Upcoming Events") return status === "upcoming";
+    if (tab === "Ongoing Events") return status === "ongoing";
+    if (tab === "Ended Events") return status === "ended";
+    return false;
+  });
 
   return (
     <div className="px-2 w-full min-h-screen bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-[#0f172a] via-[#1e293b] to-[#020617] text-slate-100 flex flex-col mt-2">
+
       {/* Header */}
       <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-cyan-400 mb-3 sm:mb-0">
         Events
       </h1>
+
       <div
         className="
           header 
@@ -48,7 +56,7 @@ function Events() {
         {tabs.map((item) => (
           <button
             key={item}
-            onClick={(e) => handleClick(e)}
+            onClick={() => setTab(item)}
             className={`shrink-0
               px-6 sm:px-6
               py-2 sm:py-2 
@@ -64,12 +72,13 @@ function Events() {
           >
             {item}
           </button>
-
         ))}
+
         {(user?.userType === "Alumni" || user?.userType === "Teacher") && (
           <NavLink
             to="/create_event"
-            className="py-2 px-6 bg-white hover:bg-slate-100 text-teal-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+            className="py-2 px-6 bg-white hover:bg-slate-100 text-teal-700 font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
+          >
             <FaCirclePlus />
           </NavLink>
         )}
@@ -77,36 +86,34 @@ function Events() {
 
       {/* Body */}
       <div className="body text-center mt-10 sm:mt-12 text-base sm:text-lg font-medium px-4 sm:px-0">
-        {tab === "Upcoming Events" && (
-          <div className="animate-fade-in">
 
-            {events.length == 0 ? "✨ Upcoming Events will be displayed here..." :
-              events.map((event) => {
-                return (
-                  <EventCard
-                    title={event.title}
-                    description={event.description}
-                    meetingUrl={event.meetingUrl}
-                    startTime={event.startTime}
-                    eventDate={event.eventDate}
-                    duration={event.duration}
-                    status={"upcoming"}
-                  />)
-              })
-            }
-          </div>
-        )}
-        {tab === "Ongoing Events" && (
-          <div className="animate-fade-in">
-            🔥 Ongoing Events will be displayed here...
-          </div>
-        )}
-        {tab === "Ended Events" && (
-          <div className="animate-fade-in">
-            🏁 Ended Events will be displayed here...
-            <EventCard status={"ended"} />
-          </div>
-        )}
+        {/* Active Tab Content */}
+        <div className="animate-fade-in">
+          {filteredEvents.length === 0 ? (
+            tab === "Upcoming Events" ? (
+              "✨ Upcoming Events will be displayed here..."
+            ) : tab === "Ongoing Events" ? (
+              "🔥 Ongoing Events will be displayed here..."
+            ) : (
+              "🏁 Ended Events will be displayed here..."
+            )
+          ) : (
+            filteredEvents.map((event) => (
+              <EventCard
+                key={event._id}
+                title={event.title}
+                description={event.description}
+                meetingUrl={event.meetingUrl}
+                startTime={event.startTime}
+                eventDate={event.eventDate}
+                duration={event.duration}
+                status={getEventStatus(event)}
+                eventId={event._id}
+              />
+            ))
+          )}
+        </div>
+
       </div>
     </div>
   );

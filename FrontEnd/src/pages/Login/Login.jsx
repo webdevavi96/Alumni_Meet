@@ -39,15 +39,12 @@ function Login() {
         toast.success("Login successful!");
         reset()
         navigate('/home');
-      } else {
-        toast.warning("Invalid credentials!");
-        console.log(response.status);
-        toast.error("Invalid credentials!");
       }
 
     } catch (error) {
-      console.error("Login failed:", error)
-      toast.error("Login failed");
+      if (error.status === 401) toast.error("Invalid credentials");
+      else if (error.status === 400) toast.warning("All fields are required");
+      else toast.error("Something went wrong! Please try again later.");
     }
   };
 
@@ -82,7 +79,7 @@ function Login() {
               {/* 👁️ Toggle Icon */}
               <button
                 type="button"
-                onClick={() => setVisible((prev) => !prev)} 
+                onClick={() => setVisible((prev) => !prev)}
                 className="absolute right-3 top-12 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
               >
                 {visible ? <IoEyeOutline size={22} /> : <IoEyeOffOutline size={22} />}

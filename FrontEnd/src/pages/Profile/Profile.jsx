@@ -98,7 +98,9 @@ function Profile() {
 
       {/* Quick Actions */}
       <div className="mt-8 flex gap-4">
-        <button className="px-6 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 transition font-medium">
+        <button
+          onClick={() => navigate("/profile/update")}
+          className="px-6 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-600 transition font-medium">
           Edit Profile
         </button>
         <button

@@ -74,13 +74,26 @@ const deleteBlog = async (blogId) => {
     }
 };
 
-const addCommentOnBlog = async (blogId, comment) => {
-    if (!blogId || !comment) return;
+const addCommentOnBlog = async (blogId, content) => {
+    if (!blogId || !content) return;
     try {
-        const response = await axios.post(`/api/blogs/comment/${blogId}`, { comment }, { withCredentials: true });
+        const contentValue = typeof content === "string" ? content : content.text;
+        const response = await axios.post(`/api/blogs/comment/${blogId}`, { content: contentValue }, { withCredentials: true });
         return response.data;
     } catch (error) {
         console.log("Error in addCommentOnBlog service:", error);
+        throw error;
+    }
+};
+
+const fetchComentsOnBlog = async (blogId) => {
+    if (!blogId) return;
+    try {
+        const query = { page: 1, limit: 20, query: "", sortBy: "createdAt", sortType: "desc", blogId };
+        const response = await axios.get("/api/blogs/comments", { withCredentials: true, params: query });
+        return response.data;
+    } catch (error) {
+        console.log("Error in fetchComentsOnBlog service:", error);
         throw error;
     }
 };
@@ -96,6 +109,18 @@ const likeBlog = async (blogId) => {
     }
 };
 
+const getLikesOnBlog = async (blogId) => {
+    if (!blogId) return;
+    try {
+        const response = await axios.get(`/api/blogs/likes/${blogId}`, { withCredentials: true });
+        return response.data;
+    } catch (error) {
+        console.error("Error in getLikesOnBlog service:", error);
+        throw error;
+    }
+};
 
 
-export { postBlog, fetchAllBlogs, fetchSingleBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog };
+
+
+export { postBlog, fetchAllBlogs, fetchSingleBlog, updateBlog, deleteBlog, addCommentOnBlog, fetchComentsOnBlog, likeBlog, getLikesOnBlog };

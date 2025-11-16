@@ -12,8 +12,10 @@ const Events = lazy(() => import('./Events/Events'));
 const CreateEvents = lazy(() => import('./Events/CreateEvents'));
 const Chats = lazy(() => import('./Chats/Chats'));
 const Profile = lazy(() => import('./Profile/Profile'));
-const Login_Required = lazy(() => import('./Login_Required/Login_Required'))
+const Login_Required = lazy(() => import('./Login_Required/Login_Required'));
+const Comments = lazy(() => import('../pages/Blogs/Comments.jsx'));
+const EditProfile = lazy(() => import('./Dashboard/EditProfile.jsx'));
 
 
 
-export { Landing, Login_Required, Login, Register, Home, Blogs, CreateBlog, ReadMore, Contact, Events, CreateEvents, Chats, Profile };
+export { Landing, Login_Required, Login, Register, Home, Blogs, CreateBlog, ReadMore, Contact, Events, CreateEvents, Chats, Profile, Comments, EditProfile };

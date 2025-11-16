@@ -4,7 +4,6 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { isValidObjectId } from "mongoose";
-import { Notification } from "../models/notify.models.js";
 import { sendMail } from "../utils/sendMail.js";
 
 const newEvent = asyncHandler(async (req, res) => {
@@ -130,5 +129,18 @@ const fetchAllEvents = asyncHandler(async (req, res) => {
         .json(new ApiResponse(200, data, "success"));
 });
 
+const joinMeeting = asyncHandler(async (req, res) => {
+    const userId = req.user?._id;
+    if (!isValidObjectId(userId)) throw new ApiError(400, "Invalid user Id");
+    const eventId = req.params.eventId;
+    if (!isValidObjectId(eventId)) throw new ApiError(400, "Invalid event Id");
+    const event = await Event.findById(eventId);
+    if (!event) throw new ApiError(404, "Event not found");
+    const meetingUrl = event.meetingUrl;
+    return res
+        .status(200)
+        .json(new ApiResponse(200, meetingUrl, "success"));
+});
 
-export { newEvent, updateEvent, deleteEvent, fetchAllEvents };
+
+export { newEvent, updateEvent, deleteEvent, fetchAllEvents, joinMeeting };

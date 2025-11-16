@@ -20,11 +20,8 @@ function Blogs() {
         setIsLoading(true)
         const res = await fetchAllBlogs();
         if (res) {
-          console.log(res);
           const allBlogs = res.data?.blogs
-          console.log(allBlogs)
           setBlogs(allBlogs);
-          console.log(blogs)
         }
       } catch (error) {
         console.log(error)
@@ -62,6 +59,7 @@ function Blogs() {
           blogs.map((blog) => (
             <BlogsCard
               key={blog._id}
+              id={blog._id}
               title={blog.title}
               content={blog.content}
               image={blog.image}

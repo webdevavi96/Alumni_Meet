@@ -4,7 +4,7 @@ import {
     logOutUser,
     registerUser,
     changeCurrentPassword,
-    updateUserDetails,
+    // updateUserDetails,
     updateAvatarImage,
     updateCrrentCoverImage,
     getCurrentUser
@@ -32,12 +32,12 @@ router.route("/logout")
         JWTVerify,
         logOutUser
     );
-router.route("/update-user-detils")
-    .post(
-        JWTVerify,
-        updateUserDetails
+// router.route("/update-user-detils")
+//     .post(
+//         JWTVerify,
+//         updateUserDetails
 
-    );
+//     );
 router.route("/chnage-password")
     .post(
         JWTVerify,

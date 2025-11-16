@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { JWTVerify } from "../middlewares/auth.middleware.js";
-import { postBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog, fetchAllBlogs, fetchSingleBlog } from '../controllers/blogs.controller.js';
+import { postBlog, updateBlog, deleteBlog, addCommentOnBlog, getAllCommentsOnBlog, likeBlog, fetchAllBlogs, fetchSingleBlog, getLikesOnBlog } from '../controllers/blogs.controller.js';
 import { upload } from "../middlewares/multer.middleware.js";
 
 const router = Router();
@@ -28,9 +28,17 @@ router.route("/comment/:blogId").post(
     JWTVerify,
     addCommentOnBlog
 );
+router.route("/comments").get(
+    JWTVerify,
+    getAllCommentsOnBlog
+);
 router.route("/like/:blogId").post(
     JWTVerify,
     likeBlog
+);
+router.route("/likes/:blogId").get(
+    JWTVerify,
+    getLikesOnBlog
 );
 router.route("/blog/:blogId").get(
     JWTVerify,

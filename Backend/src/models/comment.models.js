@@ -2,7 +2,7 @@ import mongoose, { Schema } from "mongoose";
 
 const commentScema = new Schema({
     author: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
     content: {
@@ -10,9 +10,9 @@ const commentScema = new Schema({
         required: true
     },
     onBlog: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Blog"
     }
 }, { timestamps: true });
 
-export const Comment = mongoose.model("Cooment", commentScema);
+export const Comment = mongoose.model("Coment", commentScema);

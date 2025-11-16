@@ -29,7 +29,9 @@ const generateAccessandRefreshToken = async (userId) => {
 // Options for cookies security ->
 const options = {
     httpOnly: true,
-    secure: true
+    secure: true,
+    sameSite: "None",
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
 };
 
 
@@ -82,25 +84,53 @@ const registerUser = asyncHandler(async (req, res) => {
     return res.status(201).json(new ApiResponse(201, "success"));
 });
 
+
 // Login Contrller ->
 const logInUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
-    if (!email) throw new ApiError(400, "email is required!");
-    if (!password) throw new ApiError(400, "Password is required");
-    const user = await User.findOne({ email });
-    if (!user) throw new ApiError(404, "User not found, check your credentials and try again");
 
-    const isPassword = await user.isPasswordCorrect(password);
-    if (!isPassword) throw new ApiError(400, "Incorrect password");
+    if (!email) {
+        return res.status(400).json(new ApiError(400, "Email is required"));
+    }
+    if (!password) {
+        return res.status(400).json(new ApiError(400, "Password is required"));
+    }
 
-    const { accessToken, refreshToken } = await generateAccessandRefreshToken(user._id)
+    // Fetch user and include password if schema hides it
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return res
+            .status(404)
+            .json(new ApiError(404, "User not found, check your credentials"));
+    }
+
+    const isPasswordCorrect = await user.isPasswordCorrect(password);
+    if (!isPasswordCorrect) {
+        return res.status(401).json(new ApiError(401, "Incorrect password"));
+    }
+
+    const { accessToken, refreshToken } = await generateAccessandRefreshToken(user._id);
+
+    // Sanitize user object
+    const sanitizedUser = user.toObject();
+    delete sanitizedUser.password;
+    delete sanitizedUser.refreshToken;
+
+    const cookieOptions = {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+        expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    };
 
     return res
         .status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
-        .json(new ApiResponse(200, { user: user, refreshToken, accessToken }, "Login success"));
-
+        .cookie("accessToken", accessToken, cookieOptions)
+        .cookie("refreshToken", refreshToken, cookieOptions)
+        .json(new ApiResponse(200,
+            { user: sanitizedUser, accessToken, refreshToken },
+            "Login success"
+        ));
 });
 
 
@@ -148,26 +178,26 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 
 
 // Update Details ->
-const updateUserDetails = asyncHandler(async (req, res) => {
-    const { fullName, email } = req.body;
-    if (!(fullName || email)) throw new ApiError(400, "All fields are required");
+// const updateUserDetails = asyncHandler(async (req, res) => {
+//     const { fullName, email } = req.body;
+//     if (!fullName && !email) throw new ApiError(400, "All fields are required");
 
-    const user = await User.findByIdAndUpdate(
-        req.user?._id,
-        {
-            $set: { fullName, email }
-        },
-        { new: true }).select("-password");
+//     const user = await User.findByIdAndUpdate(
+//         req.user?._id,
+//         {
+//             $set: { fullName, email }
+//         },
+//         { new: true }).select("-password");
 
-    return res
-        .status(200)
-        .json(new ApiResponse(200, user, "Account details updated successfully"));
+//     return res
+//         .status(200)
+//         .json(new ApiResponse(200, user, "Account details updated successfully"));
 
-});
+// });
 
 
 const updateAvatarImage = asyncHandler(async (req, res) => {
-    const coverImageLocalPath = req.file?.path;
+    const avatarLocalPath = req.file?.path;
     if (!avatarLocalPath) throw new ApiError(400, "Avatar image file is required");
 
     const avatar = await uploadToCloudinary(avatarLocalPath);
@@ -217,7 +247,7 @@ export {
     logInUser,
     logOutUser,
     changeCurrentPassword,
-    updateUserDetails,
+    // updateUserDetails,
     updateAvatarImage,
     updateCrrentCoverImage,
     getCurrentUser

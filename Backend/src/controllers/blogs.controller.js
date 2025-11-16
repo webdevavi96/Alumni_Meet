@@ -99,18 +99,18 @@ const deleteBlog = asyncHandler(async (req, res) => {
 
 const addCommentOnBlog = asyncHandler(async (req, res) => {
     const userId = req.user?._id;
-    if (!userId) return res.status(400).json(new ApiError(400, "Invalid user Id"));
+    if (!isValidObjectId(userId)) return res.status(400).json(new ApiError(400, "Invalid user Id"));
 
     const user = await checkUserType(userId);
     if (!user) return res.status(404).json(new ApiError(404, "User not found"));
 
     const { content } = req.body;
-    const blogId = req.params;
+    const blogId = req.params?.blogId;
     if (!isValidObjectId(blogId)) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
     if (!content) return res.status(400).json(new ApiError(400, "Comments cant be empty"));
 
     const comment = await Comment.create({
-        author: user.username,
+        author: userId,
         content: content,
         onBlog: blogId
     });
@@ -120,22 +120,77 @@ const addCommentOnBlog = asyncHandler(async (req, res) => {
 
 });
 
+const getAllCommentsOnBlog = asyncHandler(async (req, res) => {
+    const { page, limit, query, sortBy, sortType, blogId } = req.query;
+    if (!isValidObjectId(blogId)) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
+    const pageNum = parseInt(page) || 1;
+    const limitNum = parseInt(limit) || 10;
+    const skip = (pageNum - 1) * limitNum;
+
+    const match = { onBlog: new mongoose.Types.ObjectId(blogId) };
+    if (query) {
+        match.content = { $regex: query, $options: "i" };
+    }
+    const comments = await Comment.aggregate([
+        { $match: match },
+        { $sort: { [sortBy]: sortType == "asc" ? 1 : -1 } },
+        {
+            $lookup: {
+                from: "users",
+                localField: "author",
+                foreignField: "_id",
+                as: "author"
+            }
+        },
+        { $unwind: "$author" },
+        {
+            $project: {
+                content: 1,
+                createdAt: 1,
+                "author._id": 1,
+                "author.username": 1,
+                "author.fullName": 1,
+                "author.avatar": 1,
+            }
+        },
+        { $skip: skip },
+        { $limit: limitNum }
+    ]);
+    const totalComments = await Comment.countDocuments(match);
+    const totalPages = Math.ceil(totalComments / limitNum);
+    return res.status(200).json(new ApiResponse(200, { comments, totalComments, totalPages }, "success"));
+});
+
 const likeBlog = asyncHandler(async (req, res) => {
     const userId = req.user?._id;
     if (!userId) return res.status(400).json(new ApiError(400, "Invalid user Id"))
     const user = await checkUserType(userId);
     if (!user) return res.status(404).json(new ApiError(404, "User not found"));
 
-    const blogId = req.params;
-    if (!blogId) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
+    const blogId = req.params?.blogId;
+    if (!isValidObjectId(blogId)) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
+    // if (!isValidObjectId(blogId)) throw new ApiError(400, "Invalid blog Id");
+
+    const existingLike = await Like.findOne({ likedOn: blogId, likedBy: userId });
+    if (existingLike) {
+        await Like.findByIdAndDelete(existingLike._id);
+        await Blog.findByIdAndUpdate(blogId, { $inc: { likesCount: -1 } });
+        const likeCount = await Like.countDocuments({ likedOn: blogId });
+        return res.status(200).json(new ApiResponse(200, { likeCount }, "success"));
+    }
 
     const liked = await Like.create({
         likedOn: blogId,
-        likedBy: user.username
+        likedBy: userId,
+        liked: true
     });
 
     if (!liked) return res.status(500).json(new ApiError(500, "Something went wrong, please try again later"));
-    return res.status(200).json(new ApiResponse(200, "success"));
+
+    await Blog.findByIdAndUpdate(blogId, { $inc: { likesCount: 1 } });
+    const likeCount = await Like.countDocuments({ likedOn: blogId });
+
+    return res.status(200).json(new ApiResponse(200, { liked, likeCount }, "success"));
 
 });
 
@@ -206,130 +261,41 @@ const fetchAllBlogs = asyncHandler(async (req, res) => {
 });
 
 const fetchSingleBlog = asyncHandler(async (req, res) => {
-    const userId = req.user?._id;
-    if (!isValidObjectId(userId)) return new ApiError(400, "Invali user Id");
-    const user = await checkUserType(userId);
-    if (!user) return new ApiError(402, "Access denie");
-
     const { blogId } = req.params;
-    if (!isValidObjectId(blogId)) return new ApiError(400, "Invalid blog Id");
+    if (!isValidObjectId(blogId)) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
+    const blog = await Blog.findById(blogId)
+        .populate("createdBy", "username fullName avatar");
 
-    await Blog.findById(blogId);
-    const blog = await Blog.aggregate([
-        { $match: { _id: new mongoose.Types.ObjectId(blogId) } },
-        {
-            $lookup: {
-                from: "users",
-                localField: "createdBy",
-                foreignField: "_id",
-                as: "author",
-                pipeline: [
-                    {
-                        $project: {
-                            username: 1,
-                            fullName: 1,
-                            avatar: 1,
-                            _id: 1
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            $addFields: {
-                author: { $first: "$author" }
-            }
-        },
-        {
-            $lookup: {
-                from: "likes",
-                localField: "_id",
-                foreignField: "likedTo",
-                as: "likes"
-            }
-        },
-        {
-            $lookup: {
-                from: "users",
-                localField: "likes.likedBy",
-                foreignField: "_id",
-                as: "likedByUsers",
-                pipeline: [
-                    {
-                        $project: {
-                            username: 1,
-                            fullName: 1,
-                            avatar: 1,
-                            _id: 1
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            $addFields: {
-                likesCount: { $size: "$likes" },
-                isLikedByCurrentUser: userId
-                    ? { $in: [new mongoose.Types.ObjectId(userId), "$likes.likedBy"] }
-                    : false,
-            }
-        },
-        {
-            $lookup: {
-                from: "users",
-                localField: "_id",
-                foreignField: "onBlog",
-                as: "comments"
-            }
-        },
-        {
-            $lookup: {
-                from: "users",
-                localField: "comments.author",
-                foreignField: "_id",
-                as: "commentByUsers",
-                pipeline: [
-                    {
-                        $project: {
-                            username: 1,
-                            fullName: 1,
-                            avatr: 1,
-                            _id: 1
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            $addFields: {
-                commentsCount: { $size: "$comments" },
-                isCommentedByCurrentUser: userId
-                    ? { $in: [new mongoose.Types.ObjectId(userId), "$comments.author"] }
-                    : false,
-            }
-        },
-        {
-            $project: {
-                title: 1,
-                content: 1,
-                image: 1,
-                author: 1,
-                likesCount: 1,
-                isLikedByCurrentUser: 1,
-                commentsCount: 1,
-                comments: 1,
-                isCommentedByCurrentUser: 1,
-                createdAt: 1,
-            }
-        }
-    ]);
+    if (!blog) return res.status(404).json(new ApiError(404, "Blog not found"));
 
-    if (!blog) return new ApiError(404, "Page not found");
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, blog, "success"));
+    return res.status(200).json(
+        new ApiResponse(
+            200,
+            {
+                _id: blog._id,
+                title: blog.title,
+                content: blog.content,
+                image: blog.image,
+                createdAt: blog.createdAt,
+                author: {
+                    fullName: blog.createdBy.fullName,
+                    username: blog.createdBy.username,
+                    avatar: blog.createdBy.avatar,
+                }
+            },
+            "success"
+        )
+    );
 
 });
 
-export { postBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog, fetchAllBlogs, fetchSingleBlog }
+
+const getLikesOnBlog = asyncHandler(async (req, res) => {
+    const { blogId } = req.params;
+    if (!isValidObjectId(blogId)) return res.status(400).json(new ApiError(400, "Invalid blog Id"));
+    const likes = await Like.find({ likedOn: blogId, liked: true }).populate("likedBy", "username fullName avatar");
+    const likeCount = likes.length;
+    return res.status(200).json(new ApiResponse(200, { likes, likeCount }, "success"));
+});
+
+export { postBlog, updateBlog, deleteBlog, addCommentOnBlog, getAllCommentsOnBlog, likeBlog, fetchAllBlogs, fetchSingleBlog, getLikesOnBlog };
