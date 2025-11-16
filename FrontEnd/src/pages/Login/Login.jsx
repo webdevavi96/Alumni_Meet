@@ -42,6 +42,7 @@ function Login() {
       } else {
         toast.warning("Invalid credentials!");
         console.log(response.status);
+        toast.error("Invalid credentials!");
       }
 
     } catch (error) {
