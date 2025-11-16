@@ -1,15 +1,93 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import BlogsCard from "../../components/Cards/BlogsCard";
 import EventCard from "../../components/Cards/EventCard";
+import { AuthContext } from "../../utils/authContext.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import { fetchUserDashboard } from "../../services/userDashBoardServices.js";
+
 
 function Dashboard() {
+  const { user, loading } = useContext(AuthContext);
   const [tab, setTab] = useState("Blogs");
-
   const tabs = ["Blogs", "Events", "Followers"];
+  const [dashboardLoading, setDashboardLoading] = useState(false);
+  const [blogs, setBlogs] = useState([]);
+  const [events, setEvents] = useState([]);
+
+
+  const checkEventStatus = (eventDate, eventTime) => {
+    const [day, month, year] = eventDate.split("/");
+
+    // Convert to ISO format YYYY-MM-DD HH:MM
+    const dateTimeString = `${year}-${month}-${day} ${eventTime}`;
+    const eventDateObj = new Date(dateTimeString);
+
+    const now = new Date();
+
+    if (eventDateObj > now) return "upcoming";
+    if (
+      eventDateObj.toDateString() === now.toDateString() &&
+      eventDateObj.getHours() === now.getHours()
+    ) {
+      return "ongoing";
+    }
+    return "ended";
+  };
+
+  const formatEventTime = (timeString) => {
+    const [hour, minute] = timeString.split(":");
+    const date = new Date();
+    date.setHours(hour, minute);
+
+    return date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true
+    });
+  };
+
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
+
+  useEffect(() => {
+    const dashboardfn = async () => {
+      if (!user) return;
+      try {
+        const userId = user._id
+        setDashboardLoading(true)
+        const res = await fetchUserDashboard(userId);
+        if (res.status === 200 || res.status === "Success") {
+          console.log(res.data);
+          setBlogs(res.data.blogs);
+          setEvents(res.data.events);
+        } else {
+          console.error(res.status);
+        }
+      } catch (error) {
+        console.error("error in fetching dashboard: ", error);
+        throw error;
+      } finally {
+        setDashboardLoading(false)
+      }
+
+    }
+    dashboardfn();
+
+  }, [])
+
 
   const handleClick = (e) => {
     setTab(e.target.innerText);
   };
+
+  if (loading) return <Loader />
 
   return (
     <div className="min-h-screen w-full pt-6 px-4 bg-[linear-gradient(to_right,var(--tw-gradient-stops))] from-[#0f172a] via-[#1e293b] to-[#020617] text-white">
@@ -40,36 +118,46 @@ function Dashboard() {
       {/* Body */}
       <div className="text-center mt-8 text-base sm:text-lg font-medium">
         {tab === "Blogs" &&
-          <div className="w-full max-w-7xl flex flex-col gap-6">
-            <BlogsCard
-              title="AI Revolution in 2025"
-              content="Artificial intelligence continues to evolve, transforming industries through automation, creativity, and data analysis. Here's what the next phase looks like..."
-              image={{ url: "https://source.unsplash.com/800x600/?ai,technology" }}
-              author="Avinash Chaurasiya"
-              date="Nov 6, 2025"
-            />
+          (dashboardLoading ? (<Loader />) : (<div className="w-full max-w-7xl flex flex-col gap-6">
+            {blogs.map((data) => {
 
-            <BlogsCard
-              title="Cybersecurity in a Connected World"
-              content="As our devices grow smarter, so do threats. Learn how cybersecurity experts are adapting to safeguard user privacy in the IoT era."
-              image={{ url: "https://source.unsplash.com/800x600/?cybersecurity,network" }}
-              author="Tech Community"
-              date="Oct 31, 2025"
-            />
+              return (<BlogsCard
+                key={data._id}
+                title={data.title}
+                content={data.content}
+                image={{ url: data.image }}
+                author={data.author.username}
+                date={data.createAt}
+              />)
+            })}
           </div>
+          ))
         }
-        {tab === "Events" &&
-          <div className="animate-fade-in">
-            ✨ Upcoming Events will be displayed here...
+        {tab === "Events" && (
+          dashboardLoading ? (<Loader />) : (<div className="animate-fade-in">
+            {events.map((event) => {
+              const status = checkEventStatus(event.eventDate, event.startTime);
+              return (<EventCard
+                key={event._id}
+                status={status}
+                title={event.title}
+                description={event.description}
+                meetingUrl={event.meetingUrl}
+                startTime={formatEventTime(event.startTime)}
+                eventDate={formatDate(event.eventDate)}
+                duration={event.duration}
+              />)
+            })}
+          </div>)
+        )}
+        {tab === "Followers" &&
+          <div>
+            👥 Followers section content goes here...
 
             <EventCard status={"upcoming"} />
             <EventCard status={"ongoing"} />
             <EventCard status={"ended"} />
-          </div>
-        }
-        {tab === "Followers" &&
-          <div>
-            👥 Followers section content goes here...
+
           </div>}
       </div>
     </div>

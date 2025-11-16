@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { registerUser } from '../../services/authService';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+
 
 function Register() {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [visible, setVisible] = useState({
+        password: false,
+        confPassword: false,
+    });
 
     const {
         register,
@@ -20,7 +26,7 @@ function Register() {
 
     const verifyPassword = (password, confPassword) => {
         if (password !== confPassword) {
-            alert("Passwords must match");
+            toast.warn("Passwords must match");
             return false;
         }
         return true;
@@ -33,7 +39,7 @@ function Register() {
         );
 
         if (hasEmptyField) {
-            alert("All fields are required");
+            toast.warn("All fields are required");
             return;
         }
 
@@ -44,21 +50,27 @@ function Register() {
 
         try {
             const formData = new FormData();
-            Object.keys(data).forEach((key) => {
-                console.table(key, data[key])
-                formData.append(key, data[key]);
-            });
+
+            // To see the form data
+            // Object.keys(data).forEach((key) => {
+            //     console.table(key, data[key])
+            //     formData.append(key, data[key]);
+            // });
 
             formData.append("avatarImage", data.avatarImage[0]);
 
             const res = await registerUser(formData);
             console.log(res);
 
-            navigate("/login")
+            if (res.status === 200) {
+                toast.success("Account created successfully!");
+                navigate("/login")
+            }
 
         } catch (error) {
             console.error(error);
-            alert("Something went wrong.");
+            toast.warn("Something went wrong! Please try again later");
+
         }
         reset();
 
@@ -228,9 +240,61 @@ function Register() {
                         </h2>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <input type="file" {...register("avatarImage", { required: true })} className="form-input" />
-                            <input type="password" placeholder="Password" {...register("password", { required: true })} className="form-input" />
-                            <input type="password" placeholder="Confirm Password" {...register("confPassword", { required: true })} className="form-input" />
+                            {/* Avatar Upload */}
+                            <input
+                                type="file"
+                                {...register("avatarImage", { required: true })}
+                                className="form-input"
+                            />
+
+                            {/* Password Field */}
+                            <div className="relative">
+                                <input
+                                    type={visible.password ? "text" : "password"}
+                                    placeholder="Password"
+                                    {...register("password", { required: true })}
+                                    className="form-input pr-10"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setVisible((prev) => ({ ...prev, password: !prev.password }))
+                                    }
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
+                                >
+                                    {visible.password ? (
+                                        <IoEyeOutline size={20} />
+                                    ) : (
+                                        <IoEyeOffOutline size={20} />
+                                    )}
+                                </button>
+                            </div>
+
+                            {/* Confirm Password Field */}
+                            <div className="relative">
+                                <input
+                                    type={visible.confPassword ? "text" : "password"}
+                                    placeholder="Confirm Password"
+                                    {...register("confPassword", { required: true })}
+                                    className="form-input pr-10"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() =>
+                                        setVisible((prev) => ({
+                                            ...prev,
+                                            confPassword: !prev.confPassword,
+                                        }))
+                                    }
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-cyan-400 transition-colors"
+                                >
+                                    {visible.confPassword ? (
+                                        <IoEyeOutline size={20} />
+                                    ) : (
+                                        <IoEyeOffOutline size={20} />
+                                    )}
+                                </button>
+                            </div>
                         </div>
                     </div>
 

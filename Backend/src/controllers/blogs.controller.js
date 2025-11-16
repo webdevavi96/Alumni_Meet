@@ -139,9 +139,8 @@ const likeBlog = asyncHandler(async (req, res) => {
 
 });
 
-const fecthAllBlogs = asyncHandler(async (req, res) => {
+const fetchAllBlogs = asyncHandler(async (req, res) => {
     const { page = 1, limit = 10, query, sortBy, sortType } = req.query;
-
     const pageNum = parseInt(page);
     const limitNum = parseInt(limit);
     const skip = (pageNum - 1) * limitNum;
@@ -333,4 +332,4 @@ const fetchSingleBlog = asyncHandler(async (req, res) => {
 
 });
 
-export { postBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog, fecthAllBlogs, fetchSingleBlog }
+export { postBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog, fetchAllBlogs, fetchSingleBlog }

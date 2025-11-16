@@ -1,5 +1,6 @@
 // Login, Registration, Logout, Token verification code will be written here ->
 import axios from 'axios';
+import api from "../utils/api.js";
 
 export async function logInUser(data) {
     // Logic for user login
@@ -20,7 +21,7 @@ export async function registerUser(data) {
 
 export async function logout() {
     // Logic for user logout
-    const response = await axios.post('/api/auth/users/logout', { withCredentials: true });
+    const response = await api.post('/auth/users/logout', { withCredentials: true });
     return response.data;
 }
 

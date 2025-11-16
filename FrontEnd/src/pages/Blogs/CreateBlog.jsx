@@ -57,6 +57,8 @@ function CreateBlog() {
       abortCtrlRef.current = null;
       setIsUploading(false);
       setUploadPercent(0);
+      toast.warn("Upload cancelled");
+
     }
   };
 

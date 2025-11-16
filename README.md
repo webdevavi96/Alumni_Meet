@@ -147,6 +147,6 @@ This project is licensed under the MIT License — you’re free to use and modi
 
 If you have ideas, feedback, or want to collaborate, feel free to reach out!
 
-📧 *Email:* <your-email@example.com>  
-🌐 *Portfolio:* [your-portfolio-link](https://your-portfolio-link.com)  
-🐙 *GitHub:* [@your-username](https://github.com/your-username)
+📧 *Email:* <avinashchaurasiya901@gmail.com>  
+🌐 *Portfolio:* [Portfolio](https://webdevavi96.netlify.app/) 
+🐙 *GitHub:* [@webdevavi96](https://github.com/webdevavi96/)

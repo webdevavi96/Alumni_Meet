@@ -1,3 +1,4 @@
+import { getDashboard } from "../controllers/dashboard.controller.js";
 import {
     logInUser,
     logOutUser,
@@ -7,12 +8,12 @@ import {
     updateAvatarImage,
     updateCrrentCoverImage,
     getCurrentUser
-} from "../controllers/registerUser.controller.js"; 
+} from "../controllers/registerUser.controller.js";
 import { JWTVerify } from "../middlewares/auth.middleware.js";
 import { upload } from "../middlewares/multer.middleware.js";
 import { Router } from "express";
 
-const router = Router(); 
+const router = Router();
 
 router.route("/register")
     .post(
@@ -61,4 +62,10 @@ router.route("/")
         JWTVerify,
         getCurrentUser
     );
+
+router.route("/dashboard").get(
+    JWTVerify,
+    getDashboard
+)
+
 export default router;

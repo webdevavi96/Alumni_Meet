@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "../utils/api";
 
 const postBlog = async (formData, { onProgress, signal } = {}) => {
     if (!formData) return;
@@ -28,7 +29,7 @@ const postBlog = async (formData, { onProgress, signal } = {}) => {
 const fetchAllBlogs = async () => {
     try {
         const query = { page: 1, limit: 20, query: "", sortBy: "createdAt", sortType: "desc" };
-        const res = await axios.get("/api/blogs/", { withCredentials: true, params: query });
+        const res = await api.get("/blogs/", { params: query });
         return res.data;
     } catch (error) {
         console.log("Error in fetchAllBlogs service:", error);
@@ -90,10 +91,11 @@ const likeBlog = async (blogId) => {
         const response = await axios.post(`/api/blogs/like/${blogId}`, {}, { withCredentials: true });
         return response.data;
     } catch (error) {
-        console.log("Error in likeBlog service:", error);
+        console.error("Error in like Blog service:", error);
         throw error;
     }
 };
+
 
 
 export { postBlog, fetchAllBlogs, fetchSingleBlog, updateBlog, deleteBlog, addCommentOnBlog, likeBlog };
